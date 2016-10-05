@@ -1,0 +1,17 @@
+<ion-view view-title="친구리스트">
+  <ion-content>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search">
+      </label>
+    </div>
+    <ion-list>
+      <ion-item ng-repeat="friend in friends" href="#/app/feed/friends/{{friend.id}}">
+        <div>
+          {{friend.name}} {{friend.email}}
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
