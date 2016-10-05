@@ -1,6 +1,5 @@
 # GamseongTrip_Client
 
-#프로젝트 
 #감성여행 클라이언트
 Ionic
 
