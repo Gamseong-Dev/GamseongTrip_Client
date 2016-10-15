@@ -1,1 +1,19 @@
 /* Empty. Add your own CSS if you like */
+.profile{
+  margin: 20px 0 0 20px;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: #47a3da;
+},
+.profile-content{
+  flex-direction: row;
+	height: 30%;
+  position: relative;
+}
+.profile-name{
+  font-size: 1.8em
+}
+.profile-email{
+  font-size: 1.2em
+}
