@@ -3,9 +3,9 @@ angular.module('gamseong.feed-controllers', [])
 .controller('FeedlistCtrl', function($scope) {
   console.log("피드정보다");
   $scope.feedlist = [
-    { title: "테스트", contents: "테스트임" , like : "5", id : 1},
-    { title: "테스트", contents: "테스트임" , like : "5", id : 2},
-    { title: "테스트", contents: "테스트임" , like : "5", id : 3}
+    { title: "제목01", contents: "제목 1에 들어갈 텍스트 내용" , like : "5", id : 1},
+    { title: "테스트02", contents: "테스트임2" , like : "5", id : 2},
+    { title: "테스트03", contents: "테스트임3" , like : "5", id : 3}
   ]; //테스트 데이터 임 이거 서버에서 가져온거를 너어서 클라이언트에서 사용하면댬
 })
 .controller('FeedCtrl', function($scope, $stateParams) {

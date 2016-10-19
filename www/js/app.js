@@ -10,6 +10,7 @@ angular.module('gamseong', ['ionic'
 , 'gamseong.local-controllers'
 , 'gamseong.setting-controllers'
 , 'gamseong.friend-controllers'
+, 'gamseong.profile-controllers'
 ])
 
 .run(function($ionicPlatform) {
@@ -37,8 +38,6 @@ angular.module('gamseong', ['ionic'
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
-
-
   .state('app.feed', {
       url: '/feed',
       views: {
@@ -98,6 +97,15 @@ angular.module('gamseong', ['ionic'
         'menuContent': {
           templateUrl: 'templates/setting/setting_default.html',
           controller: 'SettingCtrl'
+        }
+      }
+  })
+  .state('app.profile', {
+      url: '/profile',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/profile/profile_body.html',
+          controller: 'ProfileCtrl'
         }
       }
   })
