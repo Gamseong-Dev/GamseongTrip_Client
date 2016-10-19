@@ -104,8 +104,34 @@ angular.module('gamseong', ['ionic'
       url: '/profile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/profile/profile_body.html',
-          controller: 'ProfileCtrl'
+          templateUrl: 'templates/profile/profile_body.html'
+        }
+      }
+  })
+  .state('app.profile.feed', {
+      url: '/feed',
+      views: {
+        'tab-list': {
+          templateUrl: 'templates/profile/profile_feed.html',
+          controller: 'ProfileFeedCtrl'
+        }
+      }
+  })
+  .state('app.profile.trip', {
+      url: '/trip',
+      views: {
+        'tab-list': {
+          templateUrl: 'templates/profile/profile_trip.html',
+          controller: 'ProfileTripCtrl'
+        }
+      }
+  })
+  .state('app.profile.int', {
+      url: '/int',
+      views: {
+        'tab-list': {
+          templateUrl: 'templates/profile/profile_int.html',
+          controller: 'ProfileIntCtrl'
         }
       }
   })

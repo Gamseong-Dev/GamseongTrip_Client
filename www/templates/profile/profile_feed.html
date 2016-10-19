@@ -1,0 +1,28 @@
+<ion-view view-title="나의게시글">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="feed in feedlist">
+        <div class="list card">
+          <div class="item item-avatar">
+            <!--프사 넣으면 댈듯-->
+              <h2>{{feed.id}}</h2>
+              <p>이상운</p>
+          </div>
+          <div class="item item-body">
+            <!--바디 사이즈는 폰트는 css로 조정해야 할듯 하다-->
+              <h2>{{feed.title}}</h2>
+              <p>
+                <a class="subdued" href="#/app/profile/feed/{{feed.id}}">
+
+                      {{feed.contents}}
+                </a>
+              </p>
+              <p>
+                <button ng-click="" class="button button-icon icon ">따봉 {{feed.like}}</button>
+              </p>
+            </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
