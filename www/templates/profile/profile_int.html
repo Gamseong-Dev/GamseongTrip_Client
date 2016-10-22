@@ -1,4 +1,15 @@
-<ion-view view-title="관심지">
-  <ion-content>
-  </ion-content>
-</ion-view>
+<script id="templates/profile/profile_int.html" type="text/ng-template">
+  <ion-item ng-repeat="int in intlist">
+    <div class="card">
+      <div class="item item-divider">
+            {{int.title}}
+      </div>
+      <div class="item item-text-wrap">
+            {{int.contents}}
+      </div>
+      <div class="item item-divider">
+            {{int.like}}
+      </div>
+    </div>
+  </ion-item>
+</script>
