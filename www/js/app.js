@@ -31,7 +31,6 @@ angular.module('gamseong', ['ionic'
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
     .state('app', {
     url: '/app',
     abstract: true,
@@ -104,23 +103,32 @@ angular.module('gamseong', ['ionic'
       url: '/profile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/profile/profile_body.html'
+          templateUrl: 'templates/profile/profile_body.html',
         }
       }
   })
   .state('app.profile.feed', {
       url: '/feed',
       views: {
-        'tab-list': {
+        'inception': {
           templateUrl: 'templates/profile/profile_feed.html',
           controller: 'ProfileFeedCtrl'
+        }
+      }
+  })
+  .state('app.profileFeed-single', {
+      url: '/feed/:id',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/profile/feed_single.html',
+          controller: 'ProfileAFeed'
         }
       }
   })
   .state('app.profile.trip', {
       url: '/trip',
       views: {
-        'tab-list': {
+        'inception': {
           templateUrl: 'templates/profile/profile_trip.html',
           controller: 'ProfileTripCtrl'
         }
@@ -129,7 +137,7 @@ angular.module('gamseong', ['ionic'
   .state('app.profile.int', {
       url: '/int',
       views: {
-        'tab-list': {
+        'inception': {
           templateUrl: 'templates/profile/profile_int.html',
           controller: 'ProfileIntCtrl'
         }

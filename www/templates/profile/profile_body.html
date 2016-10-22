@@ -1,25 +1,26 @@
 <ion-view view-title="마이페이지">
-  <ion-content>
-    <div class="profile_Topcont">
-      <div class="profile_Image">
-        <a href="#/app/profile"><div class="userImage"></div></a>
+    <ion-content>
+      <div class="profileCont">
+      <div class="profile_Topcont">
+        <div class="profile_Image">
+          <div class="userImage"></div>
+        </div>
+        <div class="row profileTab">
+          <a class="tabBox" ui-sref="app.profile.feed">
+            <p class="tabtext">게시글</p>
+            <p class="tabtextBold">0</p>
+          </a>
+          <a class="tabBox" ui-sref="app.profile.trip">
+            <p class="tabtext">여행지</p>
+            <p class="tabtextBold">0</p>
+          </a>
+          <a class="tabBox" ui-sref="app.profile.int">
+            <p class="tabtext">관심지</p>
+            <p class="tabtextBold">0</p>
+          </a>
+        </div>
       </div>
-      <!-- <ion-tabs> -->
-      <div class="profileTab">
-        <a class="tab-item active tabBox" ui-sref="app.profile.feed">
-          <p class="tabtext">게시글</p>
-          <p class="tabtextBold">0</p>
-        </a>
-        <a class="tab-item tabBox" ui-sref="app.profile.trip">
-          <p class="tabtext">여행지</p>
-          <p class="tabtextBold">0</p>
-        </a>
-        <a class="tab-item tabBox" ui-sref="app.profile.int">
-          <p class="tabtext">관심지역</p>
-          <p class="tabtextBold">0</p>
-        </a>
-      </div>
-    <!-- </ion-tabs> -->
+      <div ui-view name="inception" class="nestedComp"></div>
     </div>
-  </ion-content>
+    </ion-content>
 </ion-view>

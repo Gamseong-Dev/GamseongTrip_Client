@@ -1,4 +1,15 @@
-<ion-view view-title="여행지">
-  <ion-content>
-  </ion-content>
-</ion-view>
+<script id="templates/profile/profile_trip.html" type="text/ng-template">
+  <ion-item ng-repeat="trip in triplist">
+    <div class="card">
+      <div class="item item-divider">
+            {{trip.title}}
+      </div>
+      <div class="item item-text-wrap">
+            {{trip.contents}}
+      </div>
+      <div class="item item-divider">
+            {{trip.like}}
+      </div>
+    </div>
+  </ion-item>
+</script>
