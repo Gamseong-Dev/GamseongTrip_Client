@@ -1,0 +1,26 @@
+<ion-view> <!-- Location Search Modal In Feed List --> 
+	<ion-modal>
+		<div class="modal">
+			<select name="selectLocation" id="selectLocation">
+				<option value="">지역선택</option>
+				<ion-item ng-repeat="location in locationList">
+					<option value={{location.id}}>{{location.name}}</option>
+				</ion-item>
+			</select> 
+			<br />
+			 
+			<select name="selectLocation" id="selectLocationDetail">
+				<option value="">상세지역선택</option>
+				<ion-item ng-repeat="location in locationDetailList">
+					<option value={{location.id}}>{{location.name}}</option>
+				</ion-item>
+			</select> 
+			<br /> 
+		
+			<input id="inputSearch" type="text" hint="aaaa" value="sss" />
+			<button class = "button icon icon-left ion-ios-close-outline"
+         	ng-click = "closeSearch()">Close Modal</button>
+		</div>
+	</ion-modal> 
+</ion-view>
+

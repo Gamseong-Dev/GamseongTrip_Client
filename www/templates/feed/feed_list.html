@@ -1,28 +1,42 @@
-<ion-view view-title="Feedlist">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="feed in feedlist">
-        <div class="list card">
-          <div class="item item-avatar">
-            <!--프사 넣으면 댈듯-->
-              <h2>{{feed.id}}</h2>
-              <p>최정민</p>
-          </div>
-          <div class="item item-body">
-            <!--바디 사이즈는 폰트는 css로 조정해야 할듯 하다-->
-              <h2>{{feed.title}}</h2>
-              <p>
-                <a class="subdued" href="#/app/feed/list/{{feed.id}}">
-
-                      {{feed.contents}}
-                </a>
-              </p>
-              <p>
-                <button ng-click="" class="button button-icon icon ">따봉 {{feed.like}}</button>
-              </p>
-            </div>
-        </div>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+<ion-view view-title="Feedlist" on-swipe-down="openSearch()">
+	<ion-content>
+		<!-- Feed List --> 
+		<ion-list>
+			<ion-item ng-repeat="feed in feedList"> 
+				<!-- TODO Move These Code Into Feed Single !! -->
+				<div class="list card">
+					<!-- Profile -->
+					<div class="item">
+						<div class="profile item-avatar">
+							<image src=""></image>
+						</div>						
+						<p>
+							<span>{{feed.location}}</span>
+							<span class="date-right">{{feed.date}}</span>
+						</p>						
+						<h2>{{feed.name}}</h2>
+					</div>
+					<!-- Content -->
+					<div class="item item-body">
+						<p>
+							<a class="subdued" href="#/app/feed/list/{{feed.id}}">
+								{{feed.contents}}
+							</a>
+						</p>
+					</div>
+					<!-- Inner Buttons -->
+					<div>
+						<!-- TODO Add/Toggle Icon -->
+						<button ng-click="toggleLike()" class="button button-icon icon ">좋아요 {{feed.like}}</button>
+						<button ng-click="openReply()" class="button button-icon icon ">댓글</button>
+						<button ng-click="openMessage()" class="button button-icon icon ">쪽지보내기</button>
+					</div>
+					<!-- Reply -->
+					<div>
+					
+					</div>					
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
 </ion-view>
