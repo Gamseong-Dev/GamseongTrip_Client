@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 .profileCont{
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -13,6 +13,7 @@
 	height: 30%;
   width: 100%;
   position: relative;
+  border-bottom: 1px solid lightgray;
 }
 .userImage{
   margin: 20% 0 0 20%;
@@ -23,14 +24,16 @@
   display: inline-block;
 }
 .userInfo{
-  width: 300px;
-  height: 100%;
+  margin: 0.5em 1em 0 1em;
+  padding: 1em;
 }
 .profile-name{
-  font-size: 1.3em
+  font-size: 1.6em;
+  font-weight: 400;
 }
 .profile-email{
-  font-size: 1em
+  font-size: 1em;
+  font-weight: 100;
 }
 .profile_Topcont{
   width: 100%;
@@ -40,6 +43,23 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.panelbody{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.menupanel{
+  width: 100%;
+  padding: 1em;
+  text-align: left;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 300;
+  border-bottom: 0.1em solid lightgray;
 }
 /*profile tab 관련된 css*/
 

@@ -7,8 +7,8 @@ const {width, height, scale} = Dimensions.get("window"),
 
 export default StyleSheet.create({
     "profileCont": {
-        "width": "auto",
-        "height": "auto",
+        "width": "100%",
+        "height": "100%",
         "display": "flex",
         "justifyContent": "space-between",
         "flexDirection": "column"
@@ -18,7 +18,8 @@ export default StyleSheet.create({
         "flexDirection": "row",
         "height": "30%",
         "width": "100%",
-        "position": "relative"
+        "position": "relative",
+        "borderBottom": "1px solid lightgray"
     },
     "userImage": {
         "marginTop": "20%",
@@ -32,14 +33,22 @@ export default StyleSheet.create({
         "display": "inline-block"
     },
     "userInfo": {
-        "width": 300,
-        "height": "100%"
+        "marginTop": 0.5,
+        "marginRight": 1,
+        "marginBottom": 0,
+        "marginLeft": 1,
+        "paddingTop": 1,
+        "paddingRight": 1,
+        "paddingBottom": 1,
+        "paddingLeft": 1
     },
     "profile-name": {
-        "fontSize": 1.3
+        "fontSize": 1.6,
+        "fontWeight": "400"
     },
     "profile-email": {
-        "fontSize": 1
+        "fontSize": 1,
+        "fontWeight": "100"
     },
     "profile_Topcont": {
         "width": "100%",
@@ -48,6 +57,26 @@ export default StyleSheet.create({
         "display": "flex",
         "flexDirection": "row",
         "justifyContent": "space-between"
+    },
+    "panelbody": {
+        "width": "100%",
+        "height": "auto",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "flexDirection": "column"
+    },
+    "menupanel": {
+        "width": "100%",
+        "paddingTop": 1,
+        "paddingRight": 1,
+        "paddingBottom": 1,
+        "paddingLeft": 1,
+        "textAlign": "left",
+        "display": "inline-block",
+        "textDecoration": "none",
+        "fontSize": 1.2,
+        "fontWeight": "300",
+        "borderBottom": "0.1em solid lightgray"
     },
     "profile_Image": {
         "height": 100
