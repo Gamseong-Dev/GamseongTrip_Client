@@ -50,7 +50,7 @@ angular.module('gamseong', ['ionic'
       views: {
         "tab-list": {
           templateUrl: 'templates/feed/feed_list.html',
-          controller: 'FeedlistCtrl'
+          controller: 'FeedListCtrl'
         }
       }
   })
@@ -120,7 +120,7 @@ angular.module('gamseong', ['ionic'
       url: '/feed/:id',
       views: {
         'menuContent': {
-          templateUrl: 'templates/profile/feed_single.html',
+          templateUrl: 'templates/feed/feed_single.html',
           controller: 'ProfileAFeed'
         }
       }
