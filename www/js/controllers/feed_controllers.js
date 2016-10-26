@@ -1,13 +1,13 @@
 /*
  * Controller for feed
- * 
+ *
  * 2016.10.20
  * author : Shim
  */
 angular.module('gamseong.feed-controllers', [])
 
-// Feed Controller 
-.controller('FeedCtrl', function($scope, $stateParams) { 
+// Feed Controller
+.controller('FeedCtrl', function($scope, $stateParams) {
 })
 
 // Feed List Controller
@@ -63,28 +63,28 @@ angular.module('gamseong.feed-controllers', [])
 			console.log("like--");
 			// TODO Update Table
 		}
-		
-		
-		
+
+
+
 	};
 
 	// Control Modal
 	$ionicModal.fromTemplateUrl('templates/feed/location_search.html', {
-		scope : $scope,		
+		scope : $scope,
 		animation : 'slide-in-down'	// FiXME
 	}).then(function(searchModal) {
 		$scope.searchModal = searchModal;
 	});
-	
+
 	$ionicModal.fromTemplateUrl('templates/feed/location_search.html', {
-		scope : $scope,		
+		scope : $scope,
 		animation : 'slide-in-up'
 	}).then(function(replyModal) {
 		$scope.replyModal = replyModal;
 	});
-	
+
 	$ionicModal.fromTemplateUrl('templates/feed/location_search.html', {
-		scope : $scope,		
+		scope : $scope,
 		animation : 'slide-in-up'
 	}).then(function(messageModal) {
 		$scope.messageModal = messageModal;
@@ -99,7 +99,7 @@ angular.module('gamseong.feed-controllers', [])
 		console.log("모달 다운");
 		$scope.searchModal.hide();
 	};
-	
+
 	$scope.openReply = function() {
 		console.log("댓글");
 		$scope.replyModal.show();
@@ -108,7 +108,7 @@ angular.module('gamseong.feed-controllers', [])
 	$scope.closeReply = function() {
 		$scope.replyModal.hide();
 	};
-	
+
 	$scope.openMessage = function() {
 		console.log("쪽지");
 		$scope.messageModal.show();
@@ -135,4 +135,14 @@ angular.module('gamseong.feed-controllers', [])
 
 // Message Controller
 .controller('MessageCtrl', function($scope, $stateParams) {
+	$scope.messageList = [ {
+		message : "상운님이 어느 여행지가 제일 좋았어요?",
+		id : 1
+	}, {
+		message : "부산은 어때요?",
+		id : 2
+	}, {
+		message : "서울 맛집 추천 부탁드려요~",
+		id : 3
+	} ];
 });
