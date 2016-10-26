@@ -151,7 +151,16 @@ angular.module('gamseong', ['ionic'
           controller: 'FriendlistCtrl'
         }
       }
-  });
+  })
+  .state('app.friend_single', {
+        url: '/friends/:id',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/friend/friend_single.html',
+            controller: 'FriendCtrl'
+          }
+        }
+    });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/feed/feed/list');
 });

@@ -1,19 +1,19 @@
 <ion-view view-title="Feedlist" on-swipe-down="openSearch()">
 	<ion-content>
-		<!-- Feed List --> 
+		<!-- Feed List -->
 		<ion-list>
-			<ion-item ng-repeat="feed in feedList"> 
+			<ion-item ng-repeat="feed in feedList" href="#/app/feed/list/{{feed.id}}">
 				<!-- TODO Move These Code Into Feed Single !! -->
 				<div class="list card">
 					<!-- Profile -->
 					<div class="item">
 						<div class="profile item-avatar">
 							<image src=""></image>
-						</div>						
+						</div>
 						<p>
 							<span>{{feed.location}}</span>
 							<span class="date-right">{{feed.date}}</span>
-						</p>						
+						</p>
 						<h2>{{feed.name}}</h2>
 					</div>
 					<!-- Content -->
@@ -33,8 +33,8 @@
 					</div>
 					<!-- Reply -->
 					<div>
-					
-					</div>					
+
+					</div>
 				</div>
 			</ion-item>
 		</ion-list>
