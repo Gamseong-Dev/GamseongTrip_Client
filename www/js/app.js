@@ -46,18 +46,18 @@ angular.module('gamseong', ['ionic'
       }
   })
   .state('app.feed.list', {
-      url: '/feed/list',
+      url: '/list',
       views: {
-        "tab-list": {
+        'tab-list': {
           templateUrl: 'templates/feed/feed_list.html',
           controller: 'FeedListCtrl'
         }
       }
   })
-  .state('app.feed-single', {
-      url: '/feed/list/:id',
+  .state('app.feed.feed-single', {
+      url: '/list/:id',
       views: {
-        'menuContent': {
+        'tab-list': {
           templateUrl: 'templates/feed/feed_single.html',
           controller: 'FeedCtrl'
         }
