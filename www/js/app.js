@@ -10,6 +10,7 @@ angular.module('gamseong', ['ionic'
 , 'gamseong.local-controllers'
 , 'gamseong.setting-controllers'
 , 'gamseong.friend-controllers'
+, 'gamseong.login-controllers'
 ])
 
 .run(function($ionicPlatform) {
@@ -109,7 +110,43 @@ angular.module('gamseong', ['ionic'
           controller: 'FriendlistCtrl'
         }
       }
-  });
+  })
+  .state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/login/login.html',
+          controller: 'LoginCtrl'
+        }
+      }
+  })
+    .state('app..list', {
+      url: '/feed/list',
+      views: {
+        "tab-list": {
+          templateUrl: 'templates/feed/feed_list.html',
+          controller: 'FeedlistCtrl'
+        }
+      }
+  })
+  .state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/feed/login_tabs.html'
+        }
+      }
+  })
+  
+    .state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/feed/login_tabs.html'
+        }
+      }
+  })
+  ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/feed/feed/list');
 });

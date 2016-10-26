@@ -4,3 +4,4 @@ angular.module('gamseong.setting-controllers', [])
   console.log("세팅이다");
 
 });
+

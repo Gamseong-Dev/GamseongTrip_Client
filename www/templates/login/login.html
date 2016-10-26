@@ -1,0 +1,83 @@
+<ion-view view-title="로그인">
+	<ion-content> 
+	
+			<form method="post" align="center">
+				<div align="center" class="login-form">
+					<div class="form-group ">
+						<input type="text" class="form-control" placeholder="Username "
+							id="UserName"> <i class="fa fa-user"></i>
+					</div> <p>
+					<div class="form-group log-status">
+						<input type="password" class="form-control" placeholder="Password"
+							id="Passwod"> <i class="fa fa-lock"></i>
+					</div>
+					<input type="button" value="페이스북 로그인">
+				
+				</div>
+				 <ion-tabs class="tabs-icon-bottom tabs-positive">
+
+        <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+          <ion-nav-view name="home-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="About" icon="ion-ios-information" href="#/tab/about">
+          <ion-nav-view name="about-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Contact" icon="ion-ios-world" ui-sref="tabs.contact">
+          <ion-nav-view name="contact-tab"></ion-nav-view>
+        </ion-tab>
+
+      </ion-tabs>
+				
+			</form>
+	</ion-content> 
+</ion-view>
+
+<!-- 
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Login form shake effect</title>
+    
+    
+    
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div class="login-form">
+     <h1>Vini</h1>
+     <div class="form-group ">
+       <input type="text" class="form-control" placeholder="Username " id="UserName">
+       <i class="fa fa-user"></i>
+     </div>
+     <div class="form-group log-status">
+       <input type="password" class="form-control" placeholder="Password" id="Passwod">
+       <i class="fa fa-lock"></i>
+     </div>
+      <span class="alert">Invalid Credentials</span>
+      <a class="link" href="#">Lost your password?</a>
+     <button type="button" class="log-btn" >Log in</button>
+     
+    
+   </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="js/index.js"></script>
+
+    
+    
+  </body>
+</html>
+
+ -->
