@@ -134,3 +134,18 @@
   width: 100%;
   position: absolute;
 }
+/*message */
+.messageImage{
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	background: #47a3da;
+  display: inline-block;
+  margin-right: 10px;
+}
+.messageCell{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2em;
+}
