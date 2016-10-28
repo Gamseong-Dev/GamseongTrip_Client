@@ -144,5 +144,19 @@ export default StyleSheet.create({
         "top": 100,
         "width": "100%",
         "position": "absolute"
+    },
+    "messageImage": {
+        "width": 45,
+        "height": 45,
+        "borderRadius": "50%",
+        "background": "#47a3da",
+        "display": "inline-block",
+        "marginRight": 10
+    },
+    "messageCell": {
+        "display": "flex",
+        "flexDirection": "row",
+        "alignItems": "center",
+        "height": 2
     }
 });
