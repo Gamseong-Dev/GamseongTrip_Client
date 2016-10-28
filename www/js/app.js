@@ -11,6 +11,7 @@ angular.module('gamseong', ['ionic'
 , 'gamseong.setting-controllers'
 , 'gamseong.friend-controllers'
 , 'gamseong.profile-controllers'
+, 'gamseong.login-controllers'
 ])
 
 .run(function($ionicPlatform) {
@@ -161,6 +162,24 @@ angular.module('gamseong', ['ionic'
           }
         }
     });
+  .state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/login/login.html',
+          controller: 'LoginCtrl'
+        }
+      }
+  });
+  // 정민아 이부분 뭔지 모르겠다..ㅎㅎㅎ
+  // .state('app.login', {
+  //     url: '/login',
+  //     views: {
+  //       'menuContent': {
+  //         templateUrl: 'templates/login/login_tabs.html'
+  //       }
+  //     }
+  // });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/feed/feed/list');
 });
