@@ -161,7 +161,7 @@ angular.module('gamseong', ['ionic'
             controller: 'FriendCtrl'
           }
         }
-    });
+  })
   .state('app.login', {
       url: '/login',
       views: {
