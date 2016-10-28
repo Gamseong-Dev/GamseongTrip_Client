@@ -72,12 +72,12 @@ angular.module('gamseong', ['ionic'
         }
       }
   })
-  .state('app.feeds.favorites', {
-      url: '/feed/favorites',
+  .state('app.feed.message', {
+      url: '/feed/message',
       views: {
-        'tab-favorites': {
-          templateUrl: 'templates/feed/favorites.html',
-          controller: 'FavoritesCtrl'
+        'tab-message': {
+          templateUrl: 'templates/feed/message.html',
+          controller: 'MessageCtrl'
         }
       }
   })

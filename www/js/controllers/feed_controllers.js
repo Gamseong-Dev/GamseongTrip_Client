@@ -135,4 +135,14 @@ angular.module('gamseong.feed-controllers', [])
 
 // Message Controller
 .controller('MessageCtrl', function($scope, $stateParams) {
+	$scope.messageList = [ {
+		message : "상운님이 어느 여행지가 제일 좋았어요?",
+		id : 1
+	}, {
+		message : "부산은 어때요?",
+		id : 2
+	}, {
+		message : "서울 맛집 추천 부탁드려요~",
+		id : 3
+	} ];
 });
