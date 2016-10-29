@@ -13,6 +13,7 @@ angular.module('gamseong', [
 , 'gamseong.friend-controllers'
 , 'gamseong.profile-controllers'
 , 'gamseong.login-controllers'
+, 'gamseong.weeklyBest'
 ])
 
 .constant('ClientProxy', {
@@ -102,6 +103,16 @@ angular.module('gamseong', [
         'menuContent': {
           templateUrl: 'templates/local/local_event_list.html',
           controller: 'LocallistCtrl'
+        }
+      }
+  })
+  //weekly감성Best 관련된 것
+  .state('app.wBest', {
+      url: '/wbest',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/weeklyBest/best.html',
+          controller:'WeeklyBestCtrl'
         }
       }
   })

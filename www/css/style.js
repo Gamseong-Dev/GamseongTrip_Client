@@ -6,13 +6,6 @@ const {width, height, scale} = Dimensions.get("window"),
     vmax = Math.max(vw, vh);
 
 export default StyleSheet.create({
-    "profileCont": {
-        "width": "100%",
-        "height": "100%",
-        "display": "flex",
-        "justifyContent": "space-between",
-        "flexDirection": "column"
-    },
     "profile-content": {
         "display": "flex",
         "flexDirection": "row",
@@ -53,9 +46,7 @@ export default StyleSheet.create({
     "profile_Topcont": {
         "width": "100%",
         "height": 100,
-        "position": "absolute",
         "display": "flex",
-        "flexDirection": "row",
         "justifyContent": "space-between"
     },
     "panelbody": {
@@ -134,11 +125,16 @@ export default StyleSheet.create({
         "color": "#47a3da"
     },
     "slideBox": {
-        "height": "80%",
+        "height": 150,
         "width": "100%",
         "bottom": 0,
         "left": 0,
-        "top": 0
+        "top": 0,
+        "flexDirection": "column",
+        "paddingTop": 1,
+        "paddingRight": 1,
+        "paddingBottom": 1,
+        "paddingLeft": 1
     },
     "nestedComp": {
         "top": 100,
@@ -196,5 +192,15 @@ export default StyleSheet.create({
     },
     "messageSendBar": {
         "background": "gray"
+    },
+    "slideCont": {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "space-between"
+    },
+    "weekTitle": {
+        "borderBottom": "0.1em solid gray",
+        "background": "gray",
+        "height": 2
     }
 });
