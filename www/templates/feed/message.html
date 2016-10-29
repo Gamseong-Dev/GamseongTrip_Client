@@ -1,13 +1,12 @@
 <ion-view view-title="쪽지함">
 	<ion-content>
     <ion-list>
-      <ion-item ng-repeat="message in messageList">
+      <ion-item ng-repeat="message in messageList" href="#/app/feed/message/{{message.id}}">
           <div class="messageCell">
             <div class="messageImage"></div>
             <a>{{message.message}}</a>
           </div>
       </ion-item>
-
 
         <!-- <button [navPush]="messageDetail">Go To message Detail</button> -->
 				<!-- <button [navPush]="messageDetail">Go To message Detail</button> -->
@@ -15,3 +14,5 @@
     </ion-list>
   </ion-content>
 </ion-view>
+
+<!-- ui-sref="app.profile.feed" -->

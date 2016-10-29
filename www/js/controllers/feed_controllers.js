@@ -83,9 +83,8 @@ angular.module('gamseong.feed-controllers', [])
 		$scope.replyModal = replyModal;
 	});
 
-	$ionicModal.fromTemplateUrl('templates/modal/location_search.html', {
-		scope : $scope,
-		animation : 'slide-in-up'
+	$ionicModal.fromTemplateUrl('templates/modal/message_send.html', {
+		scope : $scope
 	}).then(function(messageModal) {
 		$scope.messageModal = messageModal;
 	});
@@ -108,15 +107,15 @@ angular.module('gamseong.feed-controllers', [])
 	$scope.closeReply = function() {
 		$scope.replyModal.hide();
 	};
-
-	$scope.openMessage = function() {
-		console.log("쪽지");
-		$scope.messageModal.show();
-	};
-
-	$scope.closeMessage = function() {
-		$scope.messageModal.hide();
-	};
+	//
+	// $scope.openMessage = function() {
+	// 	console.log("쪽지");
+	// 	$scope.messageModal.show();
+	// };
+	//
+	// $scope.closeMessage = function() {
+	// 	$scope.messageModal.hide();
+	// };
 })
 
 // Alarm Controller
@@ -132,7 +131,6 @@ angular.module('gamseong.feed-controllers', [])
 		id : 3
 	} ];
 })
-
 // Message Controller
 .controller('MessageCtrl', function($scope, $stateParams) {
 	$scope.messageList = [ {
@@ -145,4 +143,29 @@ angular.module('gamseong.feed-controllers', [])
 		message : "서울 맛집 추천 부탁드려요~",
 		id : 3
 	} ];
+})
+.controller('MessageSingleCtrl', function($scope, $stateParams, $ionicModal) {
+	$scope.messageSingle = [ {
+		from: "이유경",
+		to: "이상운",
+		message : "상운님이 어느 여행지가 제일 좋았어요?",
+		id : 1
+	}];
+	$ionicModal.fromTemplateUrl('templates/modal/message_send.html', {
+		scope : $scope
+	}).then(function(messageModal) {
+		$scope.messageModal = messageModal;
+	});
 });
+
+// , {
+// 	from: "최정민",
+// 	to: "이상운",
+// 	message : "부산은 어때요?",
+// 	id : 2
+// }, {
+// 	from: "김건우",
+// 	to: "이상운",
+// 	message : "서울 맛집 추천 부탁드려요~",
+// 	id : 3
+// }

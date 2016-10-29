@@ -74,11 +74,20 @@ angular.module('gamseong', ['ionic'
       }
   })
   .state('app.feed.message', {
-      url: '/feed/message',
+      url: '/message',
       views: {
         'tab-message': {
           templateUrl: 'templates/feed/message.html',
           controller: 'MessageCtrl'
+        }
+      }
+  })
+  .state('app.feed.message-single', {
+      url: '/message/:id',
+      views:{
+        'tab-message':{
+          templateUrl: 'templates/feed/message_single.html',
+          controller: 'MessageSingleCtrl'
         }
       }
   })
@@ -100,6 +109,7 @@ angular.module('gamseong', ['ionic'
         }
       }
   })
+  // profile과 관련된 js
   .state('app.profile', {
       url: '/profile',
       views: {
@@ -121,7 +131,7 @@ angular.module('gamseong', ['ionic'
       url: '/feed/:id',
       views: {
         'menuContent': {
-          templateUrl: 'templates/feed/feed_single.html',
+          templateUrl: 'templates/profile/feed_single.html',
           controller: 'ProfileAFeed'
         }
       }
@@ -181,5 +191,5 @@ angular.module('gamseong', ['ionic'
   //     }
   // });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/feed/feed/list');
+  $urlRouterProvider.otherwise('/app/feed/list');
 });
