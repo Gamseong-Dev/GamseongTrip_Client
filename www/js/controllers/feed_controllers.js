@@ -11,8 +11,16 @@ angular.module('gamseong.feed-controllers', [])
 })
 
 // Feed List Controller
-.controller('FeedListCtrl', function($scope, $ionicModal) {
+.controller('FeedListCtrl', function($scope, $ionicModal, $http, ClientProxy) {
 
+	$http.get(ClientProxy.url + '/feeds/locations/1').
+       success(function(data) {
+         console.log(data);
+   }).
+       error(function(data, status, headers, config) {
+         console.log(config);
+
+  });
 	// Control Feed List
 	$scope.feedList = [ {
 		id : 1,
@@ -145,12 +153,12 @@ angular.module('gamseong.feed-controllers', [])
 	} ];
 })
 .controller('MessageSingleCtrl', function($scope, $stateParams, $ionicModal) {
-	$scope.messageSingle = [ {
+	$scope.messageSingle =  {
 		from: "이유경",
 		to: "이상운",
 		message : "상운님이 어느 여행지가 제일 좋았어요?",
 		id : 1
-	}];
+	};
 	$ionicModal.fromTemplateUrl('templates/modal/message_send.html', {
 		scope : $scope
 	}).then(function(messageModal) {
