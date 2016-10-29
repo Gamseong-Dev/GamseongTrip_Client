@@ -158,5 +158,43 @@ export default StyleSheet.create({
         "flexDirection": "row",
         "alignItems": "center",
         "height": 2
+    },
+    "messageCont": {
+        "display": "flex",
+        "flex": 1,
+        "flexDirection": "column"
+    },
+    "messageTop": {
+        "display": "flex",
+        "borderBottom": "0.1em solid gray",
+        "width": "100%",
+        "paddingTop": 0.4,
+        "paddingRight": 0,
+        "paddingBottom": 0.4,
+        "paddingLeft": 0,
+        "marginBottom": 1
+    },
+    "messageInfo": {
+        "display": "flex",
+        "marginBottom": -0.4
+    },
+    "messageInfoText": {
+        "fontWeight": "700",
+        "fontSize": 1,
+        "color": "black",
+        "marginLeft": 0.3,
+        "marginRight": 1
+    },
+    "messageBox": {
+        "width": "100%",
+        "height": 20,
+        "border": "0.1em dashed gray",
+        "borderRadius": "1%"
+    },
+    "messageSend": {
+        "marginTop": 1.5
+    },
+    "messageSendBar": {
+        "background": "gray"
     }
 });
