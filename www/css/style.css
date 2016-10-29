@@ -195,3 +195,32 @@
   height: 150px;
   padding: 1em;
 }
+/*설정 modal에 관한 css*/
+.settingCont{
+  width: 100%;
+  flex-direction: column;
+  padding: 0 1em 0 1em;
+}
+.settingTop{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+.userImageConf{
+	width: 7em;
+	height: 7em;
+	border-radius: 50%;
+	background: #47a3da;
+  display: inline-block;
+}
+.s_input{
+  background: #f2f2f2;
+  width: 100%;
+  margin: 0 0 15px;
+  padding: 0.7em;
+}
+.switch{
+  padding: 1em 0 1em 0;
+  border: none;
+}

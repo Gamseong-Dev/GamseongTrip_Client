@@ -202,5 +202,48 @@ export default StyleSheet.create({
         "borderBottom": "0.1em solid gray",
         "background": "gray",
         "height": 2
+    },
+    "settingCont": {
+        "width": "100%",
+        "flexDirection": "column",
+        "paddingTop": 0,
+        "paddingRight": 1,
+        "paddingBottom": 0,
+        "paddingLeft": 1
+    },
+    "settingTop": {
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "paddingTop": 2,
+        "paddingRight": 2,
+        "paddingBottom": 2,
+        "paddingLeft": 2
+    },
+    "userImageConf": {
+        "width": 7,
+        "height": 7,
+        "borderRadius": "50%",
+        "background": "#47a3da",
+        "display": "inline-block"
+    },
+    "s_input": {
+        "background": "#f2f2f2",
+        "width": "100%",
+        "marginTop": 0,
+        "marginRight": 0,
+        "marginBottom": 15,
+        "marginLeft": 0,
+        "paddingTop": 0.7,
+        "paddingRight": 0.7,
+        "paddingBottom": 0.7,
+        "paddingLeft": 0.7
+    },
+    "switch": {
+        "paddingTop": 1,
+        "paddingRight": 0,
+        "paddingBottom": 1,
+        "paddingLeft": 0,
+        "border": "none"
     }
 });
