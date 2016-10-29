@@ -1,0 +1,26 @@
+<ion-view> <!-- Location Search Modal In Feed List -->
+	<ion-modal-view>
+    <ion-header-bar class="bar-header messageSendBar">
+      <p ng-click="settingModal.hide()" class="button">취소</p>
+       <h1 class="title">설정</h1>
+       <p ng-click="settingModal.hide()" class="button">완료</p>
+     </ion-header-bar>
+    <ion-content class="settingCont" scroll="false">
+      <div class="settingTop"><a class="userImageConf"/></div>
+      <form>
+        <p>닉네임 변경</p>
+        <input class="s_input" type="text" placeholder="name"/>
+        <p>비밀번호 변경</p>
+        <input class="s_input" type="password" placeholder="password"/>
+        <p>비밀번호 변경확인</p>
+        <input class="s_input" type="password" placeholder="password"/>
+      </form>
+      <ion-toggle class="switch" ng-model="emailNoti" ng-true-value="'쪽지수신'" ng-false-value="'쪽지거부'">
+        <p>쪽지수신여부</p>
+      </ion-toggle>
+      <ion-toggle class="switch" ng-model="pushNoti.checked" ng-change="pushNotiChange()">
+        <p>푸시알림</p>
+      </ion-toggle>
+    </ion-content>
+  </ion-modal-view>
+</ion-view>
