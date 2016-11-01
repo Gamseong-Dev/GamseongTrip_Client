@@ -2,20 +2,29 @@
 	<ion-content>
 		<!-- Feed List -->
 		<ion-list>
-			<ion-item ng-repeat="feed in feedList" href="#/app/feed/list/{{feed.id}}">
+
+				<!-- Profile -->
+
+					<div class="profile item-avatar item card">
+						<image src=""></image>
+							<button style="margin-top:10px;"
+							class="button button-icon icon" ng-click="writerOpen()">글을 입력해주세요</button>
+					</div>
+
+			<ion-item class="list card" ng-repeat="feed in feedList" href="#/app/feed/list/{{feed.id}}">
 				<!-- TODO Move These Code Into Feed Single !! -->
-				<div class="list card">
+
 					<!-- Profile -->
-					<div class="item">
-						<div class="profile item-avatar">
+
+					<div class="profile item-avatar item">
 							<image src=""></image>
-						</div>
 						<p>
 							<span>{{feed.location}}</span>
 							<span class="date-right">{{feed.date}}</span>
 						</p>
 						<h2>{{feed.name}}</h2>
 					</div>
+
 					<!-- Content -->
 					<div class="item item-body">
 						<p>
@@ -33,8 +42,6 @@
 					</div>
 					<!-- Reply -->
 					<div>
-
-					</div>
 				</div>
 			</ion-item>
 		</ion-list>

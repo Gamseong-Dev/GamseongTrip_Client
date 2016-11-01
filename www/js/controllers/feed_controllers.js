@@ -71,10 +71,26 @@ angular.module('gamseong.feed-controllers', [])
 			console.log("like--");
 			// TODO Update Table
 		}
-
-
-
 	};
+
+	// Create the login modal that we will use later
+$ionicModal.fromTemplateUrl('templates/feed/feed_writer.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.modal = modal;
+		});
+
+		// Triggered in the login modal to close it
+		$scope.writerClose = function() {
+			$scope.modal.hide();
+		};
+
+		// Open the login modal
+		$scope.writerOpen = function() {
+			console.log("writer 모달업")
+			$scope.modal.show();
+		};
+
 
 	// Control Modal
 	$ionicModal.fromTemplateUrl('templates/modal/location_search.html', {
