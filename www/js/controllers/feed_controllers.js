@@ -11,16 +11,23 @@ angular.module('gamseong.feed-controllers', [])
 })
 
 // Feed List Controller
-.controller('FeedListCtrl', function($scope, $ionicModal, $http, ClientProxy) {
+.controller('FeedListCtrl', function($scope,$window, $ionicModal, $http, ClientProxy, GeoService) {
+	GeoService.locationCode()
 
-	$http.get(ClientProxy.url + '/feeds/locations/1').
-       success(function(data) {
-         console.log(data);
-   }).
-       error(function(data, status, headers, config) {
-         console.log(config);
+	if($window.localStorage.getItem("id") != null){
+		$http.get(ClientProxy.url + '/gamseong/feeds/locations/'+$window.localStorage.getItem("id")).
+				 success(function(data) {
+					 console.log(data);
+					 $scope.feedList = data.feed
 
-  });
+
+		 }).
+				 error(function(data, status, headers, config) {
+					 console.log(ClientProxy.url);
+
+		});
+	}
+
 	// Control Feed List
 	$scope.feedList = [ {
 		id : 1,

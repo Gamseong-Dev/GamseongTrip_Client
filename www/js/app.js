@@ -14,13 +14,14 @@ angular.module('gamseong', [
 , 'gamseong.profile-controllers'
 , 'gamseong.login-controllers'
 , 'gamseong.weeklyBest'
+, 'gamseong.geo-services'
 ])
 
 .constant('ClientProxy', {
-  url: '/gamseong'
+  url: 'http://localhost:8080'
 })
 
-.run(function($ionicPlatform,  $http, ClientProxy) {
+.run(function($ionicPlatform,  $http, ClientProxy, GeoService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
