@@ -1,7 +1,16 @@
 // 지역 정보 이벤트
 angular.module('gamseong.weeklyBest', [])
-.controller('WeeklyBestCtrl', function($scope, $ionicLoading, $http) {
+.controller('WeeklyBestCtrl', function($scope, $ionicSlideBoxDelegate) {
   console.log("weeklyBest 정보");
+  $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+    // data.slider is the instance of Swiper
+    $scope.slider = data.slider;
+  });
+  $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
+    // note: the indexes are 0-based
+    $scope.activeIndex = data.slider.activeIndex;
+    $scope.previousIndex = data.slider.previousIndex;
+  });
   $scope.bestFeed = [
     {
       user: '이유경',
