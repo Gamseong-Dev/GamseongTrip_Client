@@ -7,7 +7,18 @@
 angular.module('gamseong.feed-controllers', [])
 
 // Feed Controller
-.controller('FeedCtrl', function($scope, $stateParams) {
+.controller('FeedCtrl', function($scope, $stateParams, ClientProxy, $http) {
+
+	console.log($stateParams.id);
+	$http.get(ClientProxy.url + '/gamseong/feeds/' + $stateParams.id).
+			 success(function(data) {
+				 console.log(data);
+				 $scope.data = data;
+	 }).
+			 error(function(data, status, headers, config) {
+				 console.log(ClientProxy.url);
+	});
+
 })
 
 // Feed List Controller
@@ -18,53 +29,13 @@ angular.module('gamseong.feed-controllers', [])
 		$http.get(ClientProxy.url + '/gamseong/feeds/locations/'+$window.localStorage.getItem("id")).
 				 success(function(data) {
 					 console.log(data);
-					 $scope.feedList = data.feed
-
-
+					 $scope.feedList = data;
 		 }).
 				 error(function(data, status, headers, config) {
 					 console.log(ClientProxy.url);
 
 		});
 	}
-
-	// Control Feed List
-	$scope.feedList = [ {
-		id : 1,
-		location : "경상남도 > 통영시",
-		name : "심홍규",
-		contents : "테스트임",
-		like : "5",
-		date : "2016-10-17"
-	}, {
-		id : 2,
-		location : "제주도 > 북제주군",
-		name : "이상운",
-		contents : "테스트임",
-		like : "5",
-		date : "2016-10-18"
-	}, {
-		id : 3,
-		location : "제주도 > 북제주군",
-		name : "이유경",
-		contents : "테스트임",
-		like : "5",
-		date : "2016-10-19"
-	}, {
-		id : 4,
-		location : "전라남도 > 순천시",
-		name : "최정민",
-		contents : "테스트임",
-		like : "5",
-		date : "2016-10-20"
-	}, {
-		id : 5,
-		location : "서울특별시 > 동대문구",
-		name : "한은탁",
-		contents : "테스트임",
-		like : "5",
-		date : "2016-10-21"
-	} ];
 
 	var isLike = false;
 	// Control Inner Tab

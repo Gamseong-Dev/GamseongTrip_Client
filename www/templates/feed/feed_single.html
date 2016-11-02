@@ -1,5 +1,21 @@
 <ion-view view-title="피드싱글">
   <ion-content>
-  ㅁㄴㅇㅁㄴㅇ
+    <div class="profile item-avatar item">
+        <image src=""></image>
+      <p>
+        <span>{{data.feed.location.name}}</span>
+        <span class="date-right">{{data.feed.creationTime}}</span>
+      </p>
+      <h2>{{data.feed.user.name}}</h2>
+    </div>
+
+    <!-- Content -->
+    <div class="item item-body">
+      <p>
+        <a class="subdued" href="#/app/feed/list/{{feed.id}}">
+          {{data.feed.contents}}
+        </a>
+      </p>
+    </div>
   </ion-content>
 </ion-view>

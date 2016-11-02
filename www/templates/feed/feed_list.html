@@ -11,7 +11,7 @@
 							class="button button-icon icon" ng-click="writerOpen()">글을 입력해주세요</button>
 					</div>
 
-			<ion-item class="list card" ng-repeat="feed in feedList" href="#/app/feed/list/{{feed.id}}">
+			<ion-item class="list card" ng-repeat="feeds in feedList" href="#/app/feed/list/{{feeds.feed.id}}">
 				<!-- TODO Move These Code Into Feed Single !! -->
 
 					<!-- Profile -->
@@ -19,24 +19,24 @@
 					<div class="profile item-avatar item">
 							<image src=""></image>
 						<p>
-							<span>{{feed.location}}</span>
-							<span class="date-right">{{feed.date}}</span>
+							<span>{{feeds.feed.location.name}}</span>
+							<span class="date-right">{{feeds.feed.creationTime}}</span>
 						</p>
-						<h2>{{feed.name}}</h2>
+						<h2>{{feeds.feed.user.name}}</h2>
 					</div>
 
 					<!-- Content -->
 					<div class="item item-body">
 						<p>
 							<a class="subdued" href="#/app/feed/list/{{feed.id}}">
-								{{feed.contents}}
+								{{feeds.feed.contents}}
 							</a>
 						</p>
 					</div>
 					<!-- Inner Buttons -->
 					<div>
 						<!-- TODO Add/Toggle Icon -->
-						<button class="button button-icon icon ">좋아요 {{feed.like}}</button>
+						<button class="button button-icon icon ">좋아요 {{feeds.feed.like}}</button>
 						<button class="button button-icon icon ">댓글</button>
 						<button ng-click="messageModal.show()" class="button button-icon icon ">쪽지보내기</button>
 					</div>

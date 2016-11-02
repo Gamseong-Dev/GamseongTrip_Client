@@ -18,7 +18,7 @@ angular.module('gamseong', [
 ])
 
 .constant('ClientProxy', {
-  url: 'http://localhost:8080'
+  url: 'http://52.78.110.20:8080/'
 })
 
 .run(function($ionicPlatform,  $http, ClientProxy, GeoService) {
