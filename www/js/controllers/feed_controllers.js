@@ -25,7 +25,8 @@ angular.module('gamseong.feed-controllers', [])
 .controller('FeedListCtrl', function($scope,$window, $ionicModal, $http, ClientProxy, GeoService) {
 	GeoService.locationCode()
 
-	if($window.localStorage.getItem("id") != null){
+	if($window.localStorage.getItem("locId") != null){
+		$scope.local = $window.localStorage.getItem("locName")
 		$http.get(ClientProxy.url + '/gamseong/feeds/locations/'+$window.localStorage.getItem("id")).
 				 success(function(data) {
 					 console.log(data);

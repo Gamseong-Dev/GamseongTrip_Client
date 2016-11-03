@@ -1,6 +1,6 @@
 angular.module('gamseong.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, GeoService) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -8,8 +8,8 @@ angular.module('gamseong.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-
-
+ GeoService.locationCode()
+ $scope.local = $window.localStorage.getItem("locName")
   // Form data for the login modal
  $scope.loginData = {};
 

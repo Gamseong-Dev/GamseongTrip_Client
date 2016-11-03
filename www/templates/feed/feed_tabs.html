@@ -3,21 +3,21 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-view view-title="피드싱글">
+<ion-view view-title="{{local}}" ng-click="">
 
-    <ion-tabs class="tabs-striped tabs-color-assertive tabs-icon-top">
+    <ion-tabs class="tabs-color-gamseong tabs-icon-top">
 
-        <ion-tab title="알림" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" ui-sref="app.feed.alarm">
+        <ion-tab title="알림" icon="ion-ios-bell" ui-sref="app.feed.alarm">
           <ion-nav-view name="tab-alarm"></ion-nav-view>
         </ion-tab>
 
 
-        <ion-tab title="피드"  icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" ui-sref="app.feed.list">
+        <ion-tab title="피드" icon="ion-home" ui-sref="app.feed.list">
           <ion-nav-view name="tab-list"></ion-nav-view>
         </ion-tab>
 
 
-        <ion-tab title="쪽지" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" ui-sref="app.feed.message">
+        <ion-tab title="쪽지" icon="ion-android-mail" ui-sref="app.feed.message">
           <ion-nav-view name="tab-message"></ion-nav-view>
         </ion-tab>
 

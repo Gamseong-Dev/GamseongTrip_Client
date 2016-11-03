@@ -25,9 +25,10 @@ angular.module('gamseong.geo-services', [])
                , {header : {'Content-Type' : 'application/json; charset=UTF-8'}})
                  .success(function (data) {
                      console.log(data);
-                     $window.localStorage.setItem("id",data.id);
-                     $window.localStorage.setItem("motherId",data.motherId);
-                     $window.localStorage.setItem("name",data.name);
+                     $window.localStorage.setItem("locId",data.id);
+                     $window.localStorage.setItem("locMotherId",data.motherId);
+                     $window.localStorage.setItem("locName",data.name);
+                     $window.localStorage.setItem("locMotherName",data.name);
                  })
                } else {
                  console.log("No address available");

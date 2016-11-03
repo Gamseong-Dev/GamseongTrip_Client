@@ -1,6 +1,5 @@
-<ion-view view-title="피드싱글">
+<ion-view view-title="{{local}}">
   <ion-content>
-<<<<<<< HEAD
     <div class="profile item-avatar item">
         <image src=""></image>
       <p>
@@ -17,7 +16,6 @@
           {{data.feed.contents}}
         </a>
       </p>
-=======
     <div class="feedTemp" href="#/app/feed/list/{{feed.id}}">
       <!-- TODO Move These Code Into Feed Single !! -->
         <!-- Profile -->
@@ -41,7 +39,6 @@
             <button ui-sref="app.feed.feed-single" class="button button-icon icon ">댓글</button>
             <button ng-click="messageModal.show()" class="button button-icon icon ">쪽지보내기</button>
           </div>
->>>>>>> origin/master
     </div>
   </ion-content>
 </ion-view>
