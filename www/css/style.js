@@ -149,12 +149,6 @@ export default StyleSheet.create({
         "display": "inline-block",
         "marginRight": 10
     },
-    "messageCell": {
-        "display": "flex",
-        "flexDirection": "row",
-        "alignItems": "center",
-        "height": 2
-    },
     "messageCont": {
         "display": "flex",
         "flex": 1,

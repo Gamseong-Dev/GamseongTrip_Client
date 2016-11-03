@@ -1,0 +1,10 @@
+{
+  "name": "Gamseong",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/gamseong",
+      "proxyUrl": "http://localhost:8080/gamseong"
+    }
+  ]
+}

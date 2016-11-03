@@ -1,18 +1,12 @@
 <ion-view view-title="쪽지함">
 	<ion-content>
     <ion-list>
-      <ion-item ng-repeat="message in messageList" href="#/app/feed/message/{{message.id}}">
-          <div class="messageCell">
-            <div class="messageImage"></div>
-            <a>{{message.message}}</a>
-          </div>
-      </ion-item>
-
-        <!-- <button [navPush]="messageDetail">Go To message Detail</button> -->
-				<!-- <button [navPush]="messageDetail">Go To message Detail</button> -->
-
+			<a class="item item-avatar" ng-repeat="message in messageList" href="#/app/feed/message/{{message.id}}">
+	      <!-- <img src="venkman.jpg"> 사용자 사진 넣으면 됨-->
+				<img class="messageImage">
+	      <h2>{{message.from}}</h2>
+	      <p>{{message.message}}</p>
+	    </a>
     </ion-list>
   </ion-content>
 </ion-view>
-
-<!-- ui-sref="app.profile.feed" -->
