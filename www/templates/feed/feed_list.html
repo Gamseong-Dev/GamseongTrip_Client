@@ -6,14 +6,11 @@
 				<!-- Profile -->
 			<div class="profile item-avatar item" style="border-color:#fff; margin-top:20px;" >
 					<image src=""></image>
-<<<<<<< HEAD
+
 						<button class="button button-icon icon" ng-click="writerOpen()">후기나 생각을 공유해주세요</button>
-=======
-						<button class="button button-icon icon" ng-click="writerOpen()">후기나 생각을 공유해주세요!</button>
->>>>>>> http
 			</div>
 
-			<ion-item class="list" style="border-color:#fff; margin-top:20px;" ng-repeat="feeds in feedList" href="#/app/feed/list/{{feeds.feed.id}}">
+			<ion-item class="list" style="border-color:#fff; margin-top:20px;" ng-repeat="feeds in feedList" href="#/app/feed/single/{{feeds.feed.id}}">
 				<!-- TODO Move These Code Into Feed Single !! -->
 
 					<!-- Profile -->
@@ -45,7 +42,7 @@
 						<button ng-click="messageModal.show()" class="button button-icon icon ">쪽지보내기</button>
 					</div>
 					<!-- Reply -->
-					<div ng-repeat="reply in feeds.reply" href="#/app/feed/list/{{feeds.feed.id}}">
+					<div ng-repeat="reply in feeds.reply" href="#/app/feed/single/{{feeds.feed.id}}">
 						<div >
 								<image src=""></image>
 								<p> {{reply.user.name}}

@@ -1,0 +1,41 @@
+<ion-modal-view>
+  <ion-content scroll="false">
+    <ion-slides  options="options" slider="data.slider">
+
+       <ion-slide-page>
+        <div class="list" style="margin-top:50%">
+        <label class="item item-input" style="padding: 2%; margin: 5%">
+          <input style="width:70%;" type="text" placeholder="email" ng-model="user.account">
+        </label>
+        <label class="item item-input" style="padding: 2%; margin: 5%">
+          <input style="width:70%;" type="password" placeholder="password" ng-model="user.password">
+        </label>
+        <label class="item-input" style="padding: 2%; margin: 3%">
+          <button class="button button-block button-positive" ng-click="doLogin()">
+            Login</button>
+        </label>
+
+        </div>
+      </ion-slide-page>
+
+      <ion-slide-page>
+        <div class="list" style="margin-top:40%">
+        <label class="item item-input" style="padding: 2%; margin: 5%">
+          <input style="width:70%;" type="text" placeholder="email" ng-model="user.account">
+        </label>
+        <label class="item item-input" style="padding: 2%; margin: 5%">
+          <input style="width:70%;" type="password" placeholder="password" ng-model="user.password">
+        </label>
+        <label class="item item-input" style="padding: 2%; margin: 5%">
+          <input style="width:70%;" type="text" placeholder="nickName" ng-model="user.name">
+        </label>
+        <label class="item-input" style="padding: 2%; margin: 3%">
+          <button class="button button-block button-positive" ng-click="doJoin()">
+            Join</button>
+        </label>
+        </div>
+      </ion-slide-page>
+
+    </ion-slides>
+  </ion-content>
+</ion-modal-view>

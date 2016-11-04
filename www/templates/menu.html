@@ -17,24 +17,41 @@
 
   <ion-side-menu side="left">
     <ion-content>
+      <div ng-show="isLogged()">
       <ion-list>
         <div class="profileCont">
           <div class="profile-content">
              <a href="#/app/profile/feed" menu-close><div class="userImage"></div></a>
              <div class="userInfo">
-               <p class="profile-name">유저이름 </p>
-               <p class="profile-email">usermail@user.com</p>
+               <p class="profile-name">{{name}} </p>
+               <p class="profile-email">{{email}}</p>
              </div>
           </div>
           <div class="panelbody">
-            <a class="menupanel" href="#/app/feed/list" menu-close><font color = #F2CB61>Feed</a>
+            <a class="menupanel" href="#/app/feed/list/" menu-close><font color = #F2CB61>Feed</a>
             <a class="menupanel" href="#/app/wbest" menu-close><font color = #F2CB61>Weekly 감성 Best</a>
             <a class="menupanel" href="#/app/friends" menu-close><font color = #F2CB61>감성검색</a>
             <a class="menupanel" ng-click="settingModal.show()" ng-controller="SettingCtrl" menu-close><font color = #F2CB61>설정</a>
-            <a class="menupanel" ng-click="login()" menu-close><font color = #F2CB61>로그인</a>
+            <a class="menupanel" ng-click="doLogout()" menu-close><font color = #F2CB61>로그아웃</a>
           </div>
         </div>
       </ion-list>
+    </div>
+
+        <div ng-hide="isLogged()">
+        <ion-list>
+          <div class="profileCont">
+            <div class="profile-content">
+              <div class="userInfo">
+              </div>
+            </div>
+            <div class="panelbody">
+              <a class="menupanel" ng-click="login()" menu-close><font color = #F2CB61>로그인</a>
+            </div>
+          </div>
+        </ion-list>
+      </div>
+
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

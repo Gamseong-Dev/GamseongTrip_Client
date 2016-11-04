@@ -22,12 +22,24 @@ angular.module('gamseong.feed-controllers', [])
 })
 
 // Feed List Controller
-.controller('FeedListCtrl', function($scope,$window, $ionicModal, $http, ClientProxy, GeoService) {
-	GeoService.locationCode()
+.controller('FeedListCtrl', function($scope,$window, $ionicModal, $http, ClientProxy, $stateParams) {
+	var page = 1;
+	var localId;
+	var userId = $window.localStorage.getItem("id");
+	var myLocalId = $window.localStorage.getItem("locId");
+	var address =  $window.localStorage.getItem("address");
 
-	if($window.localStorage.getItem("locId") != null){
+	if($stateParams.id == null){
+		localId = $window.localStorage.getItem("locid");
+	}
+	else {
+		localId = $stateParams.id;
+	}
+
+	if(myLocalId != null){
+		console.log("dasd");
 		$scope.local = $window.localStorage.getItem("locName")
-		$http.get(ClientProxy.url + '/gamseong/feeds/locations/'+$window.localStorage.getItem("id")).
+		$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + myLocalId).
 				 success(function(data) {
 					 console.log(data);
 					 $scope.feedList = data;
@@ -36,6 +48,48 @@ angular.module('gamseong.feed-controllers', [])
 					 console.log(ClientProxy.url);
 
 		});
+	}
+	$scope.writer={
+        contents: ""
+   };
+	$scope.doWriter = function(){
+		var param = {
+				feed : {
+					userId:  userId
+					,contents: $scope.writer.contents
+					,locationId: myLocalId
+					,address: address
+					,sticker :[]
+			}
+		};
+		$http.post(ClientProxy.url + '/gamseong/feeds',param)
+		.success(function (data){
+			console.log(param);
+			console.log(data);
+			if(data.result == "success") {
+				alert("입력하였습니다.");
+				$scope.modal.hide();
+				$window.location.reload();
+			}
+			else{
+				alert("실패하였습니다.");
+			}
+		});
+	}
+
+
+	$scope.getPage = function(){
+	page++;
+	$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId
+	+ "?pageNum="+page).
+			 success(function(datas) {
+				console.log(datas);
+		if(datas.length < 10) {$scope.plus= "더이상 데이터가 없습니다."}
+
+		 for(var i = 0; i<datas.length; i++){
+			 $scope.feedList.push(datas[i]);
+		 };
+	 });
 	}
 
 	var isLike = false;

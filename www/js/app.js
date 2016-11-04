@@ -19,6 +19,7 @@ angular.module('gamseong', [
 
 .constant('ClientProxy', {
   url: 'http://52.78.110.20:8080/'
+  //url: 'http://localhost:8080/'
 })
 
 .run(function($ionicPlatform,  $http, ClientProxy, GeoService) {
@@ -54,7 +55,7 @@ angular.module('gamseong', [
       }
   })
   .state('app.feed.list', {
-      url: '/list',
+      url: '/list/:id',
       views: {
         'tab-list': {
           templateUrl: 'templates/feed/feed_list.html',
@@ -63,7 +64,7 @@ angular.module('gamseong', [
       }
   })
   .state('app.feed.feed-single', {
-      url: '/list/:id',
+      url: '/single/:id',
       views: {
         'tab-list': {
           templateUrl: 'templates/feed/feed_single.html',
@@ -208,5 +209,5 @@ angular.module('gamseong', [
   //     }
   // });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/feed/list');
+  $urlRouterProvider.otherwise('/app/feed/list/');
 });

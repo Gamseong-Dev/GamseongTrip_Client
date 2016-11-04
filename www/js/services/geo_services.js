@@ -16,10 +16,12 @@ angular.module('gamseong.geo-services', [])
           };
           geocoder.geocode(request, function(data, status) {
              if (status == google.maps.GeocoderStatus.OK) {
-               if (data[0] != null) {
+               if (data[5] != null) {
 
-                 address = data[0].formatted_address.substring(5);
-                 console.log("address is: " + address);
+                 address = data[5].formatted_address.substring(5);
+                 $window.localStorage.setItem("address",data[5].formatted_address);
+                 console.log(data);
+                 console.log("address is : " + address);
 
                  $http.get(ClientProxy.url + "/gamseong/locations/address/" + address
                , {header : {'Content-Type' : 'application/json; charset=UTF-8'}})

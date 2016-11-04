@@ -9,8 +9,8 @@
       <div class="profile item-avatar item">
           <image src=""></image>
         <p>
-          <span>{{feed.location}}</span>
-          <span class="date-right">{{feed.date}}</span>
+          <span></span>
+          <span class="date-right"></span>
         </p>
       </div>
       <!-- Content -->
@@ -21,6 +21,10 @@
         this.value='내용을 적어주세요';" ng-model="writer.contents">
       </textarea>
       </div>
+      <label class="item-input" style="padding: 2%; margin: 3%">
+        <button class="button button-block button-positive" ng-click="doWriter()">
+         글쓰기</button>
+      </label>
     </form>
   </ion-content>
 </ion-modal-view>
