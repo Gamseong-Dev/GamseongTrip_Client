@@ -112,11 +112,11 @@ $scope.isLogged = function(){
      account: email,
      tokenKey: token
    };
+   console.log(param);
      $http
      .post(ClientProxy.url + '/gamseongAccounts/users/logout', param)
      .success(function (data){
        console.log(data);
-       if(data.result == "success"){
            $window.localStorage.setItem("token",null);
            $window.localStorage.setItem("email",null);
            $window.localStorage.setItem("id",null);
@@ -125,7 +125,6 @@ $scope.isLogged = function(){
            isLoggedIn = false;
            $location.path('/feed/list/');
            $window.location.reload();
-         }
      })
  };
 
