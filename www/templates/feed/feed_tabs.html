@@ -5,7 +5,7 @@ navigation history that also transitions its views in and out.
 -->
 <ion-view view-title="{{local}}" ng-click="">
 
-    <ion-tabs class="tabs-color-gamseong tabs-icon-top">
+    <ion-tabs class="tabs-color-gamseong tabs-icon-top" ng-class="{'tabs-item-hide': hideTabs}">
 
         <ion-tab title="알림" icon="ion-ios-bell" ui-sref="app.feed.alarm">
           <ion-nav-view name="tab-alarm"></ion-nav-view>

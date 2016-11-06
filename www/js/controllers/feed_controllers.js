@@ -9,6 +9,10 @@ angular.module('gamseong.feed-controllers', [])
 // Feed Controller
 .controller('FeedCtrl', function($scope, $stateParams, ClientProxy, $http) {
 
+	$scope.isTab = function(){
+		return true;
+	}
+
 	console.log($stateParams.id);
 	$http.get(ClientProxy.url + '/gamseong/feeds/' + $stateParams.id).
 			 success(function(data) {
@@ -29,6 +33,10 @@ angular.module('gamseong.feed-controllers', [])
 	var myLocalId = $window.localStorage.getItem("locId");
 	var address =  $window.localStorage.getItem("address");
 
+	$scope.isTab = function(){
+		return false;
+	}
+
 	if($stateParams.id == null){
 		localId = $window.localStorage.getItem("locid");
 	}
@@ -37,7 +45,6 @@ angular.module('gamseong.feed-controllers', [])
 	}
 
 	if(myLocalId != null){
-		console.log("dasd");
 		$scope.local = $window.localStorage.getItem("locName")
 		$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + myLocalId).
 				 success(function(data) {
@@ -46,7 +53,6 @@ angular.module('gamseong.feed-controllers', [])
 		 }).
 				 error(function(data, status, headers, config) {
 					 console.log(ClientProxy.url);
-
 		});
 	}
 	$scope.writer={
@@ -62,10 +68,17 @@ angular.module('gamseong.feed-controllers', [])
 					,sticker :[]
 			}
 		};
-		$http.post(ClientProxy.url + '/gamseong/feeds',param)
-		.success(function (data){
-			console.log(param);
+		console.log(param);
+		$http.post(ClientProxy.url + '/gamseong/feeds',param
+	/*	,{headers: { 'Content-Type': 'application/json; charset=UTF-8'
+	,'s-Id' : 'asd'
+	,'s-token': 'asd'}}*/
+)
+		.success(function (data, status, headers, config){
+			console.log(config);
 			console.log(data);
+			console.log(status);
+			console.log(headers);
 			if(data.result == "success") {
 				alert("입력하였습니다.");
 				$scope.modal.hide();
@@ -74,9 +87,12 @@ angular.module('gamseong.feed-controllers', [])
 			else{
 				alert("실패하였습니다.");
 			}
+		})
+		.error(function (data, status) {
+				//error handler
+				alert("실패하였습니다.");
 		});
 	}
-
 
 	$scope.getPage = function(){
 	page++;
@@ -106,22 +122,36 @@ angular.module('gamseong.feed-controllers', [])
 		}
 	};
 
-	// Create the login modal that we will use later
-$ionicModal.fromTemplateUrl('templates/feed/feed_writer.html', {
+		$ionicModal.fromTemplateUrl('templates/feed/reply/reply.html', {
 			scope: $scope
-		}).then(function(modal) {
-			$scope.modal = modal;
+		}).then(function(replyModal) {
+			$scope.replyModal = replyModal;
+		});
+
+		$scope.replyOpen = function(id) {
+		    $scope.feedId = id;
+		    $scope.replyModal.show();
+		}
+		$scope.replyClose = function(){
+				$scope.replyModal.hide();
+		}
+
+
+	// Create the login modal that we will use later
+		$ionicModal.fromTemplateUrl('templates/feed/feed_writer.html', {
+			scope: $scope
+		}).then(function(writerModal) {
+			$scope.writerModal = writerModal;
 		});
 
 		// Triggered in the login modal to close it
 		$scope.writerClose = function() {
-			$scope.modal.hide();
+			$scope.writerModal.hide();
 		};
 
 		// Open the login modal
 		$scope.writerOpen = function() {
-			console.log("writer 모달업")
-			$scope.modal.show();
+			$scope.writerModal.show();
 		};
 
 
@@ -131,13 +161,6 @@ $ionicModal.fromTemplateUrl('templates/feed/feed_writer.html', {
 		animation : 'slide-in-down'	// FiXME
 	}).then(function(searchModal) {
 		$scope.searchModal = searchModal;
-	});
-
-	$ionicModal.fromTemplateUrl('templates/modal/location_search.html', {
-		scope : $scope,
-		animation : 'slide-in-up'
-	}).then(function(replyModal) {
-		$scope.replyModal = replyModal;
 	});
 
 	$ionicModal.fromTemplateUrl('templates/modal/message_send.html', {

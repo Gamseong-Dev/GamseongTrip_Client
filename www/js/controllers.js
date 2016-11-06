@@ -82,6 +82,7 @@ $scope.isLogged = function(){
        account: $scope.user.account
      , password: $scope.user.password
    };
+   console.log(param);
      $http
      .post(ClientProxy.url + '/gamseongAccounts/users/login', param)
      .success(function (data){

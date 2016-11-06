@@ -38,7 +38,7 @@
 					<div>
 						<!-- TODO Add/Toggle Icon -->
 						<button class="button button-icon icon ">좋아요 {{feeds.feed.like}}</button>
-						<button class="button button-icon icon ">댓글</button>
+						<button ng-click="replyOpen({{feeds.feed.id}})" class="button button-icon icon ">댓글</button>
 						<button ng-click="messageModal.show()" class="button button-icon icon ">쪽지보내기</button>
 					</div>
 					<!-- Reply -->

@@ -13,13 +13,15 @@ angular.module('gamseong', [
 , 'gamseong.friend-controllers'
 , 'gamseong.profile-controllers'
 , 'gamseong.login-controllers'
+, 'gamseong.reply-controllers'
 , 'gamseong.weeklyBest'
 , 'gamseong.geo-services'
+, 'gamseong.directive'
 ])
 
 .constant('ClientProxy', {
-  url: 'http://52.78.110.20:8080/'
-  //url: 'http://localhost:8080/'
+  url: 'http://52.78.110.20:8080'
+  //url: 'http://localhost:8080'
 })
 
 .run(function($ionicPlatform,  $http, ClientProxy, GeoService) {
