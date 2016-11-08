@@ -20,13 +20,11 @@ angular.module('gamseong.geo-services', [])
 
                  address = data[5].formatted_address.substring(5);
                  $window.localStorage.setItem("address",data[5].formatted_address);
-                 console.log(data);
-                 console.log("address is : " + address);
 
                  $http.get(ClientProxy.url + "/gamseong/locations/address/" + address
                , {header : {'Content-Type' : 'application/json; charset=UTF-8'}})
                  .success(function (data) {
-                     console.log(data);
+                  
                      $window.localStorage.setItem("locId",data.id);
                      $window.localStorage.setItem("locMotherId",data.motherId);
                      $window.localStorage.setItem("locName",data.name);

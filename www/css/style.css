@@ -115,9 +115,10 @@
 }
 .slideBox{
   height: 80%;
-  width: 100%;
+  width: 50px;
   bottom: 0;
   left: 0;
+  margin-left: -5%;
   top:0;
 }
 .nestedComp{

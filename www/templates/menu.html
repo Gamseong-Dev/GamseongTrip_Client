@@ -1,15 +1,11 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
-        <ion-nav-back-button>
+      <ion-nav-back-button>
       </ion-nav-back-button>
-
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
-      </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
@@ -21,7 +17,11 @@
       <ion-list>
         <div class="profileCont">
           <div class="profile-content">
-             <a href="#/app/profile/feed" menu-close><div class="userImage"></div></a>
+            <a href="#/app/profile/feed" menu-close>
+               <div class="userImage" style="background: url('{{img}}') no-repeat center;
+               background-size: cover;">
+               </div>
+            </a>
              <div class="userInfo">
                <p class="profile-name">{{name}} </p>
                <p class="profile-email">{{email}}</p>

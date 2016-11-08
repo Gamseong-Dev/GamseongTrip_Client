@@ -1,0 +1,14 @@
+<ion-view hide-view>
+    <ion-nav-title>
+      <label class="item item-input" style="margin-top:5px; width:150%">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-change="search()" ng-model="data.search">
+      </label>
+  </ion-nav-title>
+
+	<ion-content style="background-color:#eee;" hide-tabs>
+    <div class="list">
+       <li class="item" ng-repeat="local in data.location ">{{local.name}}</li>
+     </div>
+	</ion-content>
+</ion-view>

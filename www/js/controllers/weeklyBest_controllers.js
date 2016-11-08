@@ -1,6 +1,6 @@
 // 지역 정보 이벤트
 angular.module('gamseong.weeklyBest', [])
-.controller('WeeklyBestCtrl', function($scope, $ionicSlideBoxDelegate) {
+.controller('WeeklyBestCtrl', function($scope, $ionicSlideBoxDelegate, ClientProxy, $http) {
   console.log("weeklyBest 정보");
   $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
     // data.slider is the instance of Swiper
@@ -11,29 +11,25 @@ angular.module('gamseong.weeklyBest', [])
     $scope.activeIndex = data.slider.activeIndex;
     $scope.previousIndex = data.slider.previousIndex;
   });
-  $scope.bestFeed = [
-    {
-      user: '이유경',
-      location: '서울',
-      like: '200',
-      ranking: '1',
-      content: '서울의 명소라고 갔는데 화장품가게밖에 없네요 --...',
-    },
-    {
-      user: '이유경',
-      location: '부산',
-      like: '176',
-      ranking: '2',
-      content: '역시 광안대교는 밤에 보는것이 쵝오지예~~~',
-    },
-    {
-      user: '이상운',
-      location: '속초',
-      like: '132',
-      ranking: '3',
-      content: '아싸 포켓몬ㅋㅋㅋㅋㅋ',
-    }
-  ];
+
+  $http.get(ClientProxy.url + '/gamseong/feeds/best').
+       success(function(data) {
+         console.log(data);
+         $scope.bestFeed = data;
+   }).
+       error(function(data, status, headers, config) {
+         console.log(ClientProxy.url);
+  });
+
+  $http.get(ClientProxy.url + '/gamseong/events').
+       success(function(data) {
+         console.log(data);
+         $scope.bestEvent = data;
+   }).
+       error(function(data, status, headers, config) {
+         console.log(ClientProxy.url);
+  });
+
   $scope.bestLocation = [
     {
       city: '서울',

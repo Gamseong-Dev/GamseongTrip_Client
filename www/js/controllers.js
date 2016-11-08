@@ -13,7 +13,6 @@ angular.module('gamseong.controllers', [])
   // Form data for the login modal
  $scope.loginData = {};
 
-
  // Create the login modal that we will use later
  $ionicModal.fromTemplateUrl('templates/login.html', {
    scope: $scope
@@ -63,6 +62,15 @@ else{
   $scope.email = email;
   $scope.id = $window.localStorage.getItem("id");
   $scope.name =$window.localStorage.getItem("name");
+  $scope.img = $window.localStorage.getItem("img");
+  $http.get(ClientProxy.url + '/gamseong/locations/code').
+       success(function(data) {
+         console.log(data);
+         $window.localStorage.setItem("code", data);
+   }).
+       error(function(data, status, headers, config) {
+         console.log(ClientProxy.url);
+  });
 }
 
 console.log(isLoggedIn + " "  + $scope.email);
@@ -82,11 +90,8 @@ $scope.isLogged = function(){
        account: $scope.user.account
      , password: $scope.user.password
    };
-   console.log(param);
-     $http
-     .post(ClientProxy.url + '/gamseongAccounts/users/login', param)
+     $http.post(ClientProxy.url + '/gamseongAccounts/users/login', param)
      .success(function (data){
-       console.log(data);
        if(data.result == "success"){
            $window.localStorage.setItem("token",data.user.tokenKey);
            $window.localStorage.setItem("email",data.user.account);

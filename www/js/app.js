@@ -14,9 +14,12 @@ angular.module('gamseong', [
 , 'gamseong.profile-controllers'
 , 'gamseong.login-controllers'
 , 'gamseong.reply-controllers'
+, 'gamseong.main-controllers'
 , 'gamseong.weeklyBest'
 , 'gamseong.geo-services'
+, 'gamseong.search-services'
 , 'gamseong.directive'
+, 'gamseong.facebook-services'
 ])
 
 .constant('ClientProxy', {
@@ -24,10 +27,13 @@ angular.module('gamseong', [
   //url: 'http://localhost:8080'
 })
 
-.run(function($ionicPlatform,  $http, ClientProxy, GeoService) {
+.run(function($ionicPlatform,  $http, ClientProxy ,GeoService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    //ngFB.init({appId: '210979155979949'}); //TEST
+    //ngFB.init({appId: '210753882669143'}); //PUBLIC
+
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -47,6 +53,11 @@ angular.module('gamseong', [
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
+  })
+  .state('gamseong', {
+      url: '/gamseong',
+      templateUrl: 'templates/main.html',
+      controller : 'MainCtrl'
   })
   .state('app.feed', {
       url: '/feed',
@@ -71,6 +82,15 @@ angular.module('gamseong', [
         'tab-list': {
           templateUrl: 'templates/feed/feed_single.html',
           controller: 'FeedCtrl'
+        }
+      }
+  })
+  .state('app.feed.local-search', {
+      url: '/search',
+      views: {
+        'tab-list': {
+          templateUrl: 'templates/feed/local_search.html',
+          controller: 'LocalSearchCtrl'
         }
       }
   })

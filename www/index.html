@@ -15,11 +15,13 @@
           .catch(err => console.log('Error', err));
       }
     </script>-->
-
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/icon.css" rel="stylesheet">
     <link href="css/ionic_gamseong.css" rel="stylesheet">
+    <link href="css/ionic_widget_gamseong.css" rel="stylesheet">
+    <link href="css/icon.css" rel="stylesheet">
+
+
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -42,8 +44,12 @@
     <script src="js/controllers/login_controllers.js"></script>
     <script src="js/controllers/weeklyBest_controllers.js"></script>
     <script src="js/controllers/reply_controllers.js"></script>
+    <script src="js/controllers/main_controllers.js"></script>
     <script src="js/directive/tabs.js"></script>
     <script src="js/services/geo_services.js"></script>
+    <script src="js/services/search_services.js"></script>
+    <script src="js/services/facebook_services.js"></script>
+    <script src="//connect.facebook.net/en_US/sdk.js"></script>
   </head>
 
   <body ng-app="gamseong">

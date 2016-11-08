@@ -7,16 +7,16 @@
 angular.module('gamseong.feed-controllers', [])
 
 // Feed Controller
-.controller('FeedCtrl', function($scope, $stateParams, ClientProxy, $http) {
+.controller('FeedCtrl', function($scope, $stateParams, ClientProxy, $http, $ionicLoading) {
 
 	$scope.isTab = function(){
 		return true;
 	}
-
+	$ionicLoading.show();
 	console.log($stateParams.id);
 	$http.get(ClientProxy.url + '/gamseong/feeds/' + $stateParams.id).
 			 success(function(data) {
-				 console.log(data);
+				 $ionicLoading.hide();
 				 $scope.data = data;
 	 }).
 			 error(function(data, status, headers, config) {
@@ -27,15 +27,12 @@ angular.module('gamseong.feed-controllers', [])
 
 // Feed List Controller
 .controller('FeedListCtrl', function($scope,$window, $ionicModal, $http, ClientProxy, $stateParams) {
+
 	var page = 1;
 	var localId;
 	var userId = $window.localStorage.getItem("id");
 	var myLocalId = $window.localStorage.getItem("locId");
 	var address =  $window.localStorage.getItem("address");
-
-	$scope.isTab = function(){
-		return false;
-	}
 
 	if($stateParams.id == null){
 		localId = $window.localStorage.getItem("locid");
@@ -55,9 +52,11 @@ angular.module('gamseong.feed-controllers', [])
 					 console.log(ClientProxy.url);
 		});
 	}
+
 	$scope.writer={
         contents: ""
    };
+
 	$scope.doWriter = function(){
 		var param = {
 				feed : {
@@ -68,7 +67,7 @@ angular.module('gamseong.feed-controllers', [])
 					,sticker :[]
 			}
 		};
-		console.log(param);
+
 		$http.post(ClientProxy.url + '/gamseong/feeds',param
 	/*	,{headers: { 'Content-Type': 'application/json; charset=UTF-8'
 	,'s-Id' : 'asd'
@@ -95,17 +94,17 @@ angular.module('gamseong.feed-controllers', [])
 	}
 
 	$scope.getPage = function(){
-	page++;
-	$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId
-	+ "?pageNum="+page).
-			 success(function(datas) {
-				console.log(datas);
-		if(datas.length < 10) {$scope.plus= "더이상 데이터가 없습니다."}
+		page++;
+		$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId
+		+ "?pageNum="+page).
+				 success(function(datas) {
+					console.log(datas);
+			if(datas.length < 10) {$scope.plus= "더이상 데이터가 없습니다."}
 
-		 for(var i = 0; i<datas.length; i++){
-			 $scope.feedList.push(datas[i]);
-		 };
-	 });
+			 for(var i = 0; i<datas.length; i++){
+				 $scope.feedList.push(datas[i]);
+			 };
+		 });
 	}
 
 	var isLike = false;
@@ -198,6 +197,19 @@ angular.module('gamseong.feed-controllers', [])
 	// };
 })
 
+.controller('LocalSearchCtrl', function($scope, $window, SearchService) {
+
+		 $scope.data = { "location" : [], "search" : '' };
+
+     $scope.search = function() {
+
+     	SearchService.searchData($scope.data.search).then(
+     		function(matches) {
+     			$scope.data.location = matches;
+     		}
+     	)
+  }
+})
 // Alarm Controller
 .controller('AlarmCtrl', function($scope) {
 	$scope.alarmList = [ {
@@ -237,15 +249,3 @@ angular.module('gamseong.feed-controllers', [])
 		$scope.messageModal = messageModal;
 	});
 });
-
-// , {
-// 	from: "최정민",
-// 	to: "이상운",
-// 	message : "부산은 어때요?",
-// 	id : 2
-// }, {
-// 	from: "김건우",
-// 	to: "이상운",
-// 	message : "서울 맛집 추천 부탁드려요~",
-// 	id : 3
-// }
