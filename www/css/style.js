@@ -7,12 +7,31 @@ const {width, height, scale} = Dimensions.get("window"),
 
 export default StyleSheet.create({
     "profile-content": {
+        "textAlign": "center",
+        "height": "45%",
+        "width": "100%",
+        "position": "relative",
+        "borderBottom": "1px solid lightgray",
+        "backgroundColor": "#ff7f00",
+        "opacity": 0.95
+    },
+    "profile-content-reply": {
         "display": "flex",
-        "flexDirection": "row",
-        "height": "30%",
+        "height": "25%",
         "width": "100%",
         "position": "relative",
         "borderBottom": "1px solid lightgray"
+    },
+    "feed-content-reply": {
+        "display": "flex",
+        "height": "10%",
+        "width": "100%",
+        "position": "relative",
+        "paddingLeft": "3%",
+        "paddingTop": "3%",
+        "paddingBottom": ": 2%",
+        "marginTop": "-2%",
+        "borderTop": "1px solid lightgray"
     },
     "userImage": {
         "marginTop": "20%",
@@ -21,6 +40,17 @@ export default StyleSheet.create({
         "marginLeft": "20%",
         "width": 60,
         "height": 60,
+        "borderRadius": "50%",
+        "background": "#47a3da",
+        "display": "inline-block"
+    },
+    "profileUserImage": {
+        "marginTop": "20%",
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": "0%",
+        "width": 70,
+        "height": 70,
         "borderRadius": "50%",
         "background": "#47a3da",
         "display": "inline-block"
@@ -36,16 +66,21 @@ export default StyleSheet.create({
         "paddingLeft": 1
     },
     "profile-name": {
-        "fontSize": 1.6,
-        "fontWeight": "400"
+        "fontSize": 1,
+        "fontWeight": "500",
+        "color": "#fff",
+        "whiteSpace": "nowrap"
     },
     "profile-email": {
-        "fontSize": 1,
-        "fontWeight": "100"
+        "fontSize": 0.9,
+        "marginTop": "-5%",
+        "fontWeight": "500",
+        "color": "#fff",
+        "whiteSpace": "nowrap"
     },
     "profile_Topcont": {
         "width": "100%",
-        "height": 100,
+        "height": "45%",
         "display": "flex",
         "justifyContent": "space-between"
     },
@@ -124,18 +159,6 @@ export default StyleSheet.create({
     "current a": {
         "color": "#47a3da"
     },
-    "slideBox": {
-        "height": 150,
-        "width": "100%",
-        "bottom": 0,
-        "left": 0,
-        "top": 0,
-        "flexDirection": "column",
-        "paddingTop": 1,
-        "paddingRight": 1,
-        "paddingBottom": 1,
-        "paddingLeft": 1
-    },
     "nestedComp": {
         "top": 100,
         "width": "100%",
@@ -189,6 +212,7 @@ export default StyleSheet.create({
     },
     "slideCont": {
         "display": "flex",
+        "flex": 1,
         "flexDirection": "column",
         "justifyContent": "space-between"
     },
@@ -196,6 +220,35 @@ export default StyleSheet.create({
         "borderBottom": "0.1em solid gray",
         "background": "gray",
         "height": 2
+    },
+    "slideBox": {
+        "flexDirection": "column",
+        "width": "100%",
+        "height": 150,
+        "display": "flex",
+        "flex": 1
+    },
+    "slideItem": {
+        "borderBottom": "1px solid #ddd",
+        "marginTop": -1,
+        "marginRight": -1,
+        "marginBottom": -1,
+        "marginLeft": -1,
+        "paddingTop": 10,
+        "paddingRight": 10,
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "fontSize": 1
+    },
+    "inslideBox": {
+        "height": "90%",
+        "width": "100%",
+        "display": "flex"
+    },
+    "WeeklyPic": {
+        "height": "100%",
+        "width": "30%",
+        "border": "1px solid lightgray"
     },
     "settingCont": {
         "width": "100%",
@@ -239,5 +292,16 @@ export default StyleSheet.create({
         "paddingBottom": 1,
         "paddingLeft": 0,
         "border": "none"
+    },
+    "simpleHr": {
+        "border": 0,
+        "height": 1,
+        "background": "#ddd"
+    },
+    "replyHr": {
+        "border": 0,
+        "width": "100%",
+        "height": 1,
+        "background": "#ddd"
     }
 });
