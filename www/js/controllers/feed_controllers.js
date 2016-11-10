@@ -115,7 +115,7 @@ angular.module('gamseong.feed-controllers', [])
 							if(data[i].feed.user.imageUrl == null){
 							data[i].feed.user.imageUrl = "../img/person/per.png";
 						  }
-							if(data[i].userLikeStatus == 1) userLikeStatus = i+1;
+							if(data[i].userLikeStatus == 1) data[i].userLikeStatus = i+1;
 
 							if(data[i].reply.length > 0){
 									if(data[i].reply[0].user.imageUrl == null)
@@ -138,11 +138,11 @@ angular.module('gamseong.feed-controllers', [])
 							if(data[i].feed.user.imageUrl == null){
 								data[i].feed.user.imageUrl = "../img/person/per.png";
 							}
-							if(data[i].userLikeStatus == 1) userLikeStatus = i+1;
+							if(data[i].userLikeStatus == 1) data[i].userLikeStatus = i+1;
 
 							if(data[i].reply.length > 0){
-								if(data[i].reply.user.imageUrl == null)
-								data[i].reply.user.imageUrl = "../img/person/per.png";
+								if(data[i].reply[0].user.imageUrl == null)
+								data[i].reply[0].user.imageUrl = "../img/person/per.png";
 							}
 					 };
 					 $scope.feedList = data;
@@ -222,7 +222,7 @@ angular.module('gamseong.feed-controllers', [])
 						datas[i].feed.user.imageUrl = "../img/person/per.png";
 					}
 
-					if(data[i].userLikeStatus == 1) userLikeStatus = ((page * 10)+i)+1;
+					if(datas[i].userLikeStatus == 1) datas[i].userLikeStatus = ((page * 10)+i)+1;
 
 					if(datas[i].reply.length > 0){
 						if(datas[i].reply.user.imageUrl == null)
