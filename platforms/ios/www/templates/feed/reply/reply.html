@@ -1,0 +1,31 @@
+
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">댓글</h1>
+    <button class="button" ng-click="replyClose()">Close</button>
+
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+      <div style="width:100%; min-height:50%; max-height:100%; position:absolute;" >
+        <div class="item profile-content-reply" ng-repeat="reply in replyList">
+          <a href="#/app/feed/message/{{reply.user.id}}">
+            <!-- <img src="venkman.jpg"> 사용자 사진 넣으면 됨-->
+            <img class="messageImage"></a>
+              <div class="profile">
+                <p>{{reply.user.name}}</p>
+                <p><span style="white-space:pre-line;">{{reply.contents}}</span></p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;">
+        <label class="item item-input" style="margin-top:150%; margin-left:2%; width:80%; height:35px; float:left">
+          <input type="text" placeholder="댓글을 입력해주세요" style="width:100%;" ng-model="reply.content">
+        </label>
+        <button class="button button-icon icon-only ion-ios-search-strong" ng-click="doReplyWrite()"
+        style="margin-top:148%; margin-left:3%; width:10%; height:35px; font-size:25px"></button>
+      <div>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>
