@@ -1,0 +1,47 @@
+<ion-view view-title="{{local}}">
+  <ion-content hide-tabs>
+
+    <div class="profile item-avatar item">
+        <image src=""></image>
+      <p>
+        <span>{{data.feed.location.name}}</span>
+        <span class="date-right">{{data.feed.creationTime}}</span>
+      </p>
+      <h2>{{data.feed.user.name}}</h2>
+    </div>
+
+    <!-- Content -->
+    <div class="item item-body">
+      <p>
+        <a class="subdued" href="#/app/feed/list/{{feed.id}}">
+          {{data.feed.contents}}
+        </a>
+      </p>
+
+    <div class="feedTemp" href="#/app/feed/list/{{feed.id}}">
+      <!-- TODO Move These Code Into Feed Single !! -->
+        <!-- Profile -->
+          <div class="feedTempTop">
+            <img class="messageImage" src="#/app/feed/list/{{feed.id}}">
+            <div class="infoLineCont">
+              <div class="infoLine1">
+                <p>{{feedSingle.name}}</p>
+                <p class="moment">{{feedSingle.date}}</p>
+              </div>
+              <div class="infoLine2"><p>{{feedSingle.location}}</p></div>
+            </div>
+          </div>
+          <!-- Content -->
+          <div>
+            <a href="#/app/feed/list/{{feed.id}}">{{feedSingle.contents}}</a>
+          </div>
+          <div>
+            <!-- TODO Add/Toggle Icon -->
+            <button class="button button-icon icon ">좋아요 {{feedSingle.like}}</button>
+            <button ui-sref="app.feed.feed-single" class="button button-icon icon ">댓글</button>
+            <button ng-click="messageModal.show()" class="button button-icon icon ">쪽지보내기</button>
+          </div>
+
+    </div>
+  </ion-content>
+</ion-view>

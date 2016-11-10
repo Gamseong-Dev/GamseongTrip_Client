@@ -4,10 +4,10 @@
  * 2016.10.20
  * author : Shim
  */
-angular.module('gamseong.feed-controllers', [])
+angular.module('gamseong.feed-controllers', ['ionic','ngCordova'])
 
 // Feed Controller
-.controller('FeedCtrl', function($scope, $stateParams, ClientProxy, $http) {
+.controller('FeedCtrl', function($scope, $stateParams, ClientProxy, $http, $cordovaCamera) {
 
 	$scope.isTab = function(){
 		return true;
@@ -107,6 +107,57 @@ angular.module('gamseong.feed-controllers', [])
 		 };
 	 });
 	}
+
+	//camera
+	$scope.takePhoto = function () {
+	// 	 var options = {
+	// 		 quality: 75,
+	// 		 destinationType: Camera.DestinationType.DATA_URL,
+	// 		 sourceType: Camera.PictureSourceType.CAMERA,
+	// 		 allowEdit: true,
+	// 		 encodingType: Camera.EncodingType.JPEG,
+	// 		 targetWidth: 300,
+	// 		 targetHeight: 300,
+	// 		 popoverOptions: CameraPopoverOptions,
+	// 		 saveToPhotoAlbum: false
+	//  };
+
+		$cordovaCamera.getPicture({})
+		.then(function(data){
+			console.log('camera data:'+ angular.toJson(data));
+		}, function(error) {
+			console.log('camera error' + angular.toJson(data));
+		});
+		//
+		// navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+		// destinationType: destinationType.DATA_URL });
+
+			//  $cordovaCamera.getPicture(options).then(function (imageData) {
+			// 		 $scope.imgURI = "data:image/jpeg;base64," + imageData;
+			//  }, function (err) {
+			// 		 alert('카메라 안됨 ㅠㅠ')
+			//  });
+	 }
+	 $scope.choosePhoto = function () {
+      var options = {
+        quality: 75,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 300,
+        targetHeight: 300,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false
+    };
+
+        $cordovaCamera.getPicture(options).then(function (imageData) {
+            $scope.imgURI = "data:image/jpeg;base64," + imageData;
+        }, function (err) {
+            // An error occured. Show a message to the user
+        });
+    }
+
 
 	var isLike = false;
 	// Control Inner Tab

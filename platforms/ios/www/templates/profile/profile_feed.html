@@ -1,0 +1,21 @@
+  <ion-list>
+    <ion-item ng-repeat="feed in feedlist">
+      <div class="list card">
+        <div class="item item-avatar">
+            <h2>{{feed.id}}</h2>
+            <p>이상운</p>
+        </div>
+        <div class="item item-body">
+          <h2>{{feed.title}}</h2>
+          <p>
+            <a class="subdued" href="#/app/profile/{{feed.id}}">
+                  {{feed.contents}}
+            </a>
+          </p>
+          <p>
+            <button ng-click="" class="button button-icon icon ">따봉 {{feed.like}}</button>
+          </p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>

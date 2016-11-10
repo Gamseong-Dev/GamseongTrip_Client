@@ -1,0 +1,56 @@
+
+<ion-view view-title="{{local}}">
+	<ion-content style="background-color:#eee;">
+		<!-- Feed List -->
+		<ion-list>
+				<!-- Profile -->
+			<div class="profile item-avatar item" style="border-color:#fff; margin-top:20px;" >
+					<image src=""></image>
+
+						<button class="button button-icon icon" ng-click="writerOpen()">후기나 생각을 공유해주세요</button>
+			</div>
+
+			<ion-item class="list" style="border-color:#fff; margin-top:20px;" ng-repeat="feeds in feedList" href="#/app/feed/single/{{feeds.feed.id}}">
+				<!-- TODO Move These Code Into Feed Single !! -->
+
+					<!-- Profile -->
+
+					<div class="profile item-avatar">
+							<image src=""></image>
+						<p>
+							<span>{{feeds.feed.location.motherName}}</span>
+							<span>{{feeds.feed.location.name}}</span>
+							<span class="date-right">{{feeds.feed.creationTime}}</span>
+						</p>
+						<h2>{{feeds.feed.user.name}}</h2>
+					</div>
+
+					<!-- Content -->
+					<div class="item-body">
+						<p>
+							<a class="subdued" href="#/app/feed/list/{{feed.id}}">
+								{{feeds.feed.contents}}
+							</a>
+						</p>
+					</div>
+					<!-- Inner Buttons -->
+					<hr class="simpleHr" >
+					<div>
+						<!-- TODO Add/Toggle Icon -->
+						<button class="button button-icon icon ">좋아요 {{feeds.feed.like}}</button>
+						<button ng-click="replyOpen({{feeds.feed.id}})" class="button button-icon icon ">댓글</button>
+						<button ng-click="messageModal.show()" class="button button-icon icon ">쪽지보내기</button>
+					</div>
+					<!-- Reply -->
+					<div ng-repeat="reply in feeds.reply" href="#/app/feed/single/{{feeds.feed.id}}">
+						<div >
+								<image src=""></image>
+								<p> {{reply.user.name}}
+								{{reply.contents}}</p>
+						</div>
+					</div>
+
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

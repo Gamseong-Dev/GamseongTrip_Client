@@ -1,0 +1,37 @@
+<ion-view view-title="Weekly 감성 Best">
+  <ion-content class="has-header slideCont" scroll="false">
+    <div class="weekTitle">이번주의 감성게시글</div>
+    <ion-slides class="slideBox" slider="data.slider">
+      <ion-slide-page ng-repeat="feed in bestFeed">
+        <div class="row">
+          <div>
+            <h3>{{feed.ranking}}</h3>
+            <p>{{feed.like}}</p>
+          </div>
+          <div>
+            <p>{{feed.location}}</p>
+            <p>{{feed.user}}</p>
+            <p>{{feed.content}}</p>
+          </div>
+      </div>
+      </ion-slide-page>
+    </ion-slides>
+    <div class="weekTitle">이번주의 감성지역</div>
+    <ion-slides class="slideBox" slider="data.slider">
+      <ion-slide-page ng-repeat="place in bestLocation">
+        <h1>{{place.city}}</h1>
+        <p>{{place.location}}</p>
+        <p>{{place.content}}</p>
+      </ion-slide-page>
+    </ion-slides>
+    <div class="weekTitle">이번주의 감성이벤트</div>
+    <ion-slides class="slideBox" slider="data.slider">
+      <ion-slide-page ng-repeat="event in bestEvent">
+        <h1>{{event.city}}</h1>
+        <p>{{event.location}}</p>
+        <p>{{event.content}}</p>
+      </ion-slide-page>
+    </ion-slides>
+  </ion-content>
+
+</ion-view>

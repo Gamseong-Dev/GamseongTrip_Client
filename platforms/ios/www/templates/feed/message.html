@@ -1,0 +1,12 @@
+<ion-view view-title="쪽지함">
+	<ion-content>
+    <ion-list>
+			<a class="item item-avatar" ng-repeat="message in messageList" href="#/app/feed/message/{{message.id}}">
+	      <!-- <img src="venkman.jpg"> 사용자 사진 넣으면 됨-->
+				<img class="messageImage">
+	      <h2>{{message.from}}</h2>
+	      <p>{{message.message}}</p>
+	    </a>
+    </ion-list>
+  </ion-content>
+</ion-view>

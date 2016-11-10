@@ -1,0 +1,24 @@
+<ion-view view-title="마이페이지">
+    <ion-content class="has-header">
+      <div class="profile_Topcont">
+        <div class="profile_Image">
+          <div class="userImage"></div>
+        </div>
+        <div class="row profileTab">
+          <a class="tabBox" ui-sref="app.profile.feed">
+            <p class="tabtext">게시글</p>
+            <p class="tabtextBold">0</p>
+          </a>
+          <a class="tabBox" ui-sref="app.profile.trip">
+            <p class="tabtext">여행지</p>
+            <p class="tabtextBold">0</p>
+          </a>
+          <a class="tabBox" ui-sref="app.profile.int">
+            <p class="tabtext">관심지</p>
+            <p class="tabtextBold">0</p>
+          </a>
+        </div>
+      </div>
+      <div ui-view name="inception" class="nestedComp"></div>
+    </ion-content>
+</ion-view>
