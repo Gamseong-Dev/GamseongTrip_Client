@@ -1,0 +1,17 @@
+
+  <ion-view view-title="메세지싱글">
+    <ion-content class="padding" scroll="false">
+      <div class="messageCont">
+        <div class="messageTop">
+          <div class="messageImage"></div>
+          <div>
+            <a class="messageInfo"><p class="messageInfoText">보내는 사람</p><p>{{message.sendUser.name}}</p></a>
+            <a class="messageInfo"><p class="messageInfoText">받는사람</p><p>{{message.reciveUser.name}}</p></a>
+          </div>
+        </div>
+        <div><p class="messageInfoText">메세지내용</p></div>
+        <div class="messageBox">{{message.contents}}</div>
+        <button class="button messageSend" ng-click="messageModal.show()">답장하기</button>
+      </div>
+    </ion-content>
+  </ion-view>

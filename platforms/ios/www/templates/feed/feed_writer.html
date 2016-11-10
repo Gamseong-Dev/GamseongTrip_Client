@@ -1,0 +1,30 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">글쓰기</h1>
+    <button class="button" ng-click="writerClose()">Close</button>
+
+  </ion-header-bar>
+  <ion-content>
+    <form>
+      <div class="profile item-avatar item">
+          <image src=""></image>
+        <p>
+          <span></span>
+          <span class="date-right"></span>
+        </p>
+      </div>
+      <!-- Content -->
+      <div class="item item-body">
+        <textarea id="input-font" name="contents" rows="6"
+        value = '내용을 적어주세요' style="width:100%; border: 0;"
+        onfocus="this.value='';" onblur="if(this.value =='')
+        this.value='내용을 적어주세요';" ng-model="writer.contents">
+      </textarea>
+      </div>
+      <label class="item-input" style="padding: 2%; margin: 3%">
+        <button class="button button-block button-positive" ng-click="doWriter()">
+         글쓰기</button>
+      </label>
+    </form>
+  </ion-content>
+</ion-modal-view>
