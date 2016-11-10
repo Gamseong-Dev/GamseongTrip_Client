@@ -2,10 +2,11 @@
 	<ion-content>
     <ion-list>
 			<a class="item item-avatar" ng-repeat="message in messageList" href="#/app/feed/message/{{message.id}}">
-	      <!-- <img src="venkman.jpg"> 사용자 사진 넣으면 됨-->
-				<img class="messageImage">
-	      <h2>{{message.from}}</h2>
-	      <p>{{message.message}}</p>
+	  	<!--  <img src="venkman.jpg"> 사용자 사진 넣으면 됨-->
+
+				<image src='{{message.sendUser.imageUrl}}'></image>
+	      <h2>{{message.sendUser.name}}</h2>
+	      <p>{{message.contents}}</p>
 	    </a>
     </ion-list>
   </ion-content>

@@ -2,12 +2,31 @@
 
 /*menu panel에서 사용*/
 .profile-content{
-  display: flex;
-  flex-direction: "row";
-	height: 30%;
+  text-align: center;
+	height: 45%;
   width: 100%;
   position: relative;
   border-bottom: 1px solid lightgray;
+  background-color: #ff7f00;
+  opacity: 0.95;
+}
+.profile-content-reply{
+  display: flex;
+  height: 25%;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid lightgray;
+}
+.feed-content-reply{
+  display: flex;
+  height: 10%;
+  width: 100%;
+  position: relative;
+  padding-left: 3%;
+  padding-top: 3%;
+  padding-bottom: : 2%;
+  margin-top: -2%;
+  border-top: 1px solid lightgray;
 }
 .userImage{
   margin: 20% 0 0 20%;
@@ -17,21 +36,34 @@
 	background: #47a3da;
   display: inline-block;
 }
+.profileUserImage{
+  margin: 20% 0 0 0%;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background: #47a3da;
+  display: inline-block;
+}
 .userInfo{
   margin: 0.5em 1em 0 1em;
   padding: 1em;
 }
 .profile-name{
-  font-size: 1.6em;
-  font-weight: 400;
+  font-size: 1em;
+  font-weight: 500;
+  color: #fff;
+  white-space:nowrap;
 }
 .profile-email{
-  font-size: 1em;
-  font-weight: 100;
+  font-size: 0.9em;
+  margin-top: -5%;
+  font-weight: 500;
+  color: #fff;
+  white-space:nowrap;
 }
 .profile_Topcont{
   width: 100%;
-  height: 100px;
+  height: 45%;
   display: flex;
   justify-content: space-between;
 }

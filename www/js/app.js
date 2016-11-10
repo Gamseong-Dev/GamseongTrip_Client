@@ -18,8 +18,9 @@ angular.module('gamseong', [
 , 'gamseong.weeklyBest'
 , 'gamseong.geo-services'
 , 'gamseong.search-services'
-, 'gamseong.directive'
 , 'gamseong.facebook-services'
+, 'gamseong.autocomplete_directive'
+, 'gamseong.directive'
 ])
 
 .constant('ClientProxy', {

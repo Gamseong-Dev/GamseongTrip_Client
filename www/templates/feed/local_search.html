@@ -8,7 +8,10 @@
 
 	<ion-content style="background-color:#eee;" hide-tabs>
     <div class="list">
-       <li class="item" ng-repeat="local in data.location ">{{local.name}}</li>
-     </div>
+      <ion-item ng-repeat="local in data.locations "
+      href="#/app/feed/list/{{local.id}}/{{local.name}}">
+        {{local.name}}
+      </ion-item>
+    </div>
 	</ion-content>
 </ion-view>

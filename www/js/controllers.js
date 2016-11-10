@@ -36,21 +36,6 @@ angular.module('gamseong.controllers', [])
    speed: 500,
  }
 
- $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
-   // data.slider is the instance of Swiper
-   $scope.slider = data.slider;
- });
-
- $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-   console.log('Slide change is beginning');
- });
-
- $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
-   // note: the indexes are 0-based
-   $scope.activeIndex = data.slider.activeIndex;
-   $scope.previousIndex = data.slider.previousIndex;
- });
-
 var isLoggedIn;
 var email = $window.localStorage.getItem("email");
 
@@ -63,18 +48,9 @@ else{
   $scope.id = $window.localStorage.getItem("id");
   $scope.name =$window.localStorage.getItem("name");
   $scope.img = $window.localStorage.getItem("img");
-  $http.get(ClientProxy.url + '/gamseong/locations/code').
-       success(function(data) {
-         console.log(data);
-         $window.localStorage.setItem("code", data);
-   }).
-       error(function(data, status, headers, config) {
-         console.log(ClientProxy.url);
-  });
 }
 
-console.log(isLoggedIn + " "  + $scope.email);
-$scope.isLogged = function(){
+  $scope.isLogged = function(){
   return isLoggedIn;
 }
 
@@ -97,8 +73,13 @@ $scope.isLogged = function(){
            $window.localStorage.setItem("email",data.user.account);
            $window.localStorage.setItem("id",data.user.id);
            $window.localStorage.setItem("name",data.user.name);
-           if(data.user.imageUrl != null){
+           if(data.user.imageUrl.length > 10){
+             console.log("장애냐 " + data.user.imageUrl.length);
            $window.localStorage.setItem("img",data.user.imageUrl);
+           }
+           else{
+             console.log("아니냐? " + data.user.imageUrl.length);
+             $window.localStorage.setItem("img","../person/per.png");
            }
            $window.location.reload();
        }
@@ -132,23 +113,5 @@ $scope.isLogged = function(){
            $location.path('/feed/list/');
            $window.location.reload();
      })
- };
-
- $scope.doJoin = function(){
-   var param = {
-     account: $scope.user.account
-    , password: $scope.user.password
-    , name: $scope.user.name
    };
-   console.log(param);
-     $http
-     .post(ClientProxy.url + '/gamseongAccounts/users', JSON.stringify($scope.user))
-     .success(function (data){
-      console.log(data);
-       if(data.result == "success"){
-            alert("회원가입이 되었습니다.")
-         }
-     })
-  };
-
 })

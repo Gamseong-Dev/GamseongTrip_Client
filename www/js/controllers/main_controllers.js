@@ -1,12 +1,11 @@
 angular.module('gamseong.main-controllers', [])
 
 // Feed Controller
-.controller('MainCtrl', function($scope, $location, $ionicModal, ClientProxy, $http, $window, $ionicLoading, facebookService) {
+.controller('MainCtrl', function($scope, $q, $location, $ionicModal, ClientProxy, $http, $window, $ionicLoading, facebookService) {
 
   var user;
   var facebookUser;
 
-  console.log("첫화면이다.");
   $window.fbAsyncInit = function() {
       FB.init({
         appId: '210753882669143',
@@ -20,21 +19,9 @@ angular.module('gamseong.main-controllers', [])
 
     $ionicLoading.show();
     FB.getLoginStatus(function(response) {
-    $ionicLoading.hide();
 
       if (response.status == 'connected') {
-          facebookService.getMyInfo()
-               .then(function(response) {
-                console.log(response);
-                facebookUser = {
-                    id : response.id
-                   , account: response.email
-                   , name : response.name
-                   , gender : response.gender
-                   , imageUrl : "http://graph.facebook.com/"+response.id +"/picture?width=270&height=270"
-                 };
-                facebookService.setUser(facebookUser);
-               });
+          getUser(response);
       }
       else {
         FB.login({scope: 'public_profile,email'}).then(
@@ -46,8 +33,26 @@ angular.module('gamseong.main-controllers', [])
                 }
             });
       }
+      $ionicLoading.hide();
     });
   }
+  var getUser = function(response){
+  facebookService.getMyInfo()
+       .then(function(response) {
+        console.log(response);
+        facebookUser = {
+            id : response.id
+           , account: response.email
+           , name : response.name
+           , gender : response.gender
+           , imageUrl : "http://graph.facebook.com/"+response.id +"/picture?width=270&height=270"
+         };
+        auth(facebookUser);
+       });
+  }
+  var auth = function(user){
+    facebookService.setUser(user);
+  };
 
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
@@ -112,8 +117,21 @@ angular.module('gamseong.main-controllers', [])
             $window.localStorage.setItem("id",data.user.id);
             $window.localStorage.setItem("name",data.user.name);
             if(data.user.imageUrl != null){
-            $window.localStorage.setItem("img",data.user.imageUrl);
+
+              $window.localStorage.setItem("img",data.user.imageUrl);
             }
+            else{
+
+              $window.localStorage.setItem("img","../img/person/per.png");
+            }
+            $http.get(ClientProxy.url + '/gamseong/locations/code').
+                 success(function(data) {
+                   console.log(data);
+                   $window.localStorage.setItem("code", data);
+             }).
+                 error(function(data, status, headers, config) {
+                   console.log(ClientProxy.url);
+            });
             $location.path('/app/feed/list/');
             $window.location.reload();
         }
@@ -140,7 +158,7 @@ angular.module('gamseong.main-controllers', [])
       $ionicLoading.show();
       console.log(param);
         $http
-        .post(ClientProxy.url + '/gamseongAccounts/users', JSON.stringify($scope.user))
+        .post(ClientProxy.url + '/gamseongAccounts/users', param)
         .success(function (data){
          console.log(data);
          $ionicLoading.hide();
@@ -154,4 +172,12 @@ angular.module('gamseong.main-controllers', [])
           })
       }
     }
+    $http.get(ClientProxy.url + '/gamseong/locations/code').
+         success(function(data) {
+           console.log(data);
+           $window.localStorage.setItem("code", data);
+     }).
+         error(function(data, status, headers, config) {
+           console.log(ClientProxy.url);
+    });
 });
