@@ -24,7 +24,7 @@ angular.module('gamseong.geo-services', [])
                  $http.get(ClientProxy.url + "/gamseong/locations/address/" + address
                , {header : {'Content-Type' : 'application/json; charset=UTF-8'}})
                  .success(function (data) {
-                  
+
                      $window.localStorage.setItem("locId",data.id);
                      $window.localStorage.setItem("locMotherId",data.motherId);
                      $window.localStorage.setItem("locName",data.name);

@@ -6,6 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('gamseong', [
   'ionic'
+, 'ngCordova'
 , 'gamseong.controllers'
 , 'gamseong.feed-controllers'
 , 'gamseong.local-controllers'

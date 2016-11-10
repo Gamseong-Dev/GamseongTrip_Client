@@ -34,7 +34,7 @@ angular.module('gamseong', [
     // for form inputs)
     //ngFB.init({appId: '210979155979949'}); //TEST
     //ngFB.init({appId: '210753882669143'}); //PUBLIC
-    $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+    //$http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
