@@ -36,6 +36,7 @@ angular.module('gamseong.main-controllers', [])
       $ionicLoading.hide();
     });
   }
+
   var getUser = function(response){
   facebookService.getMyInfo()
        .then(function(response) {
@@ -127,7 +128,7 @@ angular.module('gamseong.main-controllers', [])
             $http.get(ClientProxy.url + '/gamseong/locations/code').
                  success(function(data) {
                    console.log(data);
-                   $window.localStorage.setItem("code", data);
+                   $window.localStorage.setItem("code", JSON.stringify(data));
              }).
                  error(function(data, status, headers, config) {
                    console.log(ClientProxy.url);
@@ -175,7 +176,7 @@ angular.module('gamseong.main-controllers', [])
     $http.get(ClientProxy.url + '/gamseong/locations/code').
          success(function(data) {
            console.log(data);
-           $window.localStorage.setItem("code", data);
+           $window.localStorage.setItem("code", JSON.stringify(data));
      }).
          error(function(data, status, headers, config) {
            console.log(ClientProxy.url);

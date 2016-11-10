@@ -6,5 +6,14 @@
       "path": "/gamseong",
       "proxyUrl": "http://localhost:8080/gamseong"
     }
+  ],
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
   ]
 }
