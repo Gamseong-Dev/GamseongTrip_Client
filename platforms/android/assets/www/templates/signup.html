@@ -1,0 +1,74 @@
+<link href="css/login.css" rel="stylesheet">
+<style type="text/css">
+  .title{
+    font-size:19px;
+    color:#fff;
+    text-align:center;
+    padding-top:6%;
+    font-weight:600;
+  }
+  .check{
+    font-size:17px;
+    color:#fff;
+    text-align:center;
+    padding-top:5%;
+    font-weight:600;
+  }
+  .inputBox{
+    filter:alpha(opacity=50);
+    background-color:transparent;
+  }
+  .lineLabel{
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid;
+    width:90%;
+    height:48px;
+    color :#fff;
+  }
+  .labelDiv{
+    width:100%;
+    height:50%;
+    padding : 0%;
+    margin-top : -2%;
+  }
+  .logBtn{
+    width:100%;
+    height:20px;
+    background-color: #ff7f00;
+    background: rgba(220, 110, 10, 0.6);
+    opacity: 0.95;
+    color:#fff;
+    font-weight:200;
+  }
+</style>
+<ion-modal-view class="login">
+  <ion-content scroll="false">
+      <div class="title">회원가입</div>
+      <div class="list" style="margin-top:5%">
+
+        <div class="labelDiv">
+          <div class="lineLabel" style="padding: 2%; margin: 5%">
+            <input class="inputBox" style="width:70%; height:100%; color:#fff; font-size:15px" type="text" placeholder="  이메일 주소" ng-model="user.account">
+          </div>
+          <div class="lineLabel" style="padding: 2%; margin: 5%; margin-top: -4%;">
+            <input class="inputBox" style="width:70%; height:100%; color:#fff; font-size:15px" type="password" placeholder="  비밀번호" ng-model="user.password">
+          </div>
+          <div class="lineLabel" style="padding: 2%; margin: 5%; margin-top: -4%;">
+            <input class="inputBox" style="width:70%; height:100%; color:#fff; font-size:15px" type="password" placeholder="  비밀번호 확인" ng-model="user.passwordConfirm">
+          </div>
+          <div class="lineLabel" style="padding: 2%; margin: 5%; margin-top: -4%;">
+            <input class="inputBox" style="width:70%; height:100%; color:#fff; font-size:15px" type="text" placeholder="  이름(별명)" ng-model="user.nickname">
+          </div>
+        </div>
+
+        <div style="padding-left:5%; padding-right:5%; margin-top:-2%;">
+          <button class="button logBtn" ng-click="doJoin()">
+            <span class="check">가입하기</span></button>
+
+          <button class="button logBtn" style="margin-top:3%;" ng-click="closeSignup()">
+            <span class="check">취소</span></button>
+        </div>
+      </div>
+
+  </ion-content>
+</ion-modal-view>
