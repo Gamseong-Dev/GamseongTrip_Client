@@ -1,30 +1,98 @@
+<style type="text/css">
+.write_Topcont{
+  padding-bottom: 1em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.writeImage{
+	width: 45px;
+	height: 45px;
+  margin-right: 1em;
+	border-radius: 50%;
+  display: inline-block;
+}
+.writeCont{
+  display: flex;
+  display: block;
+  margin: 0.7em;
+}
+.writeTemp{
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #444;
+  position: relative;
+  z-index: 2;
+  display: block;
+  overflow: auto;
+  text-overflow: inherit;
+  white-space: normal;
+  height: 50%;
+}
+.stickTemp{
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  height: 3em;
+  background-color: #F3F3F3;
+}
+.TextArea{
+  overflow: auto;
+  resize: none;
+  width:100%;
+  padding: 1em;
+}
+.FooterCont{
+  margin-top: 1em;
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.CameraTemp{
+  border:1px solid #ddd;
+  width: 7em;
+  height: 7em;
+}
+.NonStickTemp{
+  background-color: #F3F3F3;
+  border:1px solid #ddd;
+  width: 70%;
+  height: 7em;
+}
+.stickButton{
+  height: 0.5em;
+  background-color: #FBD68A;
+  margin-left: 0.2em;
+}
+</style>
 <ion-modal-view>
-  <ion-header-bar>
+  <ion-header-bar class="bar bar-stable">
+    <button class="button button-clear" ng-click="writerClose()">취소</button>
     <h1 class="title">글쓰기</h1>
-    <button class="button" ng-click="writerClose()">Close</button>
-
+    <button class="button button-clear" ng-click="doWriter()">완료</button>
   </ion-header-bar>
-  <ion-content>
-    <form>
-      <div class="profile item-avatar item">
-          <image src=""></image>
-        <p>
-          <span></span>
-          <span class="date-right"></span>
-        </p>
+  <ion-content class="has-header writeCont" scroll="false">
+    <div class="write_Topcont">
+      <div class="writeImage" style="background: url('{{img}}') no-repeat center; background-size: cover;"></div>
+      <div>
+        <span>이유경</span>
+        <p style="margin:0;"><i class="icon ion-android-pin"></i>서울</p>
       </div>
-      <!-- Content -->
-      <div class="item item-body">
-        <textarea id="input-font" name="contents" rows="6"
-        value = '내용을 적어주세요' style="width:100%; border: 0;"
-        onfocus="this.value='';" onblur="if(this.value =='')
-        this.value='내용을 적어주세요';" ng-model="writer.contents">
-      </textarea>
+    </div>
+    <!-- Content -->
+    <div class="writeTemp">
+      <div class="stickTemp">스티커 넣는 공간</div>
+      <textarea id="input-font" name="contents" rows="10" placeholder="내용을 적어주세요" class="TextArea" ng-model="writer.contents"></textarea>
+    </div>
+    <div class="FooterCont">
+      <div class="CameraTemp">
+        <button ng-click="camera()">카메라</button>
       </div>
-      <label class="item-input" style="padding: 2%; margin: 3%">
-        <button class="button button-block button-positive" ng-click="doWriter()">
-         글쓰기</button>
-      </label>
-    </form>
+      <div class="NonStickTemp row">
+        <button class="button stickButton">맛집</button>
+        <button class="button stickButton">핫플레이스</button>
+        <button class="button stickButton">서울</button>
+      </div>
+    </div>
   </ion-content>
 </ion-modal-view>
