@@ -1,13 +1,18 @@
 //세팅 페이지
 angular.module('gamseong.profile-controllers', [])
-.controller('ProfileFeedCtrl', function($scope) {
+.controller('ProfileFeedCtrl', function($scope, $window, $http, ClientProxy) {
   console.log("내게시글이다");
-  $scope.feedlist = [
-    { title: "마이페이지", contents: "제목 1에 들어갈 텍스트 내용" , like : "5", id : 1},
-    { title: "마이페이지 테스트중인데?", contents: "테스트임2" , like : "5", id : 2},
-    { title: "테스트03", contents: "테스트임3" , like : "5", id : 3}
-  ];
+
+  var userId = $window.localStorage.getItem("id");
+  console.log(userId);
+  $http.get(ClientProxy.url + '/gamseong/feeds/users/' + userId).
+       success(function(data) {
+         console.log(data);
+         $scope.feedlist = data;
+  });
+
 })
+
 .controller('ProfileAFeed', function($scope, $stateParams) {
   console.log("각 피드글이다.");
 })
