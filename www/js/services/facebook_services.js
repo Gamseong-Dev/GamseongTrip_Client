@@ -1,7 +1,15 @@
 angular.module('gamseong.facebook-services', [])
 .factory('facebookService', function($q, $http, ClientProxy, $window, $location) {
+
     return {
-        getMyInfo: function() {
+        auth: function(){
+        var res;
+          FB.getLoginStatus(function(response) {
+            res = response;
+          });
+          return res;
+        }
+        ,getMyInfo: function() {
             var deferred = $q.defer();
             FB.api('/me', {
                 fields: ['id','name','email','gender']

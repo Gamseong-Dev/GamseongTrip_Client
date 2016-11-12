@@ -170,6 +170,7 @@ android {
         if (cdvMinSdkVersion != null) {
             minSdkVersion cdvMinSdkVersion
         }
+        multiDexEnabled true
     }
 
     lintOptions {
@@ -310,4 +311,11 @@ for (def func : cdvPluginPostBuildExtras) {
 //     ext.postBuildExtras = { ... code here ... }
 if (hasProperty('postBuildExtras')) {
     postBuildExtras()
+}
+
+dependencies {
+  compile 'com.google.android.gms:play-services-location:8.3.0'
+  compile 'com.google.inject:guice:4.0-beta:no_aop'
+  compile 'org.roboguice:roboguice:2.0'
+  compile 'com.android.support:appcompat-v7:24.0.0'
 }

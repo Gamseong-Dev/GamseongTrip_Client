@@ -12,33 +12,51 @@ angular.module('gamseong.main-controllers', [])
         status: true,
         cookie: true,
         xfbml: true,
-        version: 'v2.4'
+        version: 'v2.3'
       });
   };
-  $scope.fbLogin = function () {
 
+  $scope.fbLogin = function () {
+    var authResponse;
+    var isAuth = false;
     $ionicLoading.show();
     FB.getLoginStatus(function(response) {
 
-      if (response.status == 'connected') {
-          getUser(response);
-      }
-      else {
-        FB.login({scope: 'public_profile,email'}).then(
-            function (response) {
-                if (response.status === 'connected') {
+              if (response.status == 'connected') {
+                  authResponse = response;
+                  $ionicLoading.hide();
+                  //getUser(response);
+              }
+              else {
+                $ionicLoading.hide();
+                FB.login({scope: 'public_profile,email'}).then(
+                    function (response) {
+                        if (response.status === 'connected') {
 
-                } else {
-                    alert('Facebook login failed');
-                }
-            });
-      }
-      $ionicLoading.hide();
-    });
-  }
+                        } else {
+                            alert('Facebook login failed');
+                        }
+                    });
+              }
+          });
 
-  var getUser = function(response){
-  facebookService.getMyInfo()
+    facebookService.getMyInfo()
+           .then(function(authResponse) {
+            console.log(authResponse);
+            facebookUser = {
+                id : authResponse.id
+               , account: authResponse.email
+               , name : authResponse.name
+               , gender : authResponse.gender
+               , imageUrl : "http://graph.facebook.com/"+ authResponse.id +"/picture?width=270&height=270"
+             };
+            auth(facebookUser);
+          });
+  //  facebookService.setUser(user);
+}
+
+var getUser = function(response){
+facebookService.getMyInfo()
        .then(function(response) {
         console.log(response);
         facebookUser = {
@@ -51,6 +69,7 @@ angular.module('gamseong.main-controllers', [])
         auth(facebookUser);
        });
   }
+
   var auth = function(user){
     facebookService.setUser(user);
   };

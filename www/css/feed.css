@@ -38,6 +38,12 @@
   margin-right: -5%;
   margin-top: -2%;
 }
+.likeCountBox{
+  width: 50%;
+  height: 30%;
+  margin-right: -5%;
+  margin-top: -2%;
+}
 
 .nameParentBox{
   margin-left: -5%;
@@ -51,4 +57,25 @@
 
 .ion-side-menu{
   width: 20px;
+}
+
+.likeBtn{
+	background-color: #fff;
+	width: 80px;
+	height: 15px;
+	color: #555;
+	font-size: 12px;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.unLikeBtn{
+	background-color:  #ff7f00;
+	opacity: 0.6;
+	width: 80px;
+	height: 15px;
+	color: #555;
+	font-size: 12px;
+	padding-left: 2%;
+	padding-right: 2%;
 }

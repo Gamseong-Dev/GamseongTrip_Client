@@ -14,8 +14,8 @@ angular.module('gamseong.feed-controllers', [])
 	var reciveId;
 	var reciveName;
 
-	$reply.user.imageUrl = "../img/person/per.png";
-	$feeds.feed.user.imageUrl = "../img/person/per.png";
+	$reply.user.imageUrl = "img/person/per.png";
+	$feeds.feed.user.imageUrl = "img/person/per.png";
 
 	$scope.isTab = function(){
 		return true;
@@ -88,7 +88,9 @@ angular.module('gamseong.feed-controllers', [])
 })
 
 // Feed List Controller
-.controller('FeedListCtrl', function($scope,$window, $ionicModal, $http, ClientProxy, $ionicLoading, $stateParams, $cordovaCamera) {
+.controller('FeedListCtrl', function(GeoService, $scope,$window, $ionicModal,
+	$http, ClientProxy, $ionicLoading, $stateParams, $cordovaCamera,
+	$ionicActionSheet, $timeout) {
 
 	var page = 1;
 	var localId;
@@ -97,6 +99,13 @@ angular.module('gamseong.feed-controllers', [])
 	var myLocalId = $window.localStorage.getItem("locId");
 	var address =  $window.localStorage.getItem("address");
 	var param = $stateParams.id;
+	console.log(userId);
+
+	$scope.isUser =function(){
+			console.log(userId);
+			if(userId == null) return false;
+			else return true;
+	}
 
 	if(param == ""){
 		localId = myLocalId;
@@ -105,55 +114,73 @@ angular.module('gamseong.feed-controllers', [])
 		localId = param;
 	}
 	$ionicLoading.show();
-	if(myLocalId == localId){
-		$scope.local = $window.localStorage.getItem("locName")
-		$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
-				 success(function(data) {
-					 console.log(data);
-
-					 for(var i = 0; i<data.length; i++){
-							if(data[i].feed.user.imageUrl == null){
-							data[i].feed.user.imageUrl = "../img/person/per.png";
-						  }
-							if(data[i].userLikeStatus == 1) data[i].userLikeStatus = i+1;
-
-							if(data[i].reply.length > 0){
-									if(data[i].reply[0].user.imageUrl == null)
-									data[i].reply[0].user.imageUrl = "../img/person/per.png";
-							}
-					 };
-					 $scope.feedList = data;
-		 }).
-				 error(function(data, status, headers, config) {
-					 console.log(ClientProxy.url);
-		});
-	}
+	if(userId == null) alert("로그인을 해주세요.");
 	else {
-		$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
-				 success(function(data) {
-					 console.log(data);
+		if(myLocalId == localId){
+			$scope.local = $window.localStorage.getItem("locName")
+			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+					 success(function(data) {
+						 console.log(data);
 
-					 console.log(data[1].feed);
-					 for(var i = 0; i<data.length; i++){
-							if(data[i].feed.user.imageUrl == null){
-								data[i].feed.user.imageUrl = "../img/person/per.png";
-							}
-							if(data[i].userLikeStatus == 1) data[i].userLikeStatus = i+1;
+						 for(var i = 0; i<data.length; i++){
+								if(data[i].feed.user.imageUrl == null){
+								data[i].feed.user.imageUrl = "img/person/per.png";
+							  }
+								if(data[i].userLikeStatus == 1) {
+									data[i].userLikeStatus = i;
+										data[i].likeBtn = false;
+								}
+								else{
+									data[i].likeBtn = true;
+								}
 
-							if(data[i].reply.length > 0){
-								if(data[i].reply[0].user.imageUrl == null)
-								data[i].reply[0].user.imageUrl = "../img/person/per.png";
-							}
-					 };
-					 $scope.feedList = data;
-		 }).
-				 error(function(data, status, headers, config) {
-					 console.log(ClientProxy.url);
-		});
+								if(data[i].reply.length > 0){
+										if(data[i].reply[0].user.imageUrl == null)
+										data[i].reply[0].user.imageUrl = "img/person/per.png";
+								}
+						 };
+						 $scope.feedList = data;
+			 }).
+					 error(function(data, status, headers, config) {
+						 console.log(ClientProxy.url);
+			});
+		}
+		else {
+			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+					 success(function(data) {
+						 console.log(data);
+
+						 console.log(data[1].feed);
+						 for(var i = 0; i<data.length; i++){
+								if(data[i].feed.user.imageUrl == null){
+									data[i].feed.user.imageUrl = "img/person/per.png";
+								}
+								if(data[i].userLikeStatus == 1) {
+									data[i].userLikeStatus = i;
+										data[i].likeBtn = false;
+								}
+								else{
+									data[i].likeBtn = true;
+								}
+								if(data[i].reply.length > 0){
+									if(data[i].reply[0].user.imageUrl == null)
+									data[i].reply[0].user.imageUrl = "img/person/per.png";
+								}
+						 };
+						 $scope.feedList = data;
+			 }).
+					 error(function(data, status, headers, config) {
+						 console.log(ClientProxy.url);
+			});
+		}
 	}
 	$ionicLoading.hide();
 
-	$scope.like = function(id){
+	$scope.like = function(id, count){
+		var likeStaus = $scope.feedList[count].likeBtn;
+		if(likeStaus == false) 	$scope.feedList[count].likeBtn = true;
+		else 	$scope.feedList[count].likeBtn = false;
+
 		$http.get(ClientProxy.url + '/gamseong/likes/feeds/'+ id + '/users/' + userId).
 				 success(function(data) {
 					  console.log(data);
@@ -202,6 +229,49 @@ angular.module('gamseong.feed-controllers', [])
 				alert("실패하였습니다.");
 		});
 	}
+
+	$scope.update={
+        feedId: ""
+   };
+	$scope.doUpdate = function(){
+
+		var param = {
+				feed : {
+					id: $scope.update.feedId
+					,userId: userId
+					,contents: $scope.writer.contents
+					,sticker :[]
+				}
+		};
+
+		$http.put(ClientProxy.url + '/gamseong/feeds/'+feedId,param
+	/*	,{headers: { 'Content-Type': 'application/json; charset=UTF-8'
+	,'s-Id' : 'asd'
+	,'s-token': 'asd'}}*/)
+		.success(function (data, status, headers, config){
+			console.log(config);
+			console.log(data);
+			console.log(status);
+			console.log(headers);
+			if(data.result == "success") {
+				alert("업데이트하였습니다.");
+				$scope.modal.hide();
+				$window.location.reload();
+			}
+			else{
+				alert("실패하였습니다.");
+			}
+		})
+		.error(function (data, status) {
+				//error handler
+				alert("실패하였습니다.");
+		});
+	}
+
+	$scope.doDelete = function(){
+
+	}
+
 	$scope.noMoreItemsAvailable = false;
 
 	$scope.getPage = function(){
@@ -219,14 +289,14 @@ angular.module('gamseong.feed-controllers', [])
 			 for(var i = 0; i<datas.length; i++){
 
 				 if(datas[i].feed.user.imageUrl == null){
-						datas[i].feed.user.imageUrl = "../img/person/per.png";
+						datas[i].feed.user.imageUrl = "img/person/per.png";
 					}
 
-					if(datas[i].userLikeStatus == 1) datas[i].userLikeStatus = ((page * 10)+i)+1;
+					if(datas[i].userLikeStatus == 1) datas[i].userLikeStatus = ((page * 10)+i);
 
 					if(datas[i].reply.length > 0){
 						if(datas[i].reply.user.imageUrl == null)
-						datas[i].reply.user.imageUrl = "../img/person/per.png";
+						datas[i].reply.user.imageUrl = "img/person/per.png";
 					}
 
 				 $scope.feedList.push(datas[i]);
@@ -238,6 +308,7 @@ angular.module('gamseong.feed-controllers', [])
 	var isLike = false;
 	// Control Inner Tab
 	$scope.toggleLike = function() {
+
 		if(isLike){
 			isLike = false;
 			console.log("like++");
@@ -402,6 +473,31 @@ angular.module('gamseong.feed-controllers', [])
     });
 
   };
+
+
+	$scope.show = function() {
+
+		// Show the action sheet
+		var hideSheet = $ionicActionSheet.show({
+			buttons: [
+				{ text: '<b>Share</b> This' },
+				{ text: 'Move' }
+			],
+			destructiveText: 'Delete',
+			titleText: 'Modify your album',
+			cancelText: 'Cancel',
+			cancel: function() {
+					 // add cancel code..
+				 },
+			buttonClicked: function(index) {
+				return true;
+			}
+		});
+		$timeout(function() {
+			hideSheet();
+		}, 2000);
+	};
+
 
 })
 

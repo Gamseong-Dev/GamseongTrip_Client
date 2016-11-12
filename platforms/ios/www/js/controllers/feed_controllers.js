@@ -88,7 +88,7 @@ angular.module('gamseong.feed-controllers', [])
 })
 
 // Feed List Controller
-.controller('FeedListCtrl', function($scope,$window, $ionicModal, $http, ClientProxy, $ionicLoading, $stateParams) {
+.controller('FeedListCtrl', function($scope,$window, $ionicModal, $http, ClientProxy, $ionicLoading, $stateParams, $cordovaCamera) {
 
 	var page = 1;
 	var localId;
@@ -378,6 +378,31 @@ angular.module('gamseong.feed-controllers', [])
 				alert("실패하였습니다.");
 			});
 		}
+
+		$scope.camera = function () {
+
+    var options = {
+      quality: 50,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 100,
+      targetHeight: 100,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false,
+	  correctOrientation:true
+    };
+
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      var image = document.getElementById('myImage');
+      image.src = "data:image/jpeg;base64," + imageData;
+    }, function(err) {
+      // error
+    });
+
+  };
+
 })
 
 .controller('LocalSearchCtrl', function($scope, $window, $http, SearchService) {

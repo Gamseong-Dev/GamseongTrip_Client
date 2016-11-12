@@ -9,6 +9,7 @@
   border-bottom: 1px solid lightgray;
   background-color: #ff7f00;
   opacity: 0.95;
+  margin-top: -5%;
 }
 .profile-content-reply{
   display: flex;

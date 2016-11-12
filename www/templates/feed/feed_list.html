@@ -8,9 +8,11 @@
 		<!-- Feed List -->
 		<ion-list>
 				<!-- Profile -->
-			<div class="profile item-avatar item" style="border-color:#fff;" >
-					<image src="{{img}}"></image>
-						<button class="button button-icon icon" ng-click="writerOpen()" style="margin-top:-2%;">후기나 생각을 공유해주세요</button>
+			<div ng-show = isLogged()>
+				<div class="profile item-avatar item" style="border-color:#fff;" >
+						<image src="{{img}}"></image>
+							<button class="button button-icon icon" ng-click="writerOpen()" style="margin-top:-2%;">후기나 생각을 공유해주세요</button>
+				</div>
 			</div>
 
 			<ion-item  style="border-color:#fff; margin-top:20px; padding-bottom:0;" ng-repeat="feeds in feedList">
@@ -25,7 +27,9 @@
 								</div>
 								<div class="addressBox" style="text-align:right">
 									 <i class="icon ion-android-pin"></i>
-									<span class="addressFont">{{feeds.feed.address}}</span>
+									<span class="addressFont">{{feeds.feed.address}}</span><br>
+									<i class="icon ion-ios-heart"></i>
+								 <span class="addressFont">{{feeds.feed.likeCount}}회</span>
 								</div>
 						</div>
 					</div>
@@ -40,10 +44,17 @@
 					<hr class="simpleHr" >
 					<div style="margin-top:-2%;">
 						<!-- TODO Add/Toggle Icon -->
-						<button ng-click="like('{{feeds.feed.id}}') "class="button button-icon icon ">좋아요{{feeds.feed.likeCount}}</button>
-						<button ng-click="replyOpen('{{feeds.feed.id}}')" class="button button-icon icon ">댓글</button>
+
+						<button class="button button-primary" ng-model="feeds.likeBtn" ng-click="like('{{feeds.feed.id}}','{{feeds.userLikeStatus}}') "
+						ng-class="feeds.likeBtn?'likeBtn':'unLikeBtn'">
+					     <i class="icon ion-heart"></i> &nbsp;좋아요
+					  </button>
+
+						<button ng-click="replyOpen('{{feeds.feed.id}}')" class="button likeBtn " style="margin-left:10%;">
+							 <i class="icon ion-edit"></i> &nbsp;댓글</button>
 						<button ng-click="messageOpen('{{feeds.feed.user.id}}' ,'{{feeds.feed.user.name}}')"
-						class="button button-icon icon ">쪽지보내기</button>
+						class="button likeBtn " style="margin-left:10%;">
+							<i class="icon ion-social-twitch"></i> &nbsp;쪽지보내기</button>
 					</div>
 
 					<!-- Reply -->

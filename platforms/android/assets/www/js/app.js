@@ -29,7 +29,18 @@ angular.module('gamseong', [
   //url: 'http://localhost:8080'
 })
 
-.run(function($ionicPlatform,  $http, ClientProxy ,GeoService) {
+.run(function($ionicPlatform, $window, $http, ClientProxy ,GeoService) {
+  $window.fbAsyncInit = function() {
+      FB.init({
+        appId: '210753882669143',
+        status: true,
+        cookie: true,
+        xfbml: true,
+        version: 'v2.3'
+      });
+  };
+
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

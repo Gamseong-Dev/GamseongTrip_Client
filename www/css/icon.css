@@ -26,3 +26,18 @@
 .icon.ion-android-exit{
   font-size: 20px !important;
 }
+.icon.ion-ios-heart{
+  font-size: 13px !important;
+}
+.icon.ion-heart{
+  font-size: 5px !important;
+  color: #777;
+}
+.icon.ion-edit{
+  font-size: 5px !important;
+  color: #777;
+}
+.icon.ion-social-twitch{
+  font-size: 23px !important;
+  color: #777;
+}
