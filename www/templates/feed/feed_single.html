@@ -1,42 +1,5 @@
 <ion-view view-title="{{local}}">
-<<<<<<< Updated upstream
   <ion-content hide-tabs>
-
-=======
-  <ion-content>
-<<<<<<< HEAD
->>>>>>> Stashed changes
-    <div class="profile item-avatar item">
-        <image src=""></image>
-      <p>
-        <span>{{data.feed.location.name}}</span>
-        <span class="date-right">{{data.feed.creationTime}}</span>
-      </p>
-      <h2>{{data.feed.user.name}}</h2>
-    </div>
-
-    <!-- Content -->
-    <div class="item item-body" style="width:100%; height:190px;">
-      <p>
-        <a class="subdued" href="#/app/feed/list/{{feed.id}}">
-          {{data.feed.contents}}
-        </a>
-      </p>
-<<<<<<< Updated upstream
-    </div>
-    <div class="item item-body" style="width:100%; height:45px;">
-            <!-- TODO Add/Toggle Icon -->
-        <div style="margin-top:-5%;">
-          <button class="button button-icon icon ">좋아요 {{feedSingle.like}}</button>
-          <button ui-sref="app.feed.feed-single" class="button button-icon icon ">댓글</button>
-          <button ng-click="messageOpen('{{data.feed.user.id}}' ,'{{data.feed.user.name}}')"
-              class="button button-icon icon ">쪽지보내기</button>
-        <div>
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> master
     <div class="feedTemp" href="#/app/feed/list/{{feed.id}}">
       <!-- TODO Move These Code Into Feed Single !! -->
         <!-- Profile -->
@@ -60,11 +23,6 @@
             <button ui-sref="app.feed.feed-single" class="button button-icon icon ">댓글</button>
             <button ng-click="messageModal.show()" class="button button-icon icon ">쪽지보내기</button>
           </div>
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
->>>>>>> master
->>>>>>> Stashed changes
     </div>
   </ion-content>
 </ion-view>
