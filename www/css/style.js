@@ -13,7 +13,8 @@ export default StyleSheet.create({
         "position": "relative",
         "borderBottom": "1px solid lightgray",
         "backgroundColor": "#ff7f00",
-        "opacity": 0.95
+        "opacity": 0.95,
+        "marginTop": "-5%"
     },
     "profile-content-reply": {
         "display": "flex",
@@ -163,52 +164,6 @@ export default StyleSheet.create({
         "top": 100,
         "width": "100%",
         "position": "absolute"
-    },
-    "messageImage": {
-        "width": 45,
-        "height": 45,
-        "borderRadius": "50%",
-        "background": "#47a3da",
-        "display": "inline-block",
-        "marginRight": 10
-    },
-    "messageCont": {
-        "display": "flex",
-        "flex": 1,
-        "flexDirection": "column"
-    },
-    "messageTop": {
-        "display": "flex",
-        "borderBottom": "0.1em solid gray",
-        "width": "100%",
-        "paddingTop": 0.4,
-        "paddingRight": 0,
-        "paddingBottom": 0.4,
-        "paddingLeft": 0,
-        "marginBottom": 1
-    },
-    "messageInfo": {
-        "display": "flex",
-        "marginBottom": -0.4
-    },
-    "messageInfoText": {
-        "fontWeight": "700",
-        "fontSize": 1,
-        "color": "black",
-        "marginLeft": 0.3,
-        "marginRight": 1
-    },
-    "messageBox": {
-        "width": "100%",
-        "height": 20,
-        "border": "0.1em dashed gray",
-        "borderRadius": "1%"
-    },
-    "messageSend": {
-        "marginTop": 1.5
-    },
-    "messageSendBar": {
-        "background": "gray"
     },
     "slideCont": {
         "display": "flex",
