@@ -165,88 +165,12 @@ export default StyleSheet.create({
         "width": "100%",
         "position": "absolute"
     },
-    "slideCont": {
-        "display": "flex",
-        "flex": 1,
-        "flexDirection": "column",
-        "justifyContent": "space-between"
-    },
-    "weekTitle": {
-        "borderBottom": "0.1em solid gray",
-        "background": "gray",
-        "height": 2
-    },
-    "slideBox": {
-        "flexDirection": "column",
-        "width": "100%",
-        "height": 150,
-        "display": "flex",
-        "flex": 1
-    },
-    "slideItem": {
-        "borderBottom": "1px solid #ddd",
-        "marginTop": -1,
-        "marginRight": -1,
-        "marginBottom": -1,
-        "marginLeft": -1,
-        "paddingTop": 10,
-        "paddingRight": 10,
-        "paddingBottom": 10,
-        "paddingLeft": 10,
-        "fontSize": 1
-    },
-    "inslideBox": {
-        "height": "90%",
-        "width": "100%",
-        "display": "flex"
-    },
-    "WeeklyPic": {
-        "height": "100%",
-        "width": "30%",
-        "border": "1px solid lightgray"
-    },
-    "settingCont": {
-        "width": "100%",
-        "flexDirection": "column",
-        "paddingTop": 0,
-        "paddingRight": 1,
-        "paddingBottom": 0,
-        "paddingLeft": 1
-    },
-    "settingTop": {
-        "display": "flex",
-        "alignItems": "center",
-        "justifyContent": "center",
-        "paddingTop": 2,
-        "paddingRight": 2,
-        "paddingBottom": 2,
-        "paddingLeft": 2
-    },
     "userImageConf": {
         "width": 7,
         "height": 7,
         "borderRadius": "50%",
         "background": "#47a3da",
         "display": "inline-block"
-    },
-    "s_input": {
-        "background": "#f2f2f2",
-        "width": "100%",
-        "marginTop": 0,
-        "marginRight": 0,
-        "marginBottom": 15,
-        "marginLeft": 0,
-        "paddingTop": 0.7,
-        "paddingRight": 0.7,
-        "paddingBottom": 0.7,
-        "paddingLeft": 0.7
-    },
-    "switch": {
-        "paddingTop": 1,
-        "paddingRight": 0,
-        "paddingBottom": 1,
-        "paddingLeft": 0,
-        "border": "none"
     },
     "simpleHr": {
         "border": 0,
