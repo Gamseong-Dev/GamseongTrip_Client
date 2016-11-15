@@ -151,70 +151,14 @@
   width: 100%;
   position: absolute;
 }
-/*weekly 감성 Best*/
-.slideCont{
-  display: flex;
-  flex:1;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.weekTitle{
-  border-bottom: 0.1em solid gray;
-  background: gray;
-  height: 2em;
-}
-.slideBox{
-  flex-direction: column;
-  width: 100%;
-  height: 150px;
-  display: flex;
-  flex:1;
-}
-.slideItem{
-  border-bottom: 1px solid #ddd;
-  margin: -1px;
-  padding: 10px;
-  font-size: 1em;
-
-}
-.inslideBox{
-  height: 90%;
-  width: 100%;
-  display: flex;
-}
-.WeeklyPic{
-  height: 100%;
-  width: 30%;
-  border: 1px solid lightgray;
-}
 /*설정 modal에 관한 css*/
-.settingCont{
-  width: 100%;
-  flex-direction: column;
-  padding: 0 1em 0 1em;
-}
-.settingTop{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2em;
-}
+
 .userImageConf{
 	width: 7em;
 	height: 7em;
 	border-radius: 50%;
 	background: #47a3da;
   display: inline-block;
-}
-.s_input{
-  background: #f2f2f2;
-  width: 100%;
-  margin: 0 0 15px;
-  padding: 0.7em;
-}
-.switch{
-  padding: 1em 0 1em 0;
-  border: none;
 }
 
 .simpleHr {
