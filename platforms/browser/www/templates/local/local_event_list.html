@@ -1,0 +1,19 @@
+<ion-view view-title="지역이벤트">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="event in eventlist" href="#/app/feed/event/{{event.id}}">
+        <div class="card">
+          <div class="item item-divider">
+                {{event.title}}
+          </div>
+          <div class="item item-text-wrap">
+                {{event.contents}}
+          </div>
+          <div class="item item-divider">
+                {{event.like}}
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
