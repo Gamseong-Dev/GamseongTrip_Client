@@ -23,17 +23,6 @@ export default StyleSheet.create({
         "position": "relative",
         "borderBottom": "1px solid lightgray"
     },
-    "feed-content-reply": {
-        "display": "flex",
-        "height": "10%",
-        "width": "100%",
-        "position": "relative",
-        "paddingLeft": "3%",
-        "paddingTop": "3%",
-        "paddingBottom": ": 2%",
-        "marginTop": "-2%",
-        "borderTop": "1px solid lightgray"
-    },
     "userImage": {
         "marginTop": "20%",
         "marginRight": 0,
@@ -78,12 +67,6 @@ export default StyleSheet.create({
         "fontWeight": "500",
         "color": "#fff",
         "whiteSpace": "nowrap"
-    },
-    "profile_Topcont": {
-        "width": "100%",
-        "height": "45%",
-        "display": "flex",
-        "justifyContent": "space-between"
     },
     "panelbody": {
         "width": "100%",
