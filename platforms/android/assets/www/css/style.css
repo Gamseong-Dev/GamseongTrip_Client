@@ -18,17 +18,6 @@
   position: relative;
   border-bottom: 1px solid lightgray;
 }
-.feed-content-reply{
-  display: flex;
-  height: 10%;
-  width: 100%;
-  position: relative;
-  padding-left: 3%;
-  padding-top: 3%;
-  padding-bottom: : 2%;
-  margin-top: -2%;
-  border-top: 1px solid lightgray;
-}
 .userImage{
   margin: 20% 0 0 20%;
 	width: 60px;
@@ -61,12 +50,6 @@
   font-weight: 500;
   color: #fff;
   white-space:nowrap;
-}
-.profile_Topcont{
-  width: 100%;
-  height: 45%;
-  display: flex;
-  justify-content: space-between;
 }
 .panelbody{
   width: 100%;
@@ -147,121 +130,17 @@
     color: #47a3da;
 }
 .nestedComp{
-  top:100px;
   width: 100%;
   position: absolute;
 }
-/*message */
-.messageImage{
-	width: 45px;
-	height: 45px;
-	border-radius: 50%;
-	background: #47a3da;
-  display: inline-block;
-  margin-right: 10px;
-}
-/*message-Detail*/
-.messageCont{
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  /*align-items:center;*/
-}
-.messageTop{
-  display: flex;
-  border-bottom: 0.1em solid gray;
-  width: 100%;
-  padding: 0.4em 0 0.4em 0;
-  margin-bottom: 1em;
-  /*padding: 0 1em 0 1em; */
-}
-.messageInfo{
-  display: flex;
-  margin-bottom: -0.4em;
-}
-.messageInfoText{
-  font-weight: 700;
-  font-size: 1em;
-  color: black;
-  margin-left: 0.3em;
-  margin-right: 1em;
-}
-.messageBox{
-  width: 100%;
-  height: 20em;
-  border: 0.1em dashed gray;
-  border-radius: 1%;
-}
-.messageSend{
-  margin-top: 1.5em;
-}
-.messageSendBar{
-  background: gray;
-}
-/*weekly 감성 Best*/
-.slideCont{
-  display: flex;
-  flex:1;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.weekTitle{
-  border-bottom: 0.1em solid gray;
-  background: gray;
-  height: 2em;
-}
-.slideBox{
-  flex-direction: column;
-  width: 100%;
-  height: 150px;
-  display: flex;
-  flex:1;
-}
-.slideItem{
-  border-bottom: 1px solid #ddd;
-  margin: -1px;
-  padding: 10px;
-  font-size: 1em;
-
-}
-.inslideBox{
-  height: 90%;
-  width: 100%;
-  display: flex;
-}
-.WeeklyPic{
-  height: 100%;
-  width: 30%;
-  border: 1px solid lightgray;
-}
 /*설정 modal에 관한 css*/
-.settingCont{
-  width: 100%;
-  flex-direction: column;
-  padding: 0 1em 0 1em;
-}
-.settingTop{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2em;
-}
+
 .userImageConf{
 	width: 7em;
 	height: 7em;
 	border-radius: 50%;
 	background: #47a3da;
   display: inline-block;
-}
-.s_input{
-  background: #f2f2f2;
-  width: 100%;
-  margin: 0 0 15px;
-  padding: 0.7em;
-}
-.switch{
-  padding: 1em 0 1em 0;
-  border: none;
 }
 
 .simpleHr {

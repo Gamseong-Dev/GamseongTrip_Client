@@ -18,27 +18,7 @@ angular.module('gamseong.feed-controllers', [])
 	$reply.user.imageUrl = "img/person/per.png";
 	$feeds.feed.user.imageUrl = "img/person/per.png";
 	$scope.feedImg = null;
-
-	$scope.feedSetting = function() {
-	  var options = {
-	    title: '선택해주세요.',
-	    buttonLabels: ['수정', '삭제'],
-	    addCancelButtonWithLabel: 'Cancel',
-	    androidEnableCancelButton : true,
-	  };
-	  $cordovaActionSheet.show(options).then(function(btnIndex) {
-	    var type = null;
-	    if (btnIndex === 1) {
-	      type = Camera.PictureSourceType.PHOTOLIBRARY;
-	    } else if (btnIndex === 2) {
-	      type = Camera.PictureSourceType.CAMERA;
-	    }
-	    if (type !== null) {
-	      $scope.selectPicture(type);
-	    }
-	  });
-	};
-
+	$scope.userName = userName;
 
  $ionicLoading.show();
 
@@ -110,7 +90,7 @@ angular.module('gamseong.feed-controllers', [])
 // Feed List Controller
 .controller('FeedListCtrl', function(GeoService, $scope,$window, $ionicModal,
 	$http, ClientProxy, $ionicLoading, $stateParams, $cordovaCamera,
-	$ionicActionSheet, $timeout, $cordovaFileTransfer, $cordovaFile, $cordovaDevice) {
+	$ionicActionSheet, $timeout, $cordovaFileTransfer, $cordovaFile, $cordovaDevice, $cordovaActionSheet) {
 
 	var page = 1;
 	var localId;
@@ -119,7 +99,29 @@ angular.module('gamseong.feed-controllers', [])
 	var myLocalId = $window.localStorage.getItem("locId");
 	var address =  $window.localStorage.getItem("address");
 	var param = $stateParams.id;
+	$scope.writeType = false;
+	$scope.writeUserName = userName;
 	console.log(userId);
+
+	$scope.feedSetting = function(feed) {
+		alert(feed.contents);
+		var options = {
+			title: '선택해주세요.',
+			buttonLabels: ['수정', '삭제'],
+			addCancelButtonWithLabel: 'Cancel',
+			androidEnableCancelButton : true,
+		};
+
+		$cordovaActionSheet.show(options).then(function(btnIndex) {
+			var type = null;
+			if (btnIndex === 1) {
+				$scope.writeType = true;
+				$scope.writerOpen();
+			} else if (btnIndex === 2) {
+				doDelete(feed);
+			}
+		});
+	};
 
 	$scope.isUser =function(){
 			console.log(userId);
@@ -147,13 +149,12 @@ angular.module('gamseong.feed-controllers', [])
 								data[i].feed.user.imageUrl = "img/person/per.png";
 							  }
 								if(data[i].userLikeStatus == 1) {
-									data[i].userLikeStatus = i;
 										data[i].likeBtn = false;
 								}
 								else{
 									data[i].likeBtn = true;
 								}
-
+										data[i].userLikeStatus = i;
 								if(data[i].reply.length > 0){
 										if(data[i].reply[0].user.imageUrl == null)
 										data[i].reply[0].user.imageUrl = "img/person/per.png";
@@ -170,18 +171,17 @@ angular.module('gamseong.feed-controllers', [])
 					 success(function(data) {
 						 console.log(data);
 
-						 console.log(data[1].feed);
 						 for(var i = 0; i<data.length; i++){
 								if(data[i].feed.user.imageUrl == null){
 									data[i].feed.user.imageUrl = "img/person/per.png";
 								}
 								if(data[i].userLikeStatus == 1) {
-									data[i].userLikeStatus = i;
 										data[i].likeBtn = false;
 								}
 								else{
 									data[i].likeBtn = true;
 								}
+									data[i].userLikeStatus = i;
 								if(data[i].reply.length > 0){
 									if(data[i].reply[0].user.imageUrl == null)
 									data[i].reply[0].user.imageUrl = "img/person/per.png";
@@ -197,6 +197,7 @@ angular.module('gamseong.feed-controllers', [])
 	$ionicLoading.hide();
 
 	$scope.like = function(id, count){
+
 		var likeStaus = $scope.feedList[count].likeBtn;
 		if(likeStaus == false) 	$scope.feedList[count].likeBtn = true;
 		else 	$scope.feedList[count].likeBtn = false;
@@ -378,10 +379,6 @@ angular.module('gamseong.feed-controllers', [])
 	,'s-Id' : 'asd'
 	,'s-token': 'asd'}}*/)
 		.success(function (data, status, headers, config){
-			console.log(config);
-			console.log(data);
-			console.log(status);
-			console.log(headers);
 			if(data.result == "success") {
 				alert("업데이트하였습니다.");
 				$scope.modal.hide();
@@ -397,8 +394,21 @@ angular.module('gamseong.feed-controllers', [])
 		});
 	}
 
-	$scope.doDelete = function(){
-
+	var doDelete = function(feed){
+		$http.delete(ClientProxy.url + '/gamseong/feeds/'+feedId)
+		.success(function (data, status, headers, config){
+			if(data.result == "success") {
+				alert("삭제하였습니다.");
+				$window.location.reload();
+			}
+			else{
+				alert("실패하였습니다.");
+			}
+		})
+		.error(function (data, status) {
+				//error handler
+				alert("실패하였습니다.");
+		});
 	}
 
 	$scope.noMoreItemsAvailable = false;
@@ -421,7 +431,12 @@ angular.module('gamseong.feed-controllers', [])
 						datas[i].feed.user.imageUrl = "img/person/per.png";
 					}
 
-					if(datas[i].userLikeStatus == 1) datas[i].userLikeStatus = ((page * 10)+i);
+					if(datas[i].userLikeStatus == 1){
+						datas[i].likeBtn = false;
+					}else{
+							datas[i].likeBtn = true;
+					}
+					datas[i].userLikeStatus = ((page * 10)+i);
 
 					if(datas[i].reply.length > 0){
 						if(datas[i].reply[0].user.imageUrl == null)
@@ -433,21 +448,6 @@ angular.module('gamseong.feed-controllers', [])
 		 });
 		$scope.$broadcast('scroll.infiniteScrollComplete');
 	}
-
-	var isLike = false;
-	// Control Inner Tab
-	$scope.toggleLike = function() {
-
-		if(isLike){
-			isLike = false;
-			console.log("like++");
-			// TODO Update Table
-		} else {
-			isLike = true;
-			console.log("like--");
-			// TODO Update Table
-		}
-	};
 
 
 	/*

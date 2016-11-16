@@ -89,3 +89,14 @@
       background-position: top;
       background-size: 100% 1px;
       background-repeat: no-repeat; } }
+      .toggle {
+        position: relative;
+        display: inline-block;
+        pointer-events: auto;
+        margin: -5px;
+        padding: 5px; }
+        .toggle input:checked + .track {
+          border-color: #ff7f00;
+          background-color: #ff7f00; }
+        .toggle.dragging .handle {
+          background-color: #f2f2f2 !important; }
