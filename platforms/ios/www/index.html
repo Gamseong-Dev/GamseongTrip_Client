@@ -3,6 +3,37 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy"
+         content="default-src *;
+              script-src 'self' 'unsafe-inline' 'unsafe-eval'
+                          http://127.0.0.1:*
+                          http://*.facebook.com
+                          http://*.facebook.net
+                          52.78.110.20/
+                          maps.googleapis.com
+                          autolinkmaker.itune.apple.com
+                          http://*.itunes.apple.com
+                          http://*.googleapis.com
+                          http://*.maxplatform.com
+                          https://*.itunes.apple.com
+                          https://*.googleapis.com
+                          https://*.maxplatform.com
+                          ;
+              style-src  'self' 'unsafe-inline'
+                          http://127.0.0.1:*
+                          http://*.facebook.com
+                          http://*.facebook.net
+                          http://52.78.110.20/
+                          maps.googleapis.com
+                          autolinkmaker.itune.apple.com
+                          http://*.itunes.apple.com
+                          http://*.googleapis.com
+                          http://*.maxplatform.com
+                          https://*.itunes.apple.com
+                          https://*.googleapis.com
+                          https://*.maxplatform.com
+   ">
+
     <title></title>
 
     <link rel="manifest" href="manifest.json">
@@ -29,12 +60,14 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="js/ng-cordova-oauth.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
     <script src="lib/ionic/js/ng-cordova.js"></script>
-    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAkpLtMfo9jGzb5k6XWctRvXptSDhSE1mU&sensor=true">
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAkpLtMfo9jGzb5k6XWctRvXptSDhSE1mU&sensor=false">
        </script>
+    <!--<script src="http://connect.facebook.net/en_US/sdk.js"></script>-->
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
@@ -54,7 +87,6 @@
     <script src="js/services/search_services.js"></script>
     <script src="js/services/facebook_services.js"></script>
 
-    <script src="//connect.facebook.net/en_US/sdk.js"></script>
   </head>
 
   <body ng-app="gamseong">

@@ -1,0 +1,96 @@
+<style type="text/css">
+.menuFont{
+  font-size : 1.2em;
+  font-weight : 500;
+  color : #555;
+  font:sans-serif;
+  white-space:nowrap;
+}
+.menuIconBox{
+  padding-top:8%;
+  padding-left:15%;
+  width:20%;
+  height:100%;
+}
+.menuBox{
+  width:90%;
+  height:100%;
+}
+.iconBox{
+  margin-top:25%;
+}
+</style>
+
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" width="210">
+    <ion-content>
+      <div ng-show="isLogged()">
+      <ion-list>
+        <div class="profileCont">
+          <div class="profile-content">
+            <a href="#/app/profile/feed" menu-close>
+               <div class="profileUserImage" style="background: url('{{img}}') no-repeat center;
+               background-size: cover;">
+               </div>
+            </a>
+             <div class="userInfo">
+               <p class="profile-name">{{name}} </p>
+               <p class="profile-email">{{email}}</p>
+             </div>
+          </div>
+          </div>
+
+
+          <div class="panelbody" style="display: flex; flex-direction: row;">
+            <div class="menuIconBox">
+
+              <i class="icon ion-ios-home-outline"></i>
+
+              <div class="icon ion-thumbsup iconBox" style="margin-top:31px;"></div>
+
+              <div class="icon ion-search iconBox" style="margin-top:36px;"></div>
+              <div class="icon ion-gear-a iconBox" style="margin-top:35px;"></div>
+              <div class="icon ion-android-exit iconBox" style="margin-top:35px;"></div>
+            </div>
+            <div class="menuBox">
+              <a class="menupanel menuFont" href="#/app/feed/list/" menu-close>메인페이지</a>
+              <a class="menupanel menuFont" href="#/app/wbest" menu-close>Weekly 감성 BEST</a>
+              <a class="menupanel menuFont" href="#/app/friends" menu-close>감성검색</a>
+              <a class="menupanel menuFont" ng-click="settingModal.show()" ng-controller="SettingCtrl" menu-close>설정</a>
+              <a class="menupanel menuFont" ng-click="doLogout()" menu-close>로그아웃</a>
+            </div>
+          </div>
+
+        </div>
+      </ion-list>
+    </div>
+
+        <div ng-hide="isLogged()">
+        <ion-list>
+          <div class="profileCont">
+            <div class="profile-content">
+              <div class="userInfo">
+              </div>
+            </div>
+            <div class="panelbody">
+              <a class="menupanel" href="#/gamseong" menu-close><font color = #222>로그인</a>
+            </div>
+          </div>
+        </ion-list>
+      </div>
+
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

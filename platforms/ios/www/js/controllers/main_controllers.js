@@ -1,44 +1,81 @@
 angular.module('gamseong.main-controllers', [])
 
 // Feed Controller
-.controller('MainCtrl', function($scope, $q, $location, $ionicModal, ClientProxy, $http, $window, $ionicLoading, facebookService) {
+.controller('MainCtrl', function($scope, $cordovaOauth,  $q ,$location, $ionicModal, ClientProxy, $http, $window, $ionicLoading, facebookService) {
 
   var user;
   var facebookUser;
 
-  $window.fbAsyncInit = function() {
-      FB.init({
-        appId: '210753882669143',
-        status: true,
-        cookie: true,
-        xfbml: true,
-        version: 'v2.4'
-      });
-  };
   $scope.fbLogin = function () {
+    var authResponse;
+    var isAuth = false;
 
-    $ionicLoading.show();
-    FB.getLoginStatus(function(response) {
-
-      if (response.status == 'connected') {
-          getUser(response);
-      }
-      else {
-        FB.login({scope: 'public_profile,email'}).then(
-            function (response) {
-                if (response.status === 'connected') {
-
-                } else {
-                    alert('Facebook login failed');
-                }
-            });
-      }
-      $ionicLoading.hide();
+    $cordovaOauth.facebook('210753882669143', ['email']).then(function(result) {
+      authResponse = result.access_token;
+      debugger;
+      getMyInfo(authResponse);
+    }, function(error) {
+      alert("There was a Facebook login problem signing in! See the console for logs");
+      console.log(error);
     });
-  }
 
-  var getUser = function(response){
-  facebookService.getMyInfo()
+
+    var getMyInfo = function (access_token) {
+      $http.get("https://graph.facebook.com/v2.5/me", {params: {access_token: access_token,
+        fields: "id,email,name,gender", format: "json" }}).then(function (result) {
+          console.log(result);
+          facebookUser = {
+              id : result.data.id
+             , account: result.data.email
+             , name : result.data.name
+             , gender : result.data.gender
+             , imageUrl : "http://graph.facebook.com/"+ result.data.id +"/picture?width=270&height=270"
+           };
+          auth(facebookUser);
+      }, function(error) {
+        alert("Error: " + error);
+      });
+    };
+/*
+
+    $cordovaFacebook.getLoginStatus(function(response) {
+
+              if (response.status == 'connected') {
+                  authResponse = response;
+                  alert("success");
+                  //getUser(response);
+              }
+              else {
+                alert("fail");
+                $ionicLoading.hide();
+                $cordovaFacebook.login({scope: 'public_profile,email'}).then(
+                    function (response) {
+                        if (response.status === 'connected') {
+
+                        } else {
+                            alert('Facebook login failed');
+                        }
+                    });
+              }
+          });
+
+    facebookService.getMyInfo()
+           .then(function(authResponse) {
+            console.log(authResponse);
+            facebookUser = {
+                id : authResponse.id
+               , account: authResponse.email
+               , name : authResponse.name
+               , gender : authResponse.gender
+               , imageUrl : "http://graph.facebook.com/"+ authResponse.id +"/picture?width=270&height=270"
+             };
+            auth(facebookUser);
+          });*/
+  //  facebookService.setUser(user);
+}
+
+var getUser = function(response){
+facebookService.getMyInfo()
        .then(function(response) {
         console.log(response);
         facebookUser = {
@@ -51,6 +88,7 @@ angular.module('gamseong.main-controllers', [])
         auth(facebookUser);
        });
   }
+
   var auth = function(user){
     facebookService.setUser(user);
   };

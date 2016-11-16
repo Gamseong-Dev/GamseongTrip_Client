@@ -182,5 +182,7 @@
     <string/>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array/>
   </dict>
 </plist>

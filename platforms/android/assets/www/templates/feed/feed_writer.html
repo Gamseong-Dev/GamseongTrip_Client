@@ -54,9 +54,15 @@
   height: 7em;
 }
 .NonStickTemp{
+  background-color: #F3F3F3;
   border:1px solid #ddd;
   width: 70%;
   height: 7em;
+}
+.stickButton{
+  height: 0.5em;
+  background-color: #FBD68A;
+  margin-left: 0.2em;
 }
 </style>
 <ion-modal-view>
@@ -76,14 +82,18 @@
     <!-- Content -->
     <div class="writeTemp">
       <div class="stickTemp">스티커 넣는 공간</div>
-      <textarea id="input-font" name="contents" rows="10" placeholder="내용을 적어주세요" class="TextArea" ng-model="writer.contents"></textarea>
+      <textarea id="input-font" name="contents" rows="10" placeholder="내용을 적어주세요" class="TextArea" ng-model="writer.contents">
+      </textarea>
     </div>
     <div class="FooterCont">
       <div class="CameraTemp">
-        <button ng-click="camera()">카메라</button>
+        <img src = "{{pathForImage(image)}}" />
       </div>
-      <div class="NonStickTemp">
-        스티커 공간
+      <button class="button stickButton ion-camera" ng-click="takeImg()">이미지</button>
+      <div class="NonStickTemp row">
+        <button class="button stickButton">맛집</button>
+        <button class="button stickButton">핫플레이스</button>
+        <button class="button stickButton">서울</button>
       </div>
     </div>
   </ion-content>

@@ -6,6 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('gamseong', [
   'ionic'
+, 'ngCordovaOauth'
 , 'ngCordova'
 , 'gamseong.controllers'
 , 'gamseong.feed-controllers'
@@ -29,17 +30,33 @@ angular.module('gamseong', [
   //url: 'http://localhost:8080'
 })
 
-.run(function($ionicPlatform,  $http, ClientProxy ,GeoService) {
+.run(function($ionicPlatform, $window, $http, ClientProxy ,GeoService, $cordovaFacebook) {
+
+/*  $window.fbAsyncInit = function() {
+      FB.init({
+        appId: '210753882669143',
+        status: true,
+        cookie: true,
+        xfbml: true,
+        version: 'v2.3'
+      });
+  };*/
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    //ngFB.init({appId: '210979155979949'}); //TEST
-    //ngFB.init({appId: '210753882669143'}); //PUBLIC
+
     //$http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
+      if (cordova.platformId == "browser") {
+        var appID = '210753882669143';
+        var version = "v2.0";
+      //  $cordovaFacebook.browserInit(appID, version);
+        facebookConnectPlugin.browserInit('210753882669143');
+      }
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
@@ -48,7 +65,8 @@ angular.module('gamseong', [
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider) {
+
   $stateProvider
     .state('app', {
     url: '/app',
