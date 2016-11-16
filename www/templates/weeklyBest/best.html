@@ -6,41 +6,46 @@
   justify-content: space-between;
 }
 .slideItem{
-  border-bottom: 1px solid #ddd;
-  margin: -1px;
-  padding: 10px;
-  font-size: 1em;
-}
-.slideBox{
-  flex-direction: column;
-  width: 100%;
-  height: 150px;
+  border-bottom: 10px solid #ddd;
+  padding-top: 0.7em;
+  flex: 1;
   display: flex;
-  flex:1;
+  flex-direction: column;
 }
 .inslideBox{
-  height: 90%;
-  width: 100%;
+  border: 1px solid #ddd;
+  height: 80%;
   display: flex;
+  margin: 0.4em 0.7em;
 }
 .WeeklyPic{
+  position: relative;
   height: 100%;
-  width: 30%;
-  border: 1px solid lightgray;
+  width: 50%;
+  overflow: hidden;
+  margin-right: 0.5em;
+}
+.WeeklyPic img{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 100%;
+	width: auto;
+	-webkit-transform: translate(-50%,-50%);
+			-ms-transform: translate(-50%,-50%);
+					transform: translate(-50%,-50%);
 }
 </style>
 <ion-view view-title="Weekly 감성 Best">
   <ion-content class="has-header slideCont" scroll="false">
     <div class="slideItem">이번주의 감성게시글
-      <ion-slides class="slideBox" slider="data.slider">
+      <ion-slides slider="data.slider">
         <ion-slide-page ng-repeat="data in bestFeed">
           <div class="inslideBox">
             <div class="WeeklyPic">
-              <image src="">이미지</image>
+              <img src="{{data.feed.imgUrl}}"></img>
             </div>
             <div>
-              <span>{{data.feed.location.motherName}}</span>
-              <span>{{data.feed.location.name}}</span>
               <p>{{data.feed.user.name}}</p>
               <span class="date-right">{{data.feed.creationTime}}</span>
               <a class="subdued" href="#/app/feed/list/{{feed.id}}">{{data.feed.contents}}</a>
@@ -50,12 +55,12 @@
       </ion-slides>
     </div>
 
-    <div class="slideItem">이번주의 감성게시글
-        <ion-slides class="slideBox" slider="data.slider">
+    <div class="slideItem">이번주의 감성이벤트
+        <ion-slides slider="data.slider">
           <ion-slide-page ng-repeat="data in bestEvent">
             <div class="inslideBox">
               <div class="WeeklyPic">
-                <image src="">이미지</image>
+                <image src="{{data.imageUrl}}"></image>
               </div>
               <div>
                 <p>
@@ -75,11 +80,11 @@
 
 
     <div class="slideItem">이번주의 감성게시글
-      <ion-slides class="slideBox" slider="data.slider">
+      <ion-slides slider="data.slider">
         <ion-slide-page ng-repeat="data in bestEvent">
           <div class="inslideBox">
             <div class="WeeklyPic">
-              <image src="">이미지</image>
+              <image src="{{data.imageUrl}}"></image>
             </div>
             <div>
               <p>
