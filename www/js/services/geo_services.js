@@ -27,13 +27,13 @@ angular.module('gamseong.geo-services', [])
 
                         geocoder.geocode(request, function(data, status) {
                            if (status == google.maps.GeocoderStatus.OK) {
-                             if (data[5] != null) {
-                               console.log(data[5].formatted_address);
-                               if (~data[5].formatted_address.indexOf('대한민국')) {
-                                  address = data[5].formatted_address.substring(5);
+                             if (data[4] != null) {
+                               console.log(data[4].formatted_address);
+                               if (~data[4].formatted_address.indexOf('대한민국')) {
+                                  address = data[4].formatted_address.substring(5);
                                 }
                                 else {
-                                  address = data[5].formatted_address;
+                                  address = data[4].formatted_address;
                                 }
 
                                $window.localStorage.setItem("address",data[5].formatted_address);
