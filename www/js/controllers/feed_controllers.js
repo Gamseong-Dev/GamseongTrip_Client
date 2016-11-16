@@ -147,13 +147,12 @@ angular.module('gamseong.feed-controllers', [])
 								data[i].feed.user.imageUrl = "img/person/per.png";
 							  }
 								if(data[i].userLikeStatus == 1) {
-									data[i].userLikeStatus = i;
 										data[i].likeBtn = false;
 								}
 								else{
 									data[i].likeBtn = true;
 								}
-
+										data[i].userLikeStatus = i;
 								if(data[i].reply.length > 0){
 										if(data[i].reply[0].user.imageUrl == null)
 										data[i].reply[0].user.imageUrl = "img/person/per.png";
@@ -170,18 +169,17 @@ angular.module('gamseong.feed-controllers', [])
 					 success(function(data) {
 						 console.log(data);
 
-						 console.log(data[1].feed);
 						 for(var i = 0; i<data.length; i++){
 								if(data[i].feed.user.imageUrl == null){
 									data[i].feed.user.imageUrl = "img/person/per.png";
 								}
 								if(data[i].userLikeStatus == 1) {
-									data[i].userLikeStatus = i;
 										data[i].likeBtn = false;
 								}
 								else{
 									data[i].likeBtn = true;
 								}
+									data[i].userLikeStatus = i;
 								if(data[i].reply.length > 0){
 									if(data[i].reply[0].user.imageUrl == null)
 									data[i].reply[0].user.imageUrl = "img/person/per.png";
@@ -197,6 +195,7 @@ angular.module('gamseong.feed-controllers', [])
 	$ionicLoading.hide();
 
 	$scope.like = function(id, count){
+
 		var likeStaus = $scope.feedList[count].likeBtn;
 		if(likeStaus == false) 	$scope.feedList[count].likeBtn = true;
 		else 	$scope.feedList[count].likeBtn = false;
@@ -421,7 +420,12 @@ angular.module('gamseong.feed-controllers', [])
 						datas[i].feed.user.imageUrl = "img/person/per.png";
 					}
 
-					if(datas[i].userLikeStatus == 1) datas[i].userLikeStatus = ((page * 10)+i);
+					if(datas[i].userLikeStatus == 1){
+						datas[i].likeBtn = false;
+					}else{
+							datas[i].likeBtn = true;
+					}
+					datas[i].userLikeStatus = ((page * 10)+i);
 
 					if(datas[i].reply.length > 0){
 						if(datas[i].reply[0].user.imageUrl == null)
@@ -433,21 +437,6 @@ angular.module('gamseong.feed-controllers', [])
 		 });
 		$scope.$broadcast('scroll.infiniteScrollComplete');
 	}
-
-	var isLike = false;
-	// Control Inner Tab
-	$scope.toggleLike = function() {
-
-		if(isLike){
-			isLike = false;
-			console.log("like++");
-			// TODO Update Table
-		} else {
-			isLike = true;
-			console.log("like--");
-			// TODO Update Table
-		}
-	};
 
 
 	/*
