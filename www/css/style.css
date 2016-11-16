@@ -18,17 +18,6 @@
   position: relative;
   border-bottom: 1px solid lightgray;
 }
-.feed-content-reply{
-  display: flex;
-  height: 10%;
-  width: 100%;
-  position: relative;
-  padding-left: 3%;
-  padding-top: 3%;
-  padding-bottom: : 2%;
-  margin-top: -2%;
-  border-top: 1px solid lightgray;
-}
 .userImage{
   margin: 20% 0 0 20%;
 	width: 60px;
@@ -61,12 +50,6 @@
   font-weight: 500;
   color: #fff;
   white-space:nowrap;
-}
-.profile_Topcont{
-  width: 100%;
-  height: 45%;
-  display: flex;
-  justify-content: space-between;
 }
 .panelbody{
   width: 100%;

@@ -3,52 +3,20 @@
 	font-size:13px;
 	color:#999;
 }
-.nameFont{
-  font-size:16px;
-  color:#333;
-}
 .addressFont{
   font-size:12px;
   color:#333;
-}
-.feedContent{
-  padding-left: 3%;
-  padding-right: 3%;
-  margin-top: -5%;
-  width: 100%;
-  min-height: 90px;
-  max-height: 300px;
-  text-overflow: ellipsis;
-  overflow: scroll;
 }
 .feedFont{
   color: #111;
   white-space:pre-line;
   height: 90px;
 }
-
-.nameBox{
-  width: 35%;
-  height: 30%;
-  margin-top: -2%;
-}
-.addressBox{
-  width: 50%;
-  height: 30%;
-  margin-right: -5%;
-  margin-top: -2%;
-}
 .likeCountBox{
   width: 50%;
   height: 30%;
   margin-right: -5%;
   margin-top: -2%;
-}
-
-.nameParentBox{
-  margin-left: -5%;
-  width: 100%;
-  display: flex;
 }
 .ion-android-pin{
   margin-top: -1%;
@@ -57,25 +25,4 @@
 
 .ion-side-menu{
   width: 20px;
-}
-
-.likeBtn{
-	background-color: #fff;
-	width: 80px;
-	height: 15px;
-	color: #555;
-	font-size: 12px;
-	padding-left: 2%;
-	padding-right: 2%;
-}
-
-.unLikeBtn{
-	background-color:  #ff7f00;
-	opacity: 0.6;
-	width: 80px;
-	height: 15px;
-	color: #555;
-	font-size: 12px;
-	padding-left: 2%;
-	padding-right: 2%;
 }
