@@ -2,20 +2,25 @@
 angular.module('gamseong.profile-controllers', [])
 .controller('ProfileFeedCtrl', function($scope, $window, $http, ClientProxy) {
   console.log("내게시글이다");
-
   var userId = $window.localStorage.getItem("id");
   console.log(userId);
   $http.get(ClientProxy.url + '/gamseong/feeds/users/' + userId).
        success(function(data) {
          console.log(data);
+         for(var i = 0; i<data.length; i++){
+           if(data[i].feed.user.imageUrl == null){
+           data[i].feed.user.imageUrl = "img/person/per.png";
+           }
+           if(data[i].reply.length > 0){
+               if(data[i].reply[0].user.imageUrl == null)
+               data[i].reply[0].user.imageUrl = "img/person/per.png";
+           }
+         };
          $scope.feedlist = data;
   });
 
 })
 
-.controller('ProfileAFeed', function($scope, $stateParams) {
-  console.log("각 피드글이다.");
-})
 .controller('ProfileTripCtrl', function($scope) {
   console.log("나의여행지다");
   $scope.triplist = [

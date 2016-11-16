@@ -69,12 +69,8 @@
   <ion-header-bar class="bar bar-stable">
     <button class="button button-clear" ng-click="writerClose()">취소</button>
     <h1 class="title">글쓰기</h1>
-    <div ng-show = "writeType==true">
-        <button class="button button-clear" ng-click="doUpdate()">업데이트</button>
-    </div>
-    <div ng-show = "writeType==false">
-        <button class="button button-clear" ng-click="doWriter()">완료</button>
-    </div>
+    <button ng-show = "writeType==true" class="button button-clear" ng-click="doUpdate()">업데이트</button>
+    <button ng-show = "writeType==false" class="button button-clear" ng-click="doWriter()">완료</button>
   </ion-header-bar>
   <ion-content class="has-header writeCont" scroll="false">
     <div class="write_Topcont">
