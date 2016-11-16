@@ -161,7 +161,6 @@ export default StyleSheet.create({
         "color": "#47a3da"
     },
     "nestedComp": {
-        "top": 100,
         "width": "100%",
         "position": "absolute"
     },

@@ -19,16 +19,16 @@ angular.module('gamseong.profile-controllers', [])
 .controller('ProfileTripCtrl', function($scope) {
   console.log("나의여행지다");
   $scope.triplist = [
-    { title: "부산", contents: "제목 1에 들어갈 텍스트 내용" , like : "5", id : 1},
-    { title: "광주", contents: "테스트임2" , like : "5", id : 2},
-    { title: "서울", contents: "테스트임3" , like : "5", id : 3}
+    { title: "부산", venue : "부산시 남구 광안리길" , like : "5", id : 1},
+    { title: "광주", venue : "광주시 동명로" , like : "5", id : 2},
+    { title: "서울", venue : "서울 중구 남산타워길" , like : "5", id : 3}
   ];
 })
 .controller('ProfileIntCtrl', function($scope) {
   console.log("관심여행지다");
   $scope.intlist = [
-    { title: "관심지테스트중부산", contents: "제목 1에 들어갈 텍스트 내용" , like : "5", id : 1},
-    { title: "관심지 02", contents: "테스트임2" , like : "5", id : 2},
-    { title: "관심지03", contents: "테스트임3" , like : "5", id : 3}
+    { title: "전주야행", date: "2016년 12월 10일" , venue : "전주한옥마을", id : 1},
+    { title: "부산광안리", date: "2016년 11월 20일" , venue : "부산시 남구 광안리길", id : 2},
+    { title: "남산타워", date: "2016년 11월 28일" , venue : "서울 중구 남산타워길", id : 3}
   ];
 });
