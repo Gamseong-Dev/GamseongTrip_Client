@@ -32,5 +32,8 @@ export default StyleSheet.create({
     },
     "iconion-android-exit": {
         "fontSize": "20px !important"
+    },
+    "ion-ios-heart": {
+        "color": "#ff7f00"
     }
 });
