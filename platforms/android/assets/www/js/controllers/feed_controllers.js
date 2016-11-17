@@ -101,6 +101,7 @@ angular.module('gamseong.feed-controllers', [])
 	var param = $stateParams.id;
 	$scope.writeType = false;
 	$scope.writeUserName = userName;
+	var proxy = ClientProxy;
 	console.log(userId);
 
 	$scope.feedSetting = function(feed) {
@@ -148,6 +149,10 @@ angular.module('gamseong.feed-controllers', [])
 								if(data[i].feed.user.imageUrl == null){
 								data[i].feed.user.imageUrl = "img/person/per.png";
 							  }
+								if(data[i].feed.imgUrl != null){
+									data[i].feed.imgUrl = proxy.url + data[i].feed.imgUrl;
+									console.log(data[i].feed.imgUrl)
+								}
 								if(data[i].userLikeStatus == 1) {
 										data[i].likeBtn = false;
 								}
@@ -174,6 +179,10 @@ angular.module('gamseong.feed-controllers', [])
 						 for(var i = 0; i<data.length; i++){
 								if(data[i].feed.user.imageUrl == null){
 									data[i].feed.user.imageUrl = "img/person/per.png";
+								}
+								if(data[i].feed.imgUrl != null){
+									data[i].feed.imgUrl = proxy.url + data[i].feed.imgUrl;
+									console.log(data[i].feed.imgUrl)
 								}
 								if(data[i].userLikeStatus == 1) {
 										data[i].likeBtn = false;
@@ -429,6 +438,10 @@ angular.module('gamseong.feed-controllers', [])
 
 				 if(datas[i].feed.user.imageUrl == null){
 						datas[i].feed.user.imageUrl = "img/person/per.png";
+					}
+					if(datas[i].feed.imgUrl != null){
+						datas[i].feed.imgUrl = ClientProxy + datas[i].feed.imgUrl;
+						console.log(datas[i].feed.imgUrl)
 					}
 
 					if(datas[i].userLikeStatus == 1){

@@ -36,7 +36,7 @@ angular.module('gamseong.geo-services', [])
                                   address = data[4].formatted_address;
                                 }
 
-                               $window.localStorage.setItem("address",data[5].formatted_address);
+                               $window.localStorage.setItem("address",address);
 
                                console.log(address);
                                $http.get(ClientProxy.url + "/gamseong/locations/address/" + address)
