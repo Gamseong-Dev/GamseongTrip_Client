@@ -1,79 +1,180 @@
+<style>
+.feedItem{
+	border: none;
+	margin-top: 1.4em;
+	border: 1px solid #ddd;
+	background-color: #fff;
+	color: #444;
+	position: relative;
+	z-index: 2;
+	display: block;
+	font-size: 16px;
+}
+.funcBox{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 2em;
+	padding: 0.5em;
+	border-top: 1px solid #ddd;
+	margin: 0.2em 1em 0 1em;
+}
+.likeBtn{
+	display: flex;
+	color: #555;
+	font-size: 12px;
+}
+.feedIcon{
+	font-size: 1.3em;
+	margin-right: 0.3em;
+}
+.likeButton{
+	display: flex;
+	align-items: center;
+	font-size: 0.8em;
+}
+.feed-content-reply{
+  display: flex;
+  width: 100%;
+	padding: 0 1.2em;
+  flex-direction: row;
+  align-items: center;
+  border-top: 1px solid lightgray;
+}
+.feedInfoTop{
+	display: flex;
+	flex-direction: row;
+	margin: 1em 1em 0 1em;
+}
+.feedDate{
+	display: flex;
+	flex-direction: column;
+}
+.dateFont{
+	font-size:11px;
+	color:#999;
+	margin: 0;
+}
+.addressFont{
+  font-size:12px;
+  color:#333;
+}
+.feedImage{
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+	margin-right: 0.5em;
+}
+.replyImage{
+	max-width: 30px;
+  max-height: 30px;
+  border-radius: 50%;
+	margin-right: 0.5em;
+}
+.nameParentBox{
+  width: 100%;
+  display: flex;
+	justify-content: space-between;
+}
+.feedContent{
+	padding: 1em 1em 0 1em;
+  width: 100%;
+  min-height: 50px;
+  max-height: 400px;
+  text-overflow: ellipsis;
+  overflow: scroll;
+}
+.userPic{
+	position: relative;
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+}
+.userPic img{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: auto;
+	width: 100%;
+	-webkit-transform: translate(-50%,-50%);
+			-ms-transform: translate(-50%,-50%);
+					transform: translate(-50%,-50%);
+}
+.replyCont{
+	display: flex;
+	flex-direction: row;
+}
+.replyContent{
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+.nameFont{
+	font-size: 1em;
+  font-weight: 500;
+  color:#333;
+}
+</style>
 <ion-view view-title="{{local}}">
 	<ion-nav-buttons side="right">
-      <button class="button button-icon ion-button icon-only ion-ios-search-strong" onclick="location.href='#/app/feed/search'">
-      </button>
-    </ion-nav-buttons>
-	<ion-content style="background-color:#eee;">
+      <button class="button button-icon ion-button icon-only ion-ios-search-strong" onclick="location.href='#/app/feed/search'"></button>
+  </ion-nav-buttons>
+	<ion-content style="background-color:#eee;" class="has-header">
 		<!-- Feed List -->
 		<ion-list>
 				<!-- Profile -->
 			<div ng-show = isLogged()>
 				<div class="profile item-avatar item" style="border-color:#fff;" >
-						<image src="{{img}}"></image>
-							<button class="button button-icon icon" ng-click="writerOpen()" style="margin-top:-2%;">후기나 생각을 공유해주세요</button>
+					<image src="{{img}}"></image>
+					<button class="button button-icon icon" ng-click="writerOpen()" style="margin-top:-2%;">후기나 생각을 공유해주세요</button>
 				</div>
 			</div>
 
-			<ion-item  style="border-color:#fff; margin-top:20px; padding-bottom:0;" ng-repeat="feeds in feedList">
+			<div class="feedItem" ng-repeat="feeds in feedList">
 				<!-- TODO Move These Code Into Feed Single !! -->
 					<!-- Profile -->
-					<div class="profile item-avatar" style="padding:0%;">
-							<image src={{feeds.feed.user.imageUrl}} style="margin-top:-2%;"></image>
+					<div class="feedInfoTop">
+							<img class="feedImage" src={{feeds.feed.user.imageUrl}}></img>
 							<div class="nameParentBox">
-								<div class="nameBox" style="margin-left:20%; float:left;">
+								<div>
 									<span class="nameFont">{{feeds.feed.user.name}}</span><br>
-									<span class="dateFont">{{feeds.feed.creationTime}}</span>
+									<i class="icon ion-android-pin"></i>
+								 <span class="addressFont">{{feeds.feed.address}}</span>
 								</div>
-								<div class="addressBox" style="text-align:right">
-									 <i class="icon ion-android-pin"></i>
-									<span class="addressFont">{{feeds.feed.address}}</span><br>
-									<i class="icon ion-ios-heart"></i>
-								 <span class="addressFont">{{feeds.feed.likeCount}}회</span>
+								<div class="feedDate" style="text-align:right">
+									<P class="dateFont">{{feeds.feed.creationTime}}</P>
+								 	<i ng-click="feedSetting(feeds.feed)" class="icon ion-code-working"></i>
 								</div>
-						</div>
+							</div>
 					</div>
 
 					<!-- Content -->
 					<div class="feedContent">
-						<p>
-							<a class="subdued feedFont" href="#/app/feed/single/{{feeds.feed.id}}"><span class="feedFont">{{feeds.feed.contents}}</span></a>
-						</p>
+						<p>{{feeds.feed.contents}}</p>
+						<div class="userPic" ng-show="feeds.feed.imgUrl!=null">
+						    <img src="{{feeds.feed.imgUrl}}">
+						</div>
 					</div>
 					<!-- Inner Buttons -->
-					<hr class="simpleHr" >
-					<div style="margin-top:-2%;">
-						<!-- TODO Add/Toggle Icon -->
-
-						<button class="button button-primary" ng-model="feeds.likeBtn" ng-click="like('{{feeds.feed.id}}','{{feeds.userLikeStatus}}') "
-						ng-class="feeds.likeBtn?'likeBtn':'unLikeBtn'">
-					     <i class="icon ion-heart"></i> &nbsp;좋아요
-					  </button>
-
-						<button ng-click="replyOpen('{{feeds.feed.id}}')" class="button likeBtn " style="margin-left:10%;">
-							 <i class="icon ion-edit"></i> &nbsp;댓글</button>
-						<button ng-click="messageOpen('{{feeds.feed.user.id}}' ,'{{feeds.feed.user.name}}')"
-						class="button likeBtn " style="margin-left:10%;">
-							<i class="icon ion-social-twitch"></i> &nbsp;쪽지보내기</button>
+					<div class="funcBox">
+						<!-- TODO: Add/Toggle Icon -->
+						<div ng-model="feeds.likeBtn" class="likeButton" ng-click="like('{{feeds.feed.id}}','{{feeds.userLikeStatus}}') "><i class="feedIcon" ng-class="feeds.likeBtn?'ion-ios-heart-outline':'ion-ios-heart'" aria-hidden="true"></i>{{feeds.feed.likeCount}}개</div>
+						<div ng-click="replyOpen('{{feeds.feed.id}}')" class="likeBtn"><i class="icon feedIcon ion-edit"></i>댓글</div>
+						<div ng-click="messageOpen('{{feeds.feed.user.id}}' ,'{{feeds.feed.user.name}}')"
+						class="likeBtn"><i class="icon feedIcon ion-social-twitch"></i>쪽지</div>
 					</div>
 
 					<!-- Reply -->
-					<div style="margin-left:-5%; margin-right:-5%; margin-top:3%;">
-							<div class="feed-content-reply" ng-repeat="reply in feeds.reply" style="height:65px;">
-								<a href="#/app/feed/message/{{reply.user.id}}"></a>
 
-									<!-- <img src="venkman.jpg"> 사용자 사진 넣으면 됨-->
-									<div class="profile item-avatar" style="margin-left:2%;">
-										<img src={{reply.user.imageUrl}} style="margin-top:-1%;" onclick="">
-										<div style="margin-top:2%; margin-left:-30%; text-overflow: ellipsis;
-										  overflow: scroll;">
-											<p><span class="nameFont">{{reply.user.name}}</span></p>
-											<p><span style="white-space:pre-line;">{{reply.contents}}</span></p>
-										</div>
-									</div>
-							</div>
-					 </div>
+					<div class="feed-content-reply" ng-repeat="reply in feeds.reply" style="height:65px;">
+						<a href="#/app/feed/message/{{reply.user.id}}"><img src={{reply.user.imageUrl}} class="replyImage" style="margin-top:-1%;" onclick=""></a>
+						<div class="replyContent" style="text-overflow: ellipsis;">
+							<span class="nameFont">{{reply.user.name}}</span>
+							<span style="white-space:pre-line; font-size: 0.8em;">{{reply.contents}}</span>
+						</div>
+					</div>
 				</div>
-			</ion-item>
+			</div>
 		</ion-list>
 	</ion-content>
 	<ion-infinite-scroll ng-if = "!noMoreItemsAvailable" on-infinite = "getPage()" distance = "2"></ion-infinite-scroll>

@@ -156,11 +156,9 @@ facebookService.getMyInfo()
             $window.localStorage.setItem("id",data.user.id);
             $window.localStorage.setItem("name",data.user.name);
             if(data.user.imageUrl != null){
-
               $window.localStorage.setItem("img",data.user.imageUrl);
             }
             else{
-
               $window.localStorage.setItem("img","../img/person/per.png");
             }
             $http.get(ClientProxy.url + '/gamseong/locations/code').

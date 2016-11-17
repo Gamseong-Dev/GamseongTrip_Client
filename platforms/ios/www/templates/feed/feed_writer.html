@@ -69,14 +69,15 @@
   <ion-header-bar class="bar bar-stable">
     <button class="button button-clear" ng-click="writerClose()">취소</button>
     <h1 class="title">글쓰기</h1>
-    <button class="button button-clear" ng-click="doWriter()">완료</button>
+    <button ng-show = "writeType==true" class="button button-clear" ng-click="doUpdate()">업데이트</button>
+    <button ng-show = "writeType==false" class="button button-clear" ng-click="doWriter()">완료</button>
   </ion-header-bar>
   <ion-content class="has-header writeCont" scroll="false">
     <div class="write_Topcont">
       <div class="writeImage" style="background: url('{{img}}') no-repeat center; background-size: cover;"></div>
       <div>
-        <span>이유경</span>
-        <p style="margin:0;"><i class="icon ion-android-pin"></i>서울</p>
+        <span>{{writeUserName}}</span>
+        <p style="margin:0;"><i class="icon ion-android-pin"></i>{{local}}</p>
       </div>
     </div>
     <!-- Content -->
