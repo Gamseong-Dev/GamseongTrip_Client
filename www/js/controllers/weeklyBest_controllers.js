@@ -16,6 +16,14 @@ angular.module('gamseong.weeklyBest', [])
   $http.get(ClientProxy.url + '/gamseong/feeds/best').
        success(function(data) {
          console.log(data);
+         for(var i = 0; i<data.length; i++){
+           if(data[i].feed.imageUrl == null){
+           data[i].feed.imageUrl = "img/logo.png";
+           }
+           if(data[i].feed.user.imageUrl == null){
+           data[i].feed.user.imageUrl = "img/person/per.png";
+           }
+         };
          $scope.bestFeed = data;
    }).
        error(function(data, status, headers, config) {

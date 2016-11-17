@@ -50,6 +50,21 @@
   font-weight: 600;
   font-size: 1em;
 }
+.weeklyUser{
+	max-width: 30px !important;
+  max-height: 30px !important;
+  border-radius: 50%;
+	margin-right: 0.5em;
+}
+.weeklyUserInfo{
+  display:flex;
+  flex-direction:column;
+}
+.weeklyUserInfo p{
+  margin: -3px;
+  font-size: 0.5em;
+  font-weight: 200;
+}
 </style>
 <ion-view view-title="Weekly 감성 Best">
   <ion-content class="has-header slideCont" scroll="false">
@@ -58,13 +73,18 @@
       <ion-slides slider="data.slider">
         <ion-slide-page ng-repeat="data in bestFeed">
           <div class="inslideBox">
-            <div class="WeeklyPic">
-              <img src="{{data.feed.imageUrl}}"></img>
+            <div class="WeeklyPic" style="background-color:#ff7f00;">
+              <a class="subdued" href="#/app/feed/list/{{feed.id}}"><img style="height: 50%;" src="{{data.feed.imageUrl}}"></img></a>
             </div>
             <div class="weekContent">
-              <span>{{data.feed.user.name}}</span>
-              <span class="date-right">{{data.feed.creationTime}}</span>
-              <a class="subdued" href="#/app/feed/list/{{feed.id}}">{{data.feed.contents}}</a>
+              <div class="row">
+                <img class="weeklyUser" src="{{data.feed.user.imageUrl}}"></img>
+                <div class="weeklyUserInfo">
+                  <p style="font-weight:400;">{{data.feed.user.name}}</p>
+                  <p>{{data.feed.creationTime}}</p>
+                </div>
+              </div>
+              <p style="padding:0.3em;">{{data.feed.contents}}</p>
             </div>
           </div>
         </ion-slide-page>
@@ -77,12 +97,12 @@
           <ion-slide-page ng-repeat="data in bestEvent">
             <div class="inslideBox">
               <div class="WeeklyPic">
-                <img src="{{data.imageUrl}}"></img>
+                <a class="subdued" href="#/app/feed/list/{{feed.id}}"><img src="{{data.imageUrl}}"></img></a>
               </div>
               <div class="weekContent">
                 <h1>{{data.contents}}</h1>
                 <span>{{data.creationTime}}</span>
-                <a class="subdued" href="#/app/feed/list/{{feed.id}}">{{data.address}}</a>
+                <span>{{data.address}}</span>
               </div>
             </div>
           </ion-slide-page>
@@ -95,12 +115,12 @@
             <ion-slide-page ng-repeat="data in bestEvent">
               <div class="inslideBox">
                 <div class="WeeklyPic">
-                  <img src="{{data.imageUrl}}"></img>
+                  <a class="subdued" href="#/app/feed/list/{{feed.id}}"><img src="{{data.imageUrl}}"></img></a>
                 </div>
                 <div class="weekContent">
                   <h1>{{data.contents}}</h1>
                   <span>{{data.creationTime}}</span>
-                  <a class="subdued" href="#/app/feed/list/{{feed.id}}">{{data.address}}</a>
+                  <span>{{data.address}}</span>
                 </div>
               </div>
             </ion-slide-page>
