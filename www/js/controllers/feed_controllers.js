@@ -105,7 +105,6 @@ angular.module('gamseong.feed-controllers', [])
 	console.log(userId);
 
 	$scope.feedSetting = function(feed) {
-		alert(feed.contents);
 		var options = {
 			title: '선택해주세요.',
 			buttonLabels: ['수정', '삭제'],

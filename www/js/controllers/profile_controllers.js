@@ -2,27 +2,27 @@
 angular.module('gamseong.profile-controllers', [])
 .controller('ProfileFeedCtrl', function($scope, $window, $http, ClientProxy) {
   console.log("내게시글이다");
-
   var userId = $window.localStorage.getItem("id");
   console.log(userId);
   $http.get(ClientProxy.url + '/gamseong/feeds/users/' + userId).
        success(function(data) {
          console.log(data);
+         for(var i = 0; i<data.length; i++){
+           if(data[i].feed.user.imageUrl == null){
+           data[i].feed.user.imageUrl = "img/person/per.png";
+           }
+           if(data[i].reply.length > 0){
+               if(data[i].reply[0].user.imageUrl == null)
+               data[i].reply[0].user.imageUrl = "img/person/per.png";
+           }
+         };
          $scope.feedlist = data;
   });
+  $http.get(ClientProxy.url + '/gamseong/locations/area/code').
+    success(function(data){
+      $scope.triplist = data.slice(2);
+    });
 
-})
-
-.controller('ProfileAFeed', function($scope, $stateParams) {
-  console.log("각 피드글이다.");
-})
-.controller('ProfileTripCtrl', function($scope) {
-  console.log("나의여행지다");
-  $scope.triplist = [
-    { title: "부산", venue : "부산시 남구 광안리길" , like : "5", id : 1},
-    { title: "광주", venue : "광주시 동명로" , like : "5", id : 2},
-    { title: "서울", venue : "서울 중구 남산타워길" , like : "5", id : 3}
-  ];
 })
 .controller('ProfileIntCtrl', function($scope) {
   console.log("관심여행지다");
