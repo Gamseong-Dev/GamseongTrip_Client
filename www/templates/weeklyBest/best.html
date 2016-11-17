@@ -93,15 +93,13 @@
     <div class="slideItem">
       <p class="weekTitle">이번주의 감성지역</p>
         <ion-slides slider="data.slider">
-          <ion-slide-page ng-repeat="data in bestEvent">
+          <ion-slide-page ng-repeat="data in bestLocation">
             <div class="inslideBox">
               <div class="WeeklyPic">
                 <a class="subdued" href="#/app/feed/list/{{feed.id}}"><img src="{{data.imageUrl}}"></img></a>
               </div>
               <div class="weekContent">
-                <h1>{{data.contents}}</h1>
-                <span>{{data.creationTime}}</span>
-                <span>{{data.address}}</span>
+                <h1>{{data.name}} {{data.motherName}}</h1>
               </div>
             </div>
           </ion-slide-page>
