@@ -18,16 +18,11 @@ angular.module('gamseong.profile-controllers', [])
          };
          $scope.feedlist = data;
   });
+  $http.get(ClientProxy.url + '/gamseong/locations/area/code').
+    success(function(data){
+      $scope.triplist = data.slice(2);
+    });
 
-})
-
-.controller('ProfileTripCtrl', function($scope) {
-  console.log("나의여행지다");
-  $scope.triplist = [
-    { title: "부산", venue : "부산시 남구 광안리길" , like : "5", id : 1},
-    { title: "광주", venue : "광주시 동명로" , like : "5", id : 2},
-    { title: "서울", venue : "서울 중구 남산타워길" , like : "5", id : 3}
-  ];
 })
 .controller('ProfileIntCtrl', function($scope) {
   console.log("관심여행지다");
