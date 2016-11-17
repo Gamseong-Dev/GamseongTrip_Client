@@ -24,6 +24,52 @@
 	margin: 1.5em 0 1em 0;
 	color: #00000F;
 }
+.gender{
+  display: flex;
+  overflow: hidden;
+  box-shadow: 1px 1px #CECECE;
+}
+.title {
+  font-size: 20px;
+  font-weight: 500;
+}
+::selection {
+  background: #fff;
+  color: #ff7f00;
+}
+label {
+  -webkit-flex-basis: 100px;
+      -ms-flex-preferred-size: 100px;
+          flex-basis: 100px;
+  width: 150px;
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 70px;
+  color: #fff;
+}
+input[type="radio"] {
+  display: none;
+}
+input + label {
+  background-color: #fff;
+}
+input:checked + label .title {
+  color: #ff7f00;
+}
+input + label .title {
+  color: #EDEDED;
+}
+select{
+  background: white;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 0;
+}
 </style>
 
 <ion-view> <!-- Location Search Modal In Feed List -->
@@ -37,16 +83,18 @@
         프로필사진
         <img src="">
       </div>
-      <form>
+      <form style="width:100%;">
         <p class="detailTitle">성별</p>
-        <div class="row">
-          <ion-radio checked="true" value="남">남</ion-radio>
-          <ion-radio value="여">여</ion-radio>
+        <div class="gender">
+          <input type="radio" id="male" name="sex" checked="checked">
+          <label for="male"><div class="title">남</div></label>
+          <input type="radio" id="female" name="sex">
+          <label for="female"><div class="title">여</div></label>
         </div>
 
         <p class="detailTitle">생년월일</p>
-        <input type="password" placeholder="비밀번호를 입력해주세요"/>
-        <input type="password" placeholder="비밀번호를 다시 입력해주세요"/>
+        <select ng-model="selectedYear" ng-options="x for x in year">년도</select>
+        <select ng-model="selectedMonth" ng-options="x for x in month">월</select>
       </form>
 
     </ion-content>
