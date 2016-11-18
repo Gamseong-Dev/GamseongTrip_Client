@@ -35,5 +35,8 @@ export default StyleSheet.create({
     },
     "ion-ios-heart": {
         "color": "#ff7f00"
+    },
+    "ion-camera": {
+        "fontSize": 30
     }
 });

@@ -38,4 +38,13 @@ angular.module('gamseong.weeklyBest', [])
        error(function(data, status, headers, config) {
          console.log(ClientProxy.url);
   });
+
+  $http.get(ClientProxy.url + '/gamseong/locations/best').
+       success(function(data) {
+         console.log(data);
+         $scope.bestLocation = data;
+   }).
+       error(function(data, status, headers, config) {
+         console.log(ClientProxy.url);
+  });
 });
