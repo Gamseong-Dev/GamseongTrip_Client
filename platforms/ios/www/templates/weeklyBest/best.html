@@ -1,127 +1,73 @@
-<style>
-.slideCont{
-  display: flex;
-  flex:1;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.slideItem{
-  border-top: 4px solid #ddd;
-  padding-top: 0.7em;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.weekTitle{
-  margin: 0;
-  font-weight: 300;
-  padding: 0 0 0.5em 0.5em;
-}
-.inslideBox{
-  border: 1px solid #ddd;
-  height: 85%;
-  display: flex;
-  margin: 0 1.5em;
-}
-.WeeklyPic{
-  position: relative;
-  height: 100%;
-  width: 50%;
-  overflow: hidden;
-}
-.WeeklyPic img{
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	height: 100%;
-	width: auto;
-	-webkit-transform: translate(-50%,-50%);
-			-ms-transform: translate(-50%,-50%);
-					transform: translate(-50%,-50%);
-}
-.weekContent{
-  display: flex;
-  flex-direction: column;
-}
-.weekContent h1{
-  margin: 0.3em 0;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1em;
-}
-.weeklyUser{
-	max-width: 30px !important;
-  max-height: 30px !important;
-  border-radius: 50%;
-	margin-right: 0.5em;
-}
-.weeklyUserInfo{
-  display:flex;
-  flex-direction:column;
-}
-.weeklyUserInfo p{
-  margin: -3px;
-  font-size: 0.5em;
-  font-weight: 200;
-}
-</style>
 <ion-view view-title="Weekly 감성 Best">
   <ion-content class="has-header slideCont" scroll="false">
-    <div class="slideItem">
-      <p class="weekTitle">이번주의 감성게시글</p>
-      <ion-slides slider="data.slider">
-        <ion-slide-page ng-repeat="data in bestFeed">
-          <div class="inslideBox">
-            <div class="WeeklyPic" style="background-color:#ff7f00;">
-              <a class="subdued" href="#/app/feed/list/{{feed.id}}"><img style="height: 50%;" src="{{data.feed.imageUrl}}"></img></a>
-            </div>
-            <div class="weekContent">
-              <div class="row">
-                <img class="weeklyUser" src="{{data.feed.user.imageUrl}}"></img>
-                <div class="weeklyUserInfo">
-                  <p style="font-weight:400;">{{data.feed.user.name}}</p>
-                  <p>{{data.feed.creationTime}}</p>
-                </div>
-              </div>
-              <p style="padding:0.3em;">{{data.feed.contents}}</p>
-            </div>
+
+    <div class="slideItem">이번주의 감성게시글
+    <ion-slides class="slideBox" slider="data.slider">
+      <ion-slide-page ng-repeat="data in bestFeed">
+        <div class="inslideBox">
+          <div class="WeeklyPic">
+            <image src="">이미지</image>
           </div>
-        </ion-slide-page>
-      </ion-slides>
+          <div>
+            <span>{{data.feed.location.motherName}}</span>
+            <span>{{data.feed.location.name}}</span>
+            <p>{{data.feed.user.name}}</p>
+            <span class="date-right">{{data.feed.creationTime}}</span>
+            <a class="subdued" href="#/app/feed/list/{{feed.id}}">{{data.feed.contents}}</a>
+          </div>
+        </div>
+      </ion-slide-page>
+    </ion-slides>
     </div>
-<!-- 감성 지역: 금 주에 사람들이 가장 많이 방문한 지역-->
-    <div class="slideItem">
-      <p class="weekTitle">이번주의 감성지역</p>
-        <ion-slides slider="data.slider">
-          <ion-slide-page ng-repeat="data in bestLocation">
+
+    <div class="slideItem">이번주의 감성게시글
+        <ion-slides class="slideBox" slider="data.slider">
+          <ion-slide-page ng-repeat="data in bestEvent">
             <div class="inslideBox">
               <div class="WeeklyPic">
-                <a class="subdued" href="#/app/feed/list/{{feed.id}}"><img src="{{data.imageUrl}}"></img></a>
+                <image src="">이미지</image>
               </div>
-              <div class="weekContent">
-                <h1>{{data.name}} {{data.motherName}}</h1>
+              <div>
+                <p>
+                  <span>{{data.address}}</span><br>
+                  <span class="date-right">{{data.creationTime}}</span>
+                </p>
+                <p>{{data.feed.user.name}}</p>
+                <a class="subdued" href="#/app/feed/list/{{feed.id}}">
+                  {{data.contents}}
+                </a>
               </div>
             </div>
+            <!-- Content -->
+
           </ion-slide-page>
         </ion-slides>
       </div>
-<!-- 감성 이벤트: 금 주의 가장 핫한 이벤트(좋아요 순으로) -->
-      <div class="slideItem">
-        <p class="weekTitle">이번주의 감성이벤트</p>
-          <ion-slides slider="data.slider">
-            <ion-slide-page ng-repeat="data in bestEvent">
-              <div class="inslideBox">
-                <div class="WeeklyPic">
-                  <a class="subdued" href="#/app/feed/list/{{feed.id}}"><img src="{{data.imageUrl}}"></img></a>
-                </div>
-                <div class="weekContent">
-                  <h1>{{data.contents}}</h1>
-                  <span>{{data.creationTime}}</span>
-                  <span>{{data.address}}</span>
-                </div>
-              </div>
-            </ion-slide-page>
-          </ion-slides>
+
+
+
+    <div class="slideItem">이번주의 감성게시글
+    <ion-slides class="slideBox" slider="data.slider">
+      <ion-slide-page ng-repeat="data in bestEvent">
+        <div class="inslideBox">
+          <div class="WeeklyPic">
+            <image src="">이미지</image>
+          </div>
+          <div>
+          <p>
+            <span>{{data.address}}</span><br>
+            <span class="date-right">{{data.creationTime}}</span>
+          </p>
+          <p>{{data.feed.user.name}}</p>
+          <a class="subdued" href="#/app/feed/list/{{feed.id}}">
+            {{data.contents}}
+          </a>
         </div>
-    </ion-content>
+        </div>
+        <!-- Content -->
+
+      </ion-slide-page>
+    </ion-slides>
+  </div>
+
 </ion-view>

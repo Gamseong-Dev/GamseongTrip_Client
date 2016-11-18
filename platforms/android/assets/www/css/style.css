@@ -1,6 +1,16 @@
 /* Empty. Add your own CSS if you like */
 
 /*menu panel에서 사용*/
+.profile-content{
+  text-align: center;
+	height: 45%;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid lightgray;
+  background-color: #ff7f00;
+  opacity: 0.95;
+  margin-top: -5%;
+}
 .profile-content-reply{
   display: flex;
   height: 25%;
@@ -15,6 +25,18 @@
 	border-radius: 50%;
 	background: #47a3da;
   display: inline-block;
+}
+.profileUserImage{
+  margin: 20% 0 0 0%;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background: #47a3da;
+  display: inline-block;
+}
+.userInfo{
+  margin: 0.5em 1em 0 1em;
+  padding: 1em;
 }
 .profile-name{
   font-size: 1em;

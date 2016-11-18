@@ -1,5 +1,17 @@
 
-
+.dateFont{
+	font-size:13px;
+	color:#999;
+}
+.addressFont{
+  font-size:12px;
+  color:#333;
+}
+.feedFont{
+  color: #111;
+  white-space:pre-line;
+  height: 90px;
+}
 .likeCountBox{
   width: 50%;
   height: 30%;

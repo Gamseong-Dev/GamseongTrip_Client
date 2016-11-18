@@ -24,6 +24,16 @@
 	color: #555;
 	font-size: 12px;
 }
+.unLikeBtn{
+	background-color:  #ff7f00;
+	opacity: 0.6;
+	width: 80px;
+	height: 15px;
+	color: #555;
+	font-size: 12px;
+	padding-left: 2%;
+	padding-right: 2%;
+}
 .feedIcon{
 	font-size: 1.3em;
 	margin-right: 0.3em;
@@ -46,19 +56,6 @@
 	flex-direction: row;
 	margin: 1em 1em 0 1em;
 }
-.feedDate{
-	display: flex;
-	flex-direction: column;
-}
-.dateFont{
-	font-size:11px;
-	color:#999;
-	margin: 0;
-}
-.addressFont{
-  font-size:12px;
-  color:#333;
-}
 .feedImage{
   max-width: 40px;
   max-height: 40px;
@@ -80,25 +77,9 @@
 	padding: 1em 1em 0 1em;
   width: 100%;
   min-height: 50px;
-  max-height: 400px;
+  max-height: 300px;
   text-overflow: ellipsis;
   overflow: scroll;
-}
-.userPic{
-	position: relative;
-	width: 100%;
-	height: 300px;
-	overflow: hidden;
-}
-.userPic img{
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	height: auto;
-	width: 100%;
-	-webkit-transform: translate(-50%,-50%);
-			-ms-transform: translate(-50%,-50%);
-					transform: translate(-50%,-50%);
 }
 .replyCont{
 	display: flex;
@@ -125,8 +106,8 @@
 				<!-- Profile -->
 			<div ng-show = isLogged()>
 				<div class="profile item-avatar item" style="border-color:#fff;" >
-					<image src="{{img}}"></image>
-					<button class="button button-icon icon" ng-click="writerOpen()" style="margin-top:-2%;">후기나 생각을 공유해주세요</button>
+						<image src="{{img}}"></image>
+							<button class="button button-icon icon" ng-click="writerOpen()" style="margin-top:-2%;">후기나 생각을 공유해주세요</button>
 				</div>
 			</div>
 
@@ -138,28 +119,32 @@
 							<div class="nameParentBox">
 								<div>
 									<span class="nameFont">{{feeds.feed.user.name}}</span><br>
-									<i class="icon ion-android-pin"></i>
-								 <span class="addressFont">{{feeds.feed.address}}</span>
+									<span class="dateFont">{{feeds.feed.creationTime}}</span>
 								</div>
-								<div class="feedDate" style="text-align:right">
-									<P class="dateFont">{{feeds.feed.creationTime}}</P>
-								 	<i ng-click="feedSetting(feeds.feed)" class="icon ion-code-working"></i>
+								<div style="text-align:right">
+									 <i class="icon ion-android-pin"></i>
+									<span class="addressFont">{{feeds.feed.address}}</span><br>
+									<i class="icon ion-ios-heart"></i>
+								 <span class="addressFont">{{feeds.feed.likeCount}}회</span><br>
+								 <button class="button icon ion-code-working" style="background-color:#fff; width:5px; height:5px; margin-right:-10px;"></button>
 								</div>
 							</div>
 					</div>
 
 					<!-- Content -->
 					<div class="feedContent">
-						<p>{{feeds.feed.contents}}</p>
-						<div class="userPic" ng-show="feeds.feed.imgUrl!=null">
-						    <img src="{{feeds.feed.imgUrl}}">
-						</div>
+						<p>
+							<a class="subdued" href="#/app/feed/single/{{feeds.feed.id}}">
+								<p ng-show="feeds.feed.imgUrl!=null"><img src="{{feeds.feed.imgUrl}}"></img></p>
+								<span class="feedFont">{{feeds.feed.contents}}</span></a>
+						</p>
 					</div>
 					<!-- Inner Buttons -->
 					<div class="funcBox">
 						<!-- TODO: Add/Toggle Icon -->
-						<div ng-model="feeds.likeBtn" class="likeButton" ng-click="like('{{feeds.feed.id}}','{{feeds.userLikeStatus}}') "><i class="feedIcon" ng-class="feeds.likeBtn?'ion-ios-heart-outline':'ion-ios-heart'" aria-hidden="true"></i>{{feeds.feed.likeCount}}개</div>
+						<div ng-model="feeds.likeBtn" class="likeButton" ng-click="like('{{feeds.feed.id}}','{{feeds.userLikeStatus}}') "><i class="feedIcon" ng-class="feeds.likeBtn?'ion-ios-heart-outline':'ion-ios-heart'" aria-hidden="true"></i>좋아요</div>
 						<div ng-click="replyOpen('{{feeds.feed.id}}')" class="likeBtn"><i class="icon feedIcon ion-edit"></i>댓글</div>
+
 						<div ng-click="messageOpen('{{feeds.feed.user.id}}' ,'{{feeds.feed.user.name}}')"
 						class="likeBtn"><i class="icon feedIcon ion-social-twitch"></i>쪽지</div>
 					</div>
@@ -173,21 +158,6 @@
 							<span style="white-space:pre-line; font-size: 0.8em;">{{reply.contents}}</span>
 						</div>
 					</div>
-
-					<!--Event Card-->
-					<div class="tripCard"  style="border-top: 10px solid #EEE;" ng-show="(feeds.userLikeStatus) / 5 == '1'">
-						<div class="thumbnail">
-							<div class="dayTab">
-								<div class="day">D-3</div>
-							</div>
-							<div class="infoBox">
-								<p class="locationTitle">{{event.contents}}</p>
-								<p>{{event.startTime}}</p>
-								<p>{{event.address}}</p>
-							</div>
-						</div>
-					</div>
-
 				</div>
 			</div>
 		</ion-list>

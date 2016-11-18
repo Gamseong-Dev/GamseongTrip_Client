@@ -9,7 +9,7 @@ angular.module('gamseong.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
  GeoService.localCode();
-
+ $ionicLoading.show();
  //GeoService.locationCode()
  $scope.local = $window.localStorage.getItem("locName")
   // Form data for the login modal

@@ -99,14 +99,13 @@ angular.module('gamseong.feed-controllers', [])
 	var myLocalId = $window.localStorage.getItem("locId");
 	var address =  $window.localStorage.getItem("address");
 	var param = $stateParams.id;
-	var myLocalMotherId = $window.localStorage.getItem("locMotherId");
-
 	$scope.writeType = false;
 	$scope.writeUserName = userName;
 	var proxy = ClientProxy;
 	console.log(userId);
 
 	$scope.feedSetting = function(feed) {
+		alert(feed.contents);
 		var options = {
 			title: '선택해주세요.',
 			buttonLabels: ['수정', '삭제'],
@@ -198,20 +197,14 @@ angular.module('gamseong.feed-controllers', [])
 								}
 						 };
 						 $scope.feedList = data;
-
 			 }).
 					 error(function(data, status, headers, config) {
-			
+						 console.log(ClientProxy.url);
 			});
 		}
-		$http.get(ClientProxy.url + '/gamseong/events/locations/'+ myLocalMotherId).
-			success(function(data){
-
-				$scope.event = data[0];
-		});
 	}
-
 	$ionicLoading.hide();
+
 	$scope.like = function(id, count){
 
 		var likeStaus = $scope.feedList[count].likeBtn;
@@ -466,11 +459,6 @@ angular.module('gamseong.feed-controllers', [])
 				 $scope.feedList.push(datas[i]);
 			 };
 		 });
-		 $http.get(ClientProxy.url + '/gamseong/events/locations/'+ myLocalMotherId).
- 			success(function(data){
-
- 				$scope.event = data[0];
- 		});
 		$scope.$broadcast('scroll.infiniteScrollComplete');
 	}
 
@@ -638,6 +626,8 @@ angular.module('gamseong.feed-controllers', [])
 			hideSheet();
 		}, 2000);
 	};
+
+
 })
 
 .controller('LocalSearchCtrl', function($scope, $window, $http, SearchService) {
