@@ -1,61 +1,9 @@
-<style>
-/*message */
-.messageImage{
-	width: 45px;
-	height: 45px;
-	border-radius: 50%;
-	background: #47a3da;
-  display: inline-block;
-  margin-right: 10px;
-}
-/*message-Detail*/
-.messageCont{
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  /*align-items:center;*/
-}
-.messageTop{
-  display: flex;
-  border-bottom: 0.1em solid gray;
-  width: 100%;
-  padding: 0.4em 0 0.4em 0;
-  margin-bottom: 1em;
-  /*padding: 0 1em 0 1em; */
-}
-.messageInfo{
-  display: flex;
-  margin-bottom: -0.4em;
-}
-.messageInfoText{
-  font-weight: 700;
-  font-size: 1em;
-  color: black;
-  margin-left: 0.3em;
-  margin-right: 1em;
-}
-.messageBox{
-	border: 1px solid #ddd;
-	overflow: auto;
-	resize: none;
-	width:100%;
-	padding: 1em;
-}
-.messageSend{
-  margin-top: 1.5em;
-	background-color: #ff7f00;
-	border: none;
-	/*text-align: center;*/
-	color: white;
-	width: 100%;
-	height: 3em;
-}
-</style>
-  <ion-view view-title="메세지">
+
+  <ion-view view-title="메세지싱글">
     <ion-content class="padding" scroll="false">
       <div class="messageCont">
         <div class="messageTop">
-          <image class="messageImage" src='{{message.sendUser.imageUrl}}'></image>
+          <div class="messageImage"></div>
           <div>
             <a class="messageInfo"><p class="messageInfoText">보내는 사람</p><p>{{message.sendUser.name}}</p></a>
             <a class="messageInfo"><p class="messageInfoText">받는사람</p><p>{{message.reciveUser.name}}</p></a>

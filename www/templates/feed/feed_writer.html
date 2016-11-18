@@ -76,7 +76,7 @@
     <div class="write_Topcont">
       <div class="writeImage" style="background: url('{{img}}') no-repeat center; background-size: cover;"></div>
       <div>
-        <span>{{writeUserName}}</span>
+        <span>{{name}}</span>
         <p style="margin:0;"><i class="icon ion-android-pin"></i>{{local}}</p>
       </div>
     </div>
@@ -91,11 +91,12 @@
         <img src = "{{pathForImage(image)}}" />
       </div>
       <button class="button stickButton ion-camera" ng-click="takeImg()">이미지</button>
+      <!--
       <div class="NonStickTemp row">
         <button class="button stickButton">맛집</button>
         <button class="button stickButton">핫플레이스</button>
         <button class="button stickButton">서울</button>
-      </div>
+      </div>-->
     </div>
   </ion-content>
 </ion-modal-view>

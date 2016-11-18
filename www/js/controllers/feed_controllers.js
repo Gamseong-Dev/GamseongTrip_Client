@@ -118,6 +118,11 @@ angular.module('gamseong.feed-controllers', [])
 			var type = null;
 			if (btnIndex === 1) {
 				$scope.writeType = true;
+				$scoep.writer = {
+					contents : feed.contents,
+					feedId : feed.id,
+					imgUrl : feed.imgUrl,
+				}
 				$scope.writerOpen();
 			} else if (btnIndex === 2) {
 				doDelete(feed);
@@ -201,7 +206,7 @@ angular.module('gamseong.feed-controllers', [])
 
 			 }).
 					 error(function(data, status, headers, config) {
-			
+
 			});
 		}
 		$http.get(ClientProxy.url + '/gamseong/events/locations/'+ myLocalMotherId).

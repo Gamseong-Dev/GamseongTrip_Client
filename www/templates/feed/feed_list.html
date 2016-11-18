@@ -142,8 +142,10 @@
 								 <span class="addressFont">{{feeds.feed.address}}</span>
 								</div>
 								<div class="feedDate" style="text-align:right">
-									<P class="dateFont">{{feeds.feed.creationTime}}</P>
-								 	<i ng-click="feedSetting(feeds.feed)" class="icon ion-code-working"></i>
+									<p class="dateFont">{{feeds.feed.creationTime}}</P>
+									<div ng-show="feeds.feed.user.id==id">
+								 		<i ng-click="feedSetting(feeds.feed)" class="icon ion-code-working"></i>
+									</div>
 								</div>
 							</div>
 					</div>
@@ -152,7 +154,7 @@
 					<div class="feedContent">
 						<p>{{feeds.feed.contents}}</p>
 						<div class="userPic" ng-show="feeds.feed.imgUrl!=null">
-						    <img src="{{feeds.feed.imgUrl}}">
+						    <img src="{{feeds.feed.imgUrl}}" style="width:120px; height:200px;">
 						</div>
 					</div>
 					<!-- Inner Buttons -->

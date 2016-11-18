@@ -27,16 +27,16 @@ angular.module('gamseong.geo-services', [])
 
                         geocoder.geocode(request, function(data, status) {
                            if (status == google.maps.GeocoderStatus.OK) {
-                             if (data[4] != null) {
-                               console.log(data[4].formatted_address);
-                               if (~data[4].formatted_address.indexOf('대한민국')) {
-                                  address = data[4].formatted_address.substring(5);
+                             if (data[0] != null) {
+                               console.log(data[0].formatted_address);
+                               if (~data[0].formatted_address.indexOf('대한민국')) {
+                                  address = data[0].formatted_address.substring(5);
                                 }
                                 else {
-                                  address = data[4].formatted_address;
+                                  address = data[0].formatted_address;
                                 }
 
-                               $window.localStorage.setItem("address",address);
+                               $window.localStorage.setItem("address",data[5].formatted_address);
 
                                console.log(address);
                                $http.get(ClientProxy.url + "/gamseong/locations/address/" + address)

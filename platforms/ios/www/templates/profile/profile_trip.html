@@ -1,51 +1,15 @@
-<style>
-.tripCard{
-  background: url('img/location.png') no-repeat center;
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  transition: all 0.3s linear 0s;
-}
-.thumbnail{
-  background-color: rgba(0,0,0,0.6);
-  height: 140px;
-  overflow: hidden;
-  margin-bottom: 1px;
-}
-.day{
-  font-weight: 400;
-  color: #ffffff;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1;
-  font-size: 1em;
-}
-.infoBox{
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 140px;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-}
-.locationTitle{
-  font-weight: 500;
-  font-size: 2em;
-  margin: 0;
-}
-
-</style>
-
-
-<div class="tripCard" ng-repeat="trip in triplist">
-  <div class="thumbnail">
-    <div class="infoBox">
-      <div class="day"><i class="icon ion-android-pin" style="margin-right:0.3em;"></i>{{trip.name}}</div>
+<!--<script id="templates/profile/profile_trip.html" type="text/ng-template">-->
+  <ion-item ng-repeat="trip in triplist">
+    <div class="card">
+      <div class="item item-divider">
+            {{trip.title}}
+      </div>
+      <div class="item item-text-wrap">
+            {{trip.contents}}
+      </div>
+      <div class="item item-divider">
+            {{trip.like}}
+      </div>
     </div>
-  </div>
-</div>
+  </ion-item>
+<!--</script>-->
