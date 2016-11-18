@@ -1,7 +1,7 @@
 <style>
 .feedItem{
 	border: none;
-	margin-top: 1.4em;
+	margin-top: 1em;
 	border: 1px solid #ddd;
 	background-color: #fff;
 	color: #444;
@@ -46,14 +46,26 @@
 	flex-direction: row;
 	margin: 1em 1em 0 1em;
 }
-.feedDate{
-	display: flex;
+.infoLineBox{
+  width: 100%;
+  display: flex;
 	flex-direction: column;
+}
+.Line{
+	display: flex;
+	justify-content: space-between;
 }
 .dateFont{
 	font-size:11px;
 	color:#999;
 	margin: 0;
+	width: 70%;
+}
+.heartFont{
+	margin: 0;
+	font-size: 15px;
+	align-items: center;
+	display: flex;
 }
 .addressFont{
   font-size:12px;
@@ -70,11 +82,6 @@
   max-height: 30px;
   border-radius: 50%;
 	margin-right: 0.5em;
-}
-.nameParentBox{
-  width: 100%;
-  display: flex;
-	justify-content: space-between;
 }
 .feedContent{
 	padding: 1em 1em 0 1em;
@@ -99,10 +106,6 @@
 	-webkit-transform: translate(-50%,-50%);
 			-ms-transform: translate(-50%,-50%);
 					transform: translate(-50%,-50%);
-}
-.replyCont{
-	display: flex;
-	flex-direction: row;
 }
 .replyContent{
 	display: flex;
@@ -135,15 +138,16 @@
 					<!-- Profile -->
 					<div class="feedInfoTop">
 							<img class="feedImage" src={{feeds.feed.user.imageUrl}}></img>
-							<div class="nameParentBox">
-								<div>
-									<span class="nameFont">{{feeds.feed.user.name}}</span><br>
-									<i class="icon ion-android-pin"></i>
-								 <span class="addressFont">{{feeds.feed.address}}</span>
+							<!-- <div class="nameParentBox"> -->
+							<div class="infoLineBox">
+								<div class="Line">
+									<span class="nameFont">{{feeds.feed.user.name}}</span>
+									<span class="addressFont"><i class="icon ion-android-pin" style="margin-right:5px;"></i>{{feeds.feed.address}}</span>
 								</div>
-								<div class="feedDate" style="text-align:right">
+								<div class="Line">
 									<P class="dateFont">{{feeds.feed.creationTime}}</P>
-								 	<i ng-click="feedSetting(feeds.feed)" class="icon ion-code-working"></i>
+									<p class="heartFont"><i class="ion-ios-heart" style="margin-right:5px; font-size: 20px !important;"></i>{{feeds.feed.likeCount}}회</p>
+									<i ng-click="feedSetting(feeds.feed)" class="icon ion-code-working"></i>
 								</div>
 							</div>
 					</div>
@@ -158,7 +162,7 @@
 					<!-- Inner Buttons -->
 					<div class="funcBox">
 						<!-- TODO: Add/Toggle Icon -->
-						<div ng-model="feeds.likeBtn" class="likeButton" ng-click="like('{{feeds.feed.id}}','{{feeds.userLikeStatus}}') "><i class="feedIcon" ng-class="feeds.likeBtn?'ion-ios-heart-outline':'ion-ios-heart'" aria-hidden="true"></i>{{feeds.feed.likeCount}}개</div>
+						<div ng-model="feeds.likeBtn" class="likeButton" ng-click="like('{{feeds.feed.id}}','{{feeds.userLikeStatus}}') "><i class="feedIcon" ng-class="feeds.likeBtn?'ion-ios-heart-outline':'ion-ios-heart'" aria-hidden="true"></i>좋아요</div>
 						<div ng-click="replyOpen('{{feeds.feed.id}}')" class="likeBtn"><i class="icon feedIcon ion-edit"></i>댓글</div>
 						<div ng-click="messageOpen('{{feeds.feed.user.id}}' ,'{{feeds.feed.user.name}}')"
 						class="likeBtn"><i class="icon feedIcon ion-social-twitch"></i>쪽지</div>
@@ -175,9 +179,9 @@
 					</div>
 
 					<!--Event Card-->
-					<div class="tripCard"  style="border-top: 10px solid #EEE;" ng-show="(feeds.userLikeStatus) / 5 == '1'">
+					<div class="tripCard"  style="border-top: 1em solid #EEE;" ng-show="(feeds.userLikeStatus) / 5 == '1'">
 						<div class="thumbnail">
-							<div class="dayTab">
+							<div class="dayTab" style="bottom: 10px;left: 10px;font-size: 0.9em;border-radius: 3px;">
 								<div class="day">D-3</div>
 							</div>
 							<div class="infoBox">
