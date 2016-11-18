@@ -35,5 +35,12 @@ export default StyleSheet.create({
     },
     "ion-ios-heart": {
         "color": "#ff7f00"
+    },
+    "ion-camera": {
+        "marginTop": 3,
+        "marginRight": 3,
+        "marginBottom": 3,
+        "marginLeft": 3,
+        "fontSize": 30
     }
 });

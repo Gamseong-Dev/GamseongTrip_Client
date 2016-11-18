@@ -173,6 +173,21 @@
 							<span style="white-space:pre-line; font-size: 0.8em;">{{reply.contents}}</span>
 						</div>
 					</div>
+
+					<!--Event Card-->
+					<div class="tripCard"  style="border-top: 10px solid #EEE;" ng-show="(feeds.userLikeStatus) / 5 == '1'">
+						<div class="thumbnail">
+							<div class="dayTab">
+								<div class="day">D-3</div>
+							</div>
+							<div class="infoBox">
+								<p class="locationTitle">{{event.contents}}</p>
+								<p>{{event.startTime}}</p>
+								<p>{{event.address}}</p>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</ion-list>

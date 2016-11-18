@@ -175,6 +175,7 @@ angular.module('gamseong', [
       views: {
         'menuContent': {
           templateUrl: 'templates/profile/profile_body.html',
+          controller: 'ProfileFeedCtrl'
         }
       }
   })
@@ -201,7 +202,7 @@ angular.module('gamseong', [
       views: {
         'inception': {
           templateUrl: 'templates/profile/profile_trip.html',
-          controller: 'ProfileTripCtrl'
+          controller: 'ProfileFeedCtrl'
         }
       }
   })
