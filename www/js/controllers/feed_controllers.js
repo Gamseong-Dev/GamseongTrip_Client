@@ -15,10 +15,10 @@ angular.module('gamseong.feed-controllers', [])
 	var reciveName;
 	var imgUrl = null;
 
-	$reply.user.imageUrl = "img/person/per.png";
-	$feeds.feed.user.imageUrl = "img/person/per.png";
-	$scope.feedImg = null;
-	$scope.userName = userName;
+//	$reply.user.imageUrl = "img/person/per.png";
+//	$feeds.feed.user.imageUrl = "img/person/per.png";
+ $scope.feedImg = null;
+ $scope.userName = userName;
 
  $ionicLoading.show();
 
@@ -693,6 +693,8 @@ angular.module('gamseong.feed-controllers', [])
 })
 // Alarm Controller
 .controller('AlarmCtrl', function($scope) {
+	//GamseongPushServerr/
+
 	$scope.alarmList = [ {
 
 	} ];

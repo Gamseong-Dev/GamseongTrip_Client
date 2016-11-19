@@ -15,10 +15,10 @@ angular.module('gamseong.feed-controllers', [])
 	var reciveName;
 	var imgUrl = null;
 
-	$reply.user.imageUrl = "img/person/per.png";
-	$feeds.feed.user.imageUrl = "img/person/per.png";
-	$scope.feedImg = null;
-	$scope.userName = userName;
+//	$reply.user.imageUrl = "img/person/per.png";
+//	$feeds.feed.user.imageUrl = "img/person/per.png";
+ $scope.feedImg = null;
+ $scope.userName = userName;
 
  $ionicLoading.show();
 
@@ -118,12 +118,44 @@ angular.module('gamseong.feed-controllers', [])
 			var type = null;
 			if (btnIndex === 1) {
 				$scope.writeType = true;
-				$scope.writerOpen();
+				$scope.writerModal.show();
 			} else if (btnIndex === 2) {
 				doDelete(feed);
 			}
 		});
 	};
+
+ 	$scope.doRefresh = function() {
+	$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+			 success(function(data) {
+				 console.log(data);
+
+				 for(var i = 0; i<data.length; i++){
+						if(data[i].feed.user.imageUrl == null){
+						data[i].feed.user.imageUrl = "img/person/per.png";
+						}
+						if(data[i].feed.imgUrl != null){
+							data[i].feed.imgUrl = proxy.url + data[i].feed.imgUrl;
+							console.log(data[i].feed.imgUrl)
+						}
+						if(data[i].userLikeStatus == 1) {
+								data[i].likeBtn = false;
+						}
+						else{
+							data[i].likeBtn = true;
+						}
+								data[i].userLikeStatus = i;
+						if(data[i].reply.length > 0){
+								if(data[i].reply[0].user.imageUrl == null)
+								data[i].reply[0].user.imageUrl = "img/person/per.png";
+						}
+				 };
+				 $scope.feedList = data;
+	 }).finally(function() {
+       // Stop the ion-refresher from spinning
+       $scope.$broadcast('scroll.refreshComplete');
+   });
+}
 
 	$scope.isUser =function(){
 			console.log(userId);
@@ -239,8 +271,12 @@ angular.module('gamseong.feed-controllers', [])
 	$scope.doWriter = function(){
 	//	var feedImg = $scope.feedImg;
 //		var feedImg = "img/person/per.png";
-		$scope.uploadImage();
-
+		if($scope.image != null)	{
+			$scope.uploadImage();
+		}
+		else{
+			imgUrl = null;
+		}
 		var param = {
 				feed : {
 					userId:  userId
@@ -603,6 +639,7 @@ angular.module('gamseong.feed-controllers', [])
 
 			if(data.result == "success") {
 				alert("입력하였습니다.");
+
 				$scope.messageModal.hide();
 			}
 			else{
@@ -656,6 +693,8 @@ angular.module('gamseong.feed-controllers', [])
 })
 // Alarm Controller
 .controller('AlarmCtrl', function($scope) {
+	//GamseongPushServerr/
+
 	$scope.alarmList = [ {
 
 	} ];
@@ -701,8 +740,7 @@ angular.module('gamseong.feed-controllers', [])
 			console.log(data);
 
 			if(data.result == "success") {
-				alert("입력하였습니다.");
-				$scope.messageModal.hide();
+				alert("보냈습니다.");
 				$window.location.reload();
 			}
 			else{

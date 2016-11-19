@@ -32,14 +32,16 @@
 								<div class="Line">
 									<P class="dateFont">{{feeds.feed.creationTime}}</P>
 									<p class="heartFont"><i class="ion-ios-heart" style="margin-right:5px; font-size: 20px !important;"></i>{{feeds.feed.likeCount}}회</p>
-									<i ng-click="feedSetting(feeds.feed)" class="icon ion-code-working"></i>
+									<div ng-show="feeds.feed.user.id == id">
+										<i ng-click="feedSetting(feeds.feed)" class="icon ion-code-working"></i>
+									</div>
 								</div>
 							</div>
 					</div>
 
 					<!-- Content -->
 					<div class="feedContent">
-						<p>{{feeds.feed.contents}}</p>
+						<p><a class="contentFont" href="#/app/feed/single/{{feeds.feed.id}}">{{feeds.feed.contents}}</a></p>
 						<div class="userPic" ng-show="feeds.feed.imgUrl!=null">
 						    <img src="{{feeds.feed.imgUrl}}">
 						</div>
