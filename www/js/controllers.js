@@ -38,7 +38,7 @@ angular.module('gamseong.controllers', [])
    speed: 500,
  }
 
-var isLoggedIn;
+var isLoggedIn = false;
 var email = $window.localStorage.getItem("email");
 
 if(email=='null'){
