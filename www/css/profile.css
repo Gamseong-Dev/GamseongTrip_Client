@@ -53,3 +53,8 @@
   border: 2px solid white;
   border-radius: 30px;
 }
+.profile_Topcont{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

@@ -45,10 +45,13 @@ input{
        <p ng-click="settingModal.hide()" class="button button-clear button-energized">완료</p>
      </ion-header-bar>
     <ion-content class="settingCont" scroll="false">
-      <div class="settingTop"><a class="userImageConf"/></div>
+      <a ng-show=" img != null" class="settingTop"><img class="userImageConf" src={{img}}>
+      </img></a>
+      <a ng-show=" img == null" class="settingTop"><img class="userImageConf" src="img/person/per.png">
+      </img></a>
       <form>
         <p class="settingTitle">닉네임 변경</p>
-        <input type="text" placeholder="닉네임을 입력해주세요"/>
+        <input type="text" placeholder="{{name}}"/>
         <p class="settingTitle">비밀번호 변경</p>
         <input type="password" placeholder="비밀번호를 입력해주세요"/>
         <input type="password" placeholder="비밀번호를 다시 입력해주세요"/>

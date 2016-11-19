@@ -118,12 +118,44 @@ angular.module('gamseong.feed-controllers', [])
 			var type = null;
 			if (btnIndex === 1) {
 				$scope.writeType = true;
-				$scope.writerOpen();
+				$scope.writerModal.show();
 			} else if (btnIndex === 2) {
 				doDelete(feed);
 			}
 		});
 	};
+
+ 	$scope.doRefresh = function() {
+	$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+			 success(function(data) {
+				 console.log(data);
+
+				 for(var i = 0; i<data.length; i++){
+						if(data[i].feed.user.imageUrl == null){
+						data[i].feed.user.imageUrl = "img/person/per.png";
+						}
+						if(data[i].feed.imgUrl != null){
+							data[i].feed.imgUrl = proxy.url + data[i].feed.imgUrl;
+							console.log(data[i].feed.imgUrl)
+						}
+						if(data[i].userLikeStatus == 1) {
+								data[i].likeBtn = false;
+						}
+						else{
+							data[i].likeBtn = true;
+						}
+								data[i].userLikeStatus = i;
+						if(data[i].reply.length > 0){
+								if(data[i].reply[0].user.imageUrl == null)
+								data[i].reply[0].user.imageUrl = "img/person/per.png";
+						}
+				 };
+				 $scope.feedList = data;
+	 }).finally(function() {
+       // Stop the ion-refresher from spinning
+       $scope.$broadcast('scroll.refreshComplete');
+   });
+}
 
 	$scope.isUser =function(){
 			console.log(userId);
@@ -201,7 +233,7 @@ angular.module('gamseong.feed-controllers', [])
 
 			 }).
 					 error(function(data, status, headers, config) {
-			
+
 			});
 		}
 		$http.get(ClientProxy.url + '/gamseong/events/locations/'+ myLocalMotherId).
@@ -239,8 +271,12 @@ angular.module('gamseong.feed-controllers', [])
 	$scope.doWriter = function(){
 	//	var feedImg = $scope.feedImg;
 //		var feedImg = "img/person/per.png";
-		$scope.uploadImage();
-
+		if($scope.image != null)	{
+			$scope.uploadImage();
+		}
+		else{
+			imgUrl = null;
+		}
 		var param = {
 				feed : {
 					userId:  userId
@@ -603,6 +639,7 @@ angular.module('gamseong.feed-controllers', [])
 
 			if(data.result == "success") {
 				alert("입력하였습니다.");
+
 				$scope.messageModal.hide();
 			}
 			else{
@@ -657,14 +694,7 @@ angular.module('gamseong.feed-controllers', [])
 // Alarm Controller
 .controller('AlarmCtrl', function($scope) {
 	$scope.alarmList = [ {
-		contents : "상운님이 좋아요를 했습니다.",
-		id : 1
-	}, {
-		contents : "테스트임",
-		id : 2
-	}, {
-		contents : "으앗똿 터졌씁니다.",
-		id : 3
+
 	} ];
 })
 // Message Controller
@@ -708,8 +738,7 @@ angular.module('gamseong.feed-controllers', [])
 			console.log(data);
 
 			if(data.result == "success") {
-				alert("입력하였습니다.");
-				$scope.messageModal.hide();
+				alert("보냈습니다.");
 				$window.location.reload();
 			}
 			else{
