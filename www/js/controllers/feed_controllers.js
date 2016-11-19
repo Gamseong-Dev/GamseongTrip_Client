@@ -126,7 +126,7 @@ angular.module('gamseong.feed-controllers', [])
 	};
 
  	$scope.doRefresh = function() {
-	$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+	$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId + '/users/' + userId).
 			 success(function(data) {
 				 console.log(data);
 
@@ -174,7 +174,7 @@ angular.module('gamseong.feed-controllers', [])
 	else {
 		if(myLocalId == localId){
 			$scope.local = $window.localStorage.getItem("locName")
-			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId + '/users/' + userId).
 					 success(function(data) {
 						 console.log(data);
 
@@ -205,7 +205,7 @@ angular.module('gamseong.feed-controllers', [])
 			});
 		}
 		else {
-			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId + '/users/' + userId).
 					 success(function(data) {
 						 console.log(data);
 
@@ -468,7 +468,7 @@ angular.module('gamseong.feed-controllers', [])
 	$scope.getPage = function(){
 		page++;
 		//$ionicLoading.show()
-		$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId
+		$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId + '/users/' + userId
 		+ "?pageNum="+page).
 			success(function(datas) {
 					console.log(datas);
