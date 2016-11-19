@@ -26,6 +26,12 @@ angular.module('gamseong.feed-controllers', [])
 			 success(function(data) {
 				 $ionicLoading.hide();
 				 $scope.data = data;
+				 if(data.feed.imgUrl == null){
+					 $scope.imgUrl == null
+				 } else{
+					 $scope.imgUrl  =  ClientProxy.url+'/'+ data.feed.imgUrl;
+				 }
+				 console.log($scope.imgUrl)
 				 userCall(data.feed.user.id,data.feed.user.name);
 	});
 
