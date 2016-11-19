@@ -1,79 +1,84 @@
+
 <ion-view view-title="{{local}}">
 	<ion-nav-buttons side="right">
-      <button class="button button-icon ion-button icon-only ion-ios-search-strong" onclick="location.href='#/app/feed/search'">
-      </button>
-    </ion-nav-buttons>
-	<ion-content style="background-color:#eee;">
+      <button class="button button-icon ion-button icon-only ion-ios-search-strong" onclick="location.href='#/app/feed/search'"></button>
+  </ion-nav-buttons>
+	<ion-content style="background-color:#eee;" class="has-header">
+		<ion-refresher
+		    pulling-text="새로고침 중 .."
+		    on-refresh="doRefresh()">
+		</ion-refresher>
 		<!-- Feed List -->
 		<ion-list>
 				<!-- Profile -->
 			<div ng-show = isLogged()>
 				<div class="profile item-avatar item" style="border-color:#fff;" >
-						<image src="{{img}}"></image>
-							<button class="button button-icon icon" ng-click="writerOpen()" style="margin-top:-2%;">후기나 생각을 공유해주세요</button>
+					<image src="{{img}}"></image>
+					<button class="button button-icon icon" ng-click="writerOpen()" style="margin-top:-2%;">후기나 생각을 공유해주세요</button>
 				</div>
 			</div>
 
-			<ion-item  style="border-color:#fff; margin-top:20px; padding-bottom:0;" ng-repeat="feeds in feedList">
+			<div class="feedItem" ng-repeat="feeds in feedList">
 				<!-- TODO Move These Code Into Feed Single !! -->
 					<!-- Profile -->
-					<div class="profile item-avatar" style="padding:0%;">
-							<image src={{feeds.feed.user.imageUrl}} style="margin-top:-2%;"></image>
-							<div class="nameParentBox">
-								<div class="nameBox" style="margin-left:20%; float:left;">
-									<span class="nameFont">{{feeds.feed.user.name}}</span><br>
-									<span class="dateFont">{{feeds.feed.creationTime}}</span>
+					<div class="feedInfoTop">
+							<img class="feedImage" src={{feeds.feed.user.imageUrl}}></img>
+							<!-- <div class="nameParentBox"> -->
+							<div class="infoLineBox">
+								<div class="Line">
+									<span class="nameFont">{{feeds.feed.user.name}}</span>
+									<span class="addressFont"><i class="icon ion-android-pin" style="margin-right:5px;"></i>{{feeds.feed.address}}</span>
 								</div>
-								<div class="addressBox" style="text-align:right">
-									 <i class="icon ion-android-pin"></i>
-									<span class="addressFont">{{feeds.feed.address}}</span><br>
-									<i class="icon ion-ios-heart"></i>
-								 <span class="addressFont">{{feeds.feed.likeCount}}회</span>
+								<div class="Line">
+									<P class="dateFont">{{feeds.feed.creationTime}}</P>
+									<p class="heartFont"><i class="ion-ios-heart" style="margin-right:5px; font-size: 20px !important;"></i>{{feeds.feed.likeCount}}회</p>
+									<i ng-click="feedSetting(feeds.feed)" class="icon ion-code-working"></i>
 								</div>
-						</div>
+							</div>
 					</div>
 
 					<!-- Content -->
 					<div class="feedContent">
-						<p>
-							<a class="subdued feedFont" href="#/app/feed/single/{{feeds.feed.id}}"><span class="feedFont">{{feeds.feed.contents}}</span></a>
-						</p>
+						<p>{{feeds.feed.contents}}</p>
+						<div class="userPic" ng-show="feeds.feed.imgUrl!=null">
+						    <img src="{{feeds.feed.imgUrl}}">
+						</div>
 					</div>
 					<!-- Inner Buttons -->
-					<hr class="simpleHr" >
-					<div style="margin-top:-2%;">
-						<!-- TODO Add/Toggle Icon -->
-
-						<button class="button button-primary" ng-model="feeds.likeBtn" ng-click="like('{{feeds.feed.id}}','{{feeds.userLikeStatus}}') "
-						ng-class="feeds.likeBtn?'likeBtn':'unLikeBtn'">
-					     <i class="icon ion-heart"></i> &nbsp;좋아요
-					  </button>
-
-						<button ng-click="replyOpen('{{feeds.feed.id}}')" class="button likeBtn " style="margin-left:10%;">
-							 <i class="icon ion-edit"></i> &nbsp;댓글</button>
-						<button ng-click="messageOpen('{{feeds.feed.user.id}}' ,'{{feeds.feed.user.name}}')"
-						class="button likeBtn " style="margin-left:10%;">
-							<i class="icon ion-social-twitch"></i> &nbsp;쪽지보내기</button>
+					<div class="funcBox">
+						<!-- TODO: Add/Toggle Icon -->
+						<div ng-model="feeds.likeBtn" class="likeButton" ng-click="like('{{feeds.feed.id}}','{{feeds.userLikeStatus}}') "><i class="feedIcon" ng-class="feeds.likeBtn?'ion-ios-heart-outline':'ion-ios-heart'" aria-hidden="true"></i>좋아요</div>
+						<div ng-click="replyOpen('{{feeds.feed.id}}')" class="likeBtn"><i class="icon feedIcon ion-edit"></i>댓글</div>
+						<div ng-click="messageOpen('{{feeds.feed.user.id}}' ,'{{feeds.feed.user.name}}')"
+						class="likeBtn"><i class="icon feedIcon ion-social-twitch"></i>쪽지</div>
 					</div>
 
 					<!-- Reply -->
-					<div style="margin-left:-5%; margin-right:-5%; margin-top:3%;">
-							<div class="feed-content-reply" ng-repeat="reply in feeds.reply" style="height:65px;">
-								<a href="#/app/feed/message/{{reply.user.id}}"></a>
 
-									<!-- <img src="venkman.jpg"> 사용자 사진 넣으면 됨-->
-									<div class="profile item-avatar" style="margin-left:2%;">
-										<img src={{reply.user.imageUrl}} style="margin-top:-1%;" onclick="">
-										<div style="margin-top:2%; margin-left:-30%; text-overflow: ellipsis;
-										  overflow: scroll;">
-											<p><span class="nameFont">{{reply.user.name}}</span></p>
-											<p><span style="white-space:pre-line;">{{reply.contents}}</span></p>
-										</div>
-									</div>
+					<div class="feed-content-reply" ng-repeat="reply in feeds.reply" style="height:65px;">
+						<a href="#/app/feed/message/{{reply.user.id}}"><img src={{reply.user.imageUrl}} class="replyImage" style="margin-top:-1%;" onclick=""></a>
+						<div class="replyContent" style="text-overflow: ellipsis;">
+							<span class="nameFont">{{reply.user.name}}</span>
+							<span style="white-space:pre-line; font-size: 0.8em;">{{reply.contents}}</span>
+						</div>
+					</div>
+
+					<!--Event Card-->
+					<div class="tripCard"  style="border-top: 1em solid #EEE;" ng-show="(feeds.userLikeStatus) / 5 == '1'">
+						<div class="thumbnail">
+							<div class="dayTab" style="bottom: 10px;left: 10px;font-size: 0.9em;border-radius: 3px;">
+								<div class="day">D-3</div>
 							</div>
-					 </div>
+							<div class="infoBox">
+								<p class="locationTitle">{{event.contents}}</p>
+								<p>{{event.startTime}}</p>
+								<p>{{event.address}}</p>
+							</div>
+						</div>
+					</div>
+
 				</div>
-			</ion-item>
+			</div>
 		</ion-list>
 	</ion-content>
 	<ion-infinite-scroll ng-if = "!noMoreItemsAvailable" on-infinite = "getPage()" distance = "2"></ion-infinite-scroll>
