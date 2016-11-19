@@ -1,4 +1,3 @@
-<style>
 .tripCard{
   background: url('img/location.png') no-repeat center;
   position: relative;
@@ -9,18 +8,29 @@
 }
 .thumbnail{
   background-color: rgba(0,0,0,0.6);
-  height: 140px;
+  height: 200px;
   overflow: hidden;
   margin-bottom: 1px;
 }
-.day{
-  font-weight: 400;
-  color: #ffffff;
+.dayTab{
   position: absolute;
   bottom: 20px;
   left: 20px;
   z-index: 1;
-  font-size: 1em;
+  background: #ff7f00;
+  width: 5em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.day{
+  font-size: 18px;
 }
 .infoBox{
   color: white;
@@ -28,23 +38,23 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 140px;
+  height: 200px;
   bottom: 0;
   left: 0;
   position: absolute;
+  flex-direction: column;
+
 }
 .locationTitle{
   font-weight: 500;
-  font-size: 2em;
-  margin: 0;
+  font-size: 1.6em;
+  padding: 0.5em 1em;
+  margin-bottom: 0.3em;
+  border: 2px solid white;
+  border-radius: 30px;
 }
-</style>
-
-
-<div class="tripCard" ng-repeat="trip in triplist">
-  <div class="thumbnail">
-    <div class="infoBox">
-      <div class="day"><i class="icon ion-android-pin" style="margin-right:0.3em;"></i>{{trip[1]}}</div>
-    </div>
-  </div>
-</div>
+.profile_Topcont{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
