@@ -10,6 +10,7 @@ angular.module('gamseong.controllers', [])
   //});
  GeoService.localCode();
 
+ var isLoggedIn = false;
  //GeoService.locationCode()
  $scope.local = $window.localStorage.getItem("locName")
   // Form data for the login modal
@@ -38,10 +39,10 @@ angular.module('gamseong.controllers', [])
    speed: 500,
  }
 
-var isLoggedIn = false;
+
 var email = $window.localStorage.getItem("email");
 
-if(email=='null'){
+if(email=='null' || email==""){
   isLoggedIn = false;
 }
 else{
@@ -95,6 +96,7 @@ else{
  };
 
  $scope.doLogout = function(){
+   
    var email = $window.localStorage.getItem("email");
    var token = $window.localStorage.getItem("token");
    var param = {

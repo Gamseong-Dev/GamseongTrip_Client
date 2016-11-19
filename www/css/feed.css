@@ -122,3 +122,9 @@
   display: flex;
 	justify-content: space-between;
 }
+.contentFont{
+	color: #333;
+	font: "NOTO-SANS";
+	font-size: 15px;
+	text-decoration:none;
+}

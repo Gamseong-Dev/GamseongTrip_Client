@@ -7,19 +7,19 @@
             <img class="messageImage" src="#/app/feed/list/{{feed.id}}">
             <div class="infoLineCont">
               <div class="infoLine1">
-                <p>{{feedSingle.name}}</p>
-                <p class="moment">{{feedSingle.date}}</p>
+                <p>{{data.feed.user.name}}</p>
+                <p class="moment">{{data.feed.creationTime}}</p>
               </div>
-              <div class="infoLine2"><p>{{feedSingle.location}}</p></div>
+              <div class="infoLine2"><p>{{data.feed.address}}</p></div>
             </div>
           </div>
           <!-- Content -->
           <div>
-            <a href="#/app/feed/list/{{feed.id}}">{{feedSingle.contents}}</a>
+            <a href="#/app/feed/list/{{feed.id}}">{{data.feed.contents}}</a>
           </div>
           <div>
             <!-- TODO Add/Toggle Icon -->
-            <button class="button button-icon icon ">좋아요 {{feedSingle.like}}</button>
+            <button class="button button-icon icon ">좋아요 {{data.feed.likeCount}}</button>
             <button ui-sref="app.feed.feed-single" class="button button-icon icon ">댓글</button>
             <button ng-click="messageModal.show()" class="button button-icon icon ">쪽지보내기</button>
           </div>
