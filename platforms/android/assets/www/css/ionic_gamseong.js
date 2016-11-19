@@ -127,5 +127,10 @@ export default StyleSheet.create({
     },
     "toggledragging handle": {
         "backgroundColor": "#f2f2f2 !important"
+    },
+    "toggle-small input:checked + track handle": {
+        "WebkitTransform": "translate3d(16px, 0, 0)",
+        "transform": "translate3d(16px, 0, 0)",
+        "background": "#ff7f00"
     }
 });

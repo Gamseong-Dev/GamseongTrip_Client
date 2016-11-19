@@ -13,7 +13,7 @@ angular.module('gamseong.profile-controllers', [])
             data[i].feed.user.imageUrl = "img/person/per.png";
             }
             if(data[i].feed.imgUrl != null){
-              data[i].feed.imgUrl = proxy.url + data[i].feed.imgUrl;
+              data[i].feed.imgUrl = ClientProxy.url + data[i].feed.imgUrl;
               console.log(data[i].feed.imgUrl)
             }
             if(data[i].userLikeStatus == 1) {

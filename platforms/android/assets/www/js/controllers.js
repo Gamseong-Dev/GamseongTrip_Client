@@ -9,7 +9,7 @@ angular.module('gamseong.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
  GeoService.localCode();
- $ionicLoading.show();
+
  //GeoService.locationCode()
  $scope.local = $window.localStorage.getItem("locName")
   // Form data for the login modal
@@ -38,7 +38,7 @@ angular.module('gamseong.controllers', [])
    speed: 500,
  }
 
-var isLoggedIn;
+var isLoggedIn = false;
 var email = $window.localStorage.getItem("email");
 
 if(email=='null'){

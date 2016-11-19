@@ -6,16 +6,6 @@ const {width, height, scale} = Dimensions.get("window"),
     vmax = Math.max(vw, vh);
 
 export default StyleSheet.create({
-    "profile-content": {
-        "textAlign": "center",
-        "height": "45%",
-        "width": "100%",
-        "position": "relative",
-        "borderBottom": "1px solid lightgray",
-        "backgroundColor": "#ff7f00",
-        "opacity": 0.95,
-        "marginTop": "-5%"
-    },
     "profile-content-reply": {
         "display": "flex",
         "height": "25%",
@@ -33,27 +23,6 @@ export default StyleSheet.create({
         "borderRadius": "50%",
         "background": "#47a3da",
         "display": "inline-block"
-    },
-    "profileUserImage": {
-        "marginTop": "20%",
-        "marginRight": 0,
-        "marginBottom": 0,
-        "marginLeft": "0%",
-        "width": 70,
-        "height": 70,
-        "borderRadius": "50%",
-        "background": "#47a3da",
-        "display": "inline-block"
-    },
-    "userInfo": {
-        "marginTop": 0.5,
-        "marginRight": 1,
-        "marginBottom": 0,
-        "marginLeft": 1,
-        "paddingTop": 1,
-        "paddingRight": 1,
-        "paddingBottom": 1,
-        "paddingLeft": 1
     },
     "profile-name": {
         "fontSize": 1,
