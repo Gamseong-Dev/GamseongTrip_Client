@@ -31,7 +31,9 @@ angular.module('gamseong.main-controllers', [])
              , gender : result.data.gender
              , imageUrl : "http://graph.facebook.com/"+ result.data.id +"/picture?width=270&height=270"
            };
+          $ionicLoading.show()
           auth(facebookUser);
+          $ionicLoading.hide()
       }, function(error) {
         alert("Error: " + error);
       });

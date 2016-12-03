@@ -26,6 +26,7 @@ angular.module('gamseong.feed-controllers', [])
 			 success(function(data) {
 				 $ionicLoading.hide();
 				 $scope.data = data;
+				 $scope.imgUrl  =  ClientProxy.url + data.feed.imageUrl
 				 userCall(data.feed.user.id,data.feed.user.name);
 	});
 
@@ -109,24 +110,28 @@ angular.module('gamseong.feed-controllers', [])
 	$scope.feedSetting = function(feed) {
 		var options = {
 			title: '선택해주세요.',
-			buttonLabels: ['수정', '삭제'],
+		//	buttonLabels: ['수정', '삭제'],
+			buttonLabels: ['삭제'],
 			addCancelButtonWithLabel: 'Cancel',
 			androidEnableCancelButton : true,
 		};
 
 		$cordovaActionSheet.show(options).then(function(btnIndex) {
 			var type = null;
-			if (btnIndex === 1) {
+		/*	if (btnIndex === 1) {
 				$scope.writeType = true;
 				$scope.writerModal.show();
 			} else if (btnIndex === 2) {
+				doDelete(feed);
+			}*/
+			if (btnIndex === 1) {
 				doDelete(feed);
 			}
 		});
 	};
 
  	$scope.doRefresh = function() {
-	$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+	$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId + '/users/' + userId).
 			 success(function(data) {
 				 console.log(data);
 
@@ -174,7 +179,7 @@ angular.module('gamseong.feed-controllers', [])
 	else {
 		if(myLocalId == localId){
 			$scope.local = $window.localStorage.getItem("locName")
-			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId + '/users/' + userId).
 					 success(function(data) {
 						 console.log(data);
 
@@ -205,7 +210,7 @@ angular.module('gamseong.feed-controllers', [])
 			});
 		}
 		else {
-			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId).
+			$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId + '/users/' + userId).
 					 success(function(data) {
 						 console.log(data);
 
@@ -269,6 +274,7 @@ angular.module('gamseong.feed-controllers', [])
 
  	$scope.image = null;
 	$scope.doWriter = function(){
+		$ionicLoading.show()
 	//	var feedImg = $scope.feedImg;
 //		var feedImg = "img/person/per.png";
 		if($scope.image != null)	{
@@ -293,6 +299,7 @@ angular.module('gamseong.feed-controllers', [])
 	,'s-Id' : 'asd'
 	,'s-token': 'asd'}}*/
 		.success(function (data, status, headers, config){
+			$ionicLoading.hide();
 			console.log(config);
 			console.log(data);
 			console.log(status);
@@ -308,6 +315,7 @@ angular.module('gamseong.feed-controllers', [])
 		})
 		.error(function (data, status) {
 				//error handler
+				$ionicLoading.hide();
 				alert("실패하였습니다.");
 		});
 	}
@@ -447,7 +455,7 @@ angular.module('gamseong.feed-controllers', [])
 	}
 
 	var doDelete = function(feed){
-		$http.delete(ClientProxy.url + '/gamseong/feeds/'+feedId)
+		$http.delete(ClientProxy.url + '/gamseong/feeds/'+feed.id)
 		.success(function (data, status, headers, config){
 			if(data.result == "success") {
 				alert("삭제하였습니다.");
@@ -468,7 +476,7 @@ angular.module('gamseong.feed-controllers', [])
 	$scope.getPage = function(){
 		page++;
 		//$ionicLoading.show()
-		$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId
+		$http.get(ClientProxy.url + '/gamseong/feeds/locations/' + localId + '/users/' + userId
 		+ "?pageNum="+page).
 			success(function(datas) {
 					console.log(datas);

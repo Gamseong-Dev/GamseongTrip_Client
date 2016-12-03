@@ -8,8 +8,10 @@ angular.module('gamseong.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+ $ionicLoading.show();
  GeoService.localCode();
-
+ $ionicLoading.hide();
+ 
  var isLoggedIn = false;
  //GeoService.locationCode()
  $scope.local = $window.localStorage.getItem("locName")
@@ -42,7 +44,7 @@ angular.module('gamseong.controllers', [])
 
 var email = $window.localStorage.getItem("email");
 
-if(email=='null' || email==""){
+if( email == null || email=='null' || email=="" || email==''){
   isLoggedIn = false;
 }
 else{
@@ -96,7 +98,7 @@ else{
  };
 
  $scope.doLogout = function(){
-   
+
    var email = $window.localStorage.getItem("email");
    var token = $window.localStorage.getItem("token");
    var param = {

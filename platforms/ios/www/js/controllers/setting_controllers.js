@@ -8,12 +8,6 @@ angular.module('gamseong.setting-controllers', [])
 		$scope.settingModal = settingModal;
 	});
 
-  $ionicModal.fromTemplateUrl('templates/login/signDetail.html', {
-		scope : $scope
-	}).then(function(detailModal) {
-		$scope.detailModal = detailModal;
-	});
-
   $scope.pushNotiChange = function() {
     console.log('Push Notification Change', $scope.pushNoti.checked);
   };

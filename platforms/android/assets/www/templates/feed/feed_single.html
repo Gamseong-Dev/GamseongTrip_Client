@@ -3,26 +3,36 @@
     <div class="feedTemp" href="#/app/feed/list/{{feed.id}}">
       <!-- TODO Move These Code Into Feed Single !! -->
         <!-- Profile -->
-          <div class="feedTempTop">
-            <img class="messageImage" src="#/app/feed/list/{{feed.id}}">
-            <div class="infoLineCont">
-              <div class="infoLine1">
-                <p>{{data.feed.user.name}}</p>
-                <p class="moment">{{data.feed.creationTime}}</p>
+          <div class="feedInfoTop">
+            <img class="feedImage" src={{data.feed.user.imageUrl}}></img>
+            <div class="infoLineBox">
+              <div class="Line">
+                <span class="nameFont">{{data.feed.user.name}}</span>
+                <span class="addressFont"><i class="icon ion-android-pin" style="margin-right:5px;"></i>{{data.feed.creationTime}}</span>
               </div>
-              <div class="infoLine2"><p>{{data.feed.address}}</p></div>
+              <div class="Line">
+                <P class="dateFont">{{data.feed.creationTime}}</P>
+                <p class="heartFont"><i class="ion-ios-heart" style="margin-right:5px; font-size: 20px !important;"></i>{{data.feed.likeCount}}회</p>
+                <div ng-show="data.feed.user.id == id">
+                  <i ng-click="feedSetting(data.feed)" class="icon ion-code-working"></i>
+                </div>
+              </div>
             </div>
           </div>
           <!-- Content -->
-          <div>
-            <a href="#/app/feed/list/{{feed.id}}">{{data.feed.contents}}</a>
-          </div>
-          <div>
-            <!-- TODO Add/Toggle Icon -->
-            <button class="button button-icon icon ">좋아요 {{data.feed.likeCount}}</button>
-            <button ui-sref="app.feed.feed-single" class="button button-icon icon ">댓글</button>
-            <button ng-click="messageModal.show()" class="button button-icon icon ">쪽지보내기</button>
-          </div>
+          <div class="feedContent">
+						<p><a class="contentFont" href="#/app/feed/single/{{feed.id}}">{{data.feed.contents}}</a></p>
+						<div class="userPic" ng-show="imgUrl!=null">
+						    <img src="{{imgUrl}}">
+						</div>
+					</div>
+          <div class="funcBox" style="border-bottom: 1px solid #ddd;">
+						<!-- TODO: Add/Toggle Icon -->
+						<div ng-model="feeds.likeBtn" class="likeButton" ng-click="like('{{data.feed.id}}','{{data.userLikeStatus}}') "><i class="feedIcon" ng-class="feeds.likeBtn?'ion-ios-heart-outline':'ion-ios-heart'" aria-hidden="true"></i>좋아요</div>
+						<div ng-click="replyOpen('{{data.feed.id}}')" class="likeBtn"><i class="icon feedIcon ion-edit"></i>댓글</div>
+						<div ng-click="messageOpen('{{data.feed.user.id}}' ,'{{data.feed.user.name}}')"
+						class="likeBtn"><i class="icon feedIcon ion-social-twitch"></i>쪽지</div>
+					</div>
     </div>
   </ion-content>
 </ion-view>

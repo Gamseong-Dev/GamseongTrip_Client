@@ -40,10 +40,10 @@
 }
 </style>
 
-
 <div class="tripCard" ng-repeat="trip in triplist">
   <div class="thumbnail">
-    <div class="infoBox">
+    <div class="infoBox" style="background: url('img/local/{{trip[2]}}.jpg') no-repeat center;
+      background-size: cover; ">
       <div class="day"><i class="icon ion-android-pin" style="margin-right:0.3em;"></i>{{trip[1]}}</div>
     </div>
   </div>

@@ -1,72 +1,15 @@
-<style>
-.tripCard{
-  background: url('img/location.png') no-repeat center;
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  transition: all 0.3s linear 0s;
-}
-.thumbnail{
-  background-color: rgba(0,0,0,0.6);
-  height: 200px;
-  overflow: hidden;
-  margin-bottom: 1px;
-}
-.dayTab{
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1;
-  background: #ff7f00;
-  width: 5em;
-  height: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  font-weight: 700;
-  text-align: center;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-.day{
-  font-size: 18px;
-}
-.infoBox{
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 200px;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  flex-direction: column;
-
-}
-.locationTitle{
-  font-weight: 500;
-  font-size: 1.6em;
-  padding: 0.5em 1em;
-  margin-bottom: 0.3em;
-  border: 2px solid white;
-  border-radius: 30px;
-}
-
-</style>
-
-
-<div class="tripCard" ng-repeat="int in intlist">
-  <div class="thumbnail">
-    <div class="dayTab">
-      <div class="day">D-3</div>
+<ion-list>
+  <ion-item ng-repeat="int in intlist">
+    <div class="card">
+      <div class="item item-divider">
+            {{int.title}}
+      </div>
+      <div class="item item-text-wrap">
+            {{int.contents}}
+      </div>
+      <div class="item item-divider">
+            {{int.like}}
+      </div>
     </div>
-    <div class="infoBox">
-      <p class="locationTitle">{{int.title}}</p>
-      <p>{{int.date}}</p>
-      <p>{{int.venue}}</p>
-    </div>
-  </div>
-</div>
+  </ion-item>
+</ion-list>

@@ -106,3 +106,10 @@
   transform: translate3d(16px, 0, 0);
   background: #ff7f00;
 }
+.bar-footer{
+  bottom: 0;
+  border-top-width: 1px;
+  border-bottom-width: 0;
+  background-position: top;
+  height: 60px;
+}

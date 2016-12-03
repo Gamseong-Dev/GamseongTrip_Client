@@ -26,12 +26,7 @@ angular.module('gamseong.feed-controllers', [])
 			 success(function(data) {
 				 $ionicLoading.hide();
 				 $scope.data = data;
-				 if(data.feed.imgUrl == null){
-					 $scope.imgUrl == null
-				 } else{
-					 $scope.imgUrl  =  ClientProxy.url+'/'+ data.feed.imgUrl;
-				 }
-				 console.log($scope.imgUrl)
+				 $scope.imgUrl  =  ClientProxy.url + data.feed.imageUrl
 				 userCall(data.feed.user.id,data.feed.user.name);
 	});
 
@@ -115,17 +110,21 @@ angular.module('gamseong.feed-controllers', [])
 	$scope.feedSetting = function(feed) {
 		var options = {
 			title: '선택해주세요.',
-			buttonLabels: ['수정', '삭제'],
+		//	buttonLabels: ['수정', '삭제'],
+			buttonLabels: ['삭제'],
 			addCancelButtonWithLabel: 'Cancel',
 			androidEnableCancelButton : true,
 		};
 
 		$cordovaActionSheet.show(options).then(function(btnIndex) {
 			var type = null;
-			if (btnIndex === 1) {
+		/*	if (btnIndex === 1) {
 				$scope.writeType = true;
 				$scope.writerModal.show();
 			} else if (btnIndex === 2) {
+				doDelete(feed);
+			}*/
+			if (btnIndex === 1) {
 				doDelete(feed);
 			}
 		});
@@ -275,6 +274,7 @@ angular.module('gamseong.feed-controllers', [])
 
  	$scope.image = null;
 	$scope.doWriter = function(){
+		$ionicLoading.show()
 	//	var feedImg = $scope.feedImg;
 //		var feedImg = "img/person/per.png";
 		if($scope.image != null)	{
@@ -299,6 +299,7 @@ angular.module('gamseong.feed-controllers', [])
 	,'s-Id' : 'asd'
 	,'s-token': 'asd'}}*/
 		.success(function (data, status, headers, config){
+			$ionicLoading.hide();
 			console.log(config);
 			console.log(data);
 			console.log(status);
@@ -306,7 +307,9 @@ angular.module('gamseong.feed-controllers', [])
 			if(data.result == "success") {
 				alert("입력하였습니다.");
 				$scope.modal.hide();
+				$ionicLoading.show()
 				$window.location.reload();
+				$ionicLoading.hide();
 			}
 			else{
 				alert("실패하였습니다.");
@@ -314,6 +317,7 @@ angular.module('gamseong.feed-controllers', [])
 		})
 		.error(function (data, status) {
 				//error handler
+				$ionicLoading.hide();
 				alert("실패하였습니다.");
 		});
 	}
@@ -440,7 +444,9 @@ angular.module('gamseong.feed-controllers', [])
 			if(data.result == "success") {
 				alert("업데이트하였습니다.");
 				$scope.modal.hide();
+				$ionicLoading.show()
 				$window.location.reload();
+				$ionicLoading.hide()
 			}
 			else{
 				alert("실패하였습니다.");
@@ -453,11 +459,13 @@ angular.module('gamseong.feed-controllers', [])
 	}
 
 	var doDelete = function(feed){
-		$http.delete(ClientProxy.url + '/gamseong/feeds/'+feedId)
+		$http.delete(ClientProxy.url + '/gamseong/feeds/'+feed.id)
 		.success(function (data, status, headers, config){
 			if(data.result == "success") {
 				alert("삭제하였습니다.");
+				$ionicLoading.show()
 				$window.location.reload();
+				$ionicLoading.hide()
 			}
 			else{
 				alert("실패하였습니다.");

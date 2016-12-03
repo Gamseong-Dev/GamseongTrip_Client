@@ -132,5 +132,12 @@ export default StyleSheet.create({
         "WebkitTransform": "translate3d(16px, 0, 0)",
         "transform": "translate3d(16px, 0, 0)",
         "background": "#ff7f00"
+    },
+    "bar-footer": {
+        "bottom": 0,
+        "borderTopWidth": 1,
+        "borderBottomWidth": 0,
+        "backgroundPosition": "top",
+        "height": 60
     }
 });
