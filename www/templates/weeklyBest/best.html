@@ -65,6 +65,7 @@
   font-weight: 200;
 }
 </style>
+
 <ion-view view-title="Weekly 감성 Best">
   <ion-content class="has-header slideCont" scroll="false">
     <div class="slideItem">
@@ -73,10 +74,10 @@
         <ion-slide-page ng-repeat="data in bestFeed">
           <div class="inslideBox">
             <div class="WeeklyPic" style="background-color:#ff7f00;">
-              <a class="subdued" href="#/app/feed/list/{{feed.id}}"><img style="height: 50%;" src="{{data.feed.imageUrl}}"></img></a>
+              <a class="subdued" href="#/app/feed/single/{{data.feed.id}}"><img style="height: 50%;" src="{{data.feed.imageUrl}}"></img></a>
             </div>
             <div class="weekContent">
-              <div class="row">
+              <div class="row" >
                 <img class="weeklyUser" src="{{data.feed.user.imageUrl}}"></img>
                 <div class="weeklyUserInfo">
                   <p style="font-weight:400;">{{data.feed.user.name}}</p>
