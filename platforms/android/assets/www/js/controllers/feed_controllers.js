@@ -89,7 +89,7 @@ angular.module('gamseong.feed-controllers', [])
 })
 
 // Feed List Controller
-.controller('FeedListCtrl', function(GeoService, $scope,$window, $ionicModal,
+.controller('FeedListCtrl', function(GeoService, $scope, $window, $ionicModal,
 	$http, ClientProxy, $ionicLoading, $stateParams, $cordovaCamera,
 	$ionicActionSheet, $timeout, $cordovaFileTransfer, $cordovaFile, $cordovaDevice, $cordovaActionSheet) {
 
@@ -274,7 +274,7 @@ angular.module('gamseong.feed-controllers', [])
 
  	$scope.image = null;
 	$scope.doWriter = function(){
-		$ionicLoading.show()
+
 	//	var feedImg = $scope.feedImg;
 //		var feedImg = "img/person/per.png";
 		if($scope.image != null)	{
@@ -283,6 +283,8 @@ angular.module('gamseong.feed-controllers', [])
 		else{
 			imgUrl = null;
 		}
+
+		$ionicLoading.show()
 		var param = {
 				feed : {
 					userId:  userId
@@ -307,7 +309,9 @@ angular.module('gamseong.feed-controllers', [])
 			if(data.result == "success") {
 				alert("입력하였습니다.");
 				$scope.modal.hide();
+				$ionicLoading.show()
 				$window.location.reload();
+				$ionicLoading.hide();
 			}
 			else{
 				alert("실패하였습니다.");
@@ -442,7 +446,9 @@ angular.module('gamseong.feed-controllers', [])
 			if(data.result == "success") {
 				alert("업데이트하였습니다.");
 				$scope.modal.hide();
+				$ionicLoading.show()
 				$window.location.reload();
+				$ionicLoading.hide()
 			}
 			else{
 				alert("실패하였습니다.");
@@ -459,7 +465,9 @@ angular.module('gamseong.feed-controllers', [])
 		.success(function (data, status, headers, config){
 			if(data.result == "success") {
 				alert("삭제하였습니다.");
+				$ionicLoading.show()
 				$window.location.reload();
+				$ionicLoading.hide()
 			}
 			else{
 				alert("실패하였습니다.");
