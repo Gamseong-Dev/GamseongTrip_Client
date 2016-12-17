@@ -2,7 +2,7 @@
   <ion-content hide-tabs>
     <div class="feedTemp" href="#/app/feed/list/{{feed.id}}">
       <!-- TODO Move These Code Into Feed Single !! -->
-          <!-- Profile -->
+        <!-- Profile -->
           <div class="feedInfoTop">
             <img class="feedImage" src={{data.feed.user.imageUrl}}></img>
             <div class="infoLineBox">
@@ -19,7 +19,6 @@
               </div>
             </div>
           </div>
-
           <!-- Content -->
           <div class="feedContent">
 						<p><a class="contentFont" href="#/app/feed/single/{{feed.id}}">{{data.feed.contents}}</a></p>
@@ -27,7 +26,6 @@
 						    <img src="{{imgUrl}}">
 						</div>
 					</div>
-
           <div class="funcBox" style="border-bottom: 1px solid #ddd;">
 						<!-- TODO: Add/Toggle Icon -->
 						<div ng-model="feeds.likeBtn" class="likeButton" ng-click="like('{{data.feed.id}}','{{data.userLikeStatus}}') "><i class="feedIcon" ng-class="feeds.likeBtn?'ion-ios-heart-outline':'ion-ios-heart'" aria-hidden="true"></i>좋아요</div>

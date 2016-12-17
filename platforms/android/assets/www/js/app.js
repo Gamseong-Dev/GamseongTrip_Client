@@ -8,7 +8,6 @@ angular.module('gamseong', [
   'ionic'
 , 'ngCordovaOauth'
 , 'ngCordova'
-, 'ngOpenFB'
 , 'gamseong.controllers'
 , 'gamseong.feed-controllers'
 , 'gamseong.local-controllers'
@@ -31,11 +30,8 @@ angular.module('gamseong', [
   //url: 'http://localhost:8080'
 })
 
-.run(function($ionicPlatform, $window, $http, ClientProxy ,GeoService, $cordovaFacebook, ngFB) {
+.run(function($ionicPlatform, $window, $http, ClientProxy ,GeoService, $cordovaFacebook) {
 
-  ngFB.init({
-    appId: '210753882669143'
-  });
 /*  $window.fbAsyncInit = function() {
       FB.init({
         appId: '210753882669143',

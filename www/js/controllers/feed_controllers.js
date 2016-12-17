@@ -283,7 +283,6 @@ angular.module('gamseong.feed-controllers', [])
 		else{
 			imgUrl = null;
 		}
-
 		$ionicLoading.show()
 		var param = {
 				feed : {

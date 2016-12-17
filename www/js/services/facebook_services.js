@@ -1,17 +1,17 @@
 angular.module('gamseong.facebook-services', [])
-.factory('facebookService', function($q, $cordovaFacebook, $http, ClientProxy, $window, $location, ngFB) {
+.factory('facebookService', function($q, $cordovaFacebook, $http, ClientProxy, $window, $location) {
 
     return {
         auth: function(){
         var res;
-          ngFB.getLoginStatus(function(response) {
+          FB.getLoginStatus(function(response) {
             res = response;
           });
           return res;
         }
         ,getMyInfo: function() {
             var deferred = $q.defer();
-             ngFB.api('/me', {
+             $cordovaFacebook.api('/me', {
                 fields: ['id','name','email','gender']
             }, function(response) {
                 if (!response || response.error) {

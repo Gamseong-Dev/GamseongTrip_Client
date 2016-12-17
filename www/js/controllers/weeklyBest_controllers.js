@@ -2,7 +2,6 @@
 
 angular.module('gamseong.weeklyBest', [])
 .controller('WeeklyBestCtrl', function($scope, $ionicSlideBoxDelegate, ClientProxy, $http) {
-  console.log("weeklyBest 정보");
   $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
     // data.slider is the instance of Swiper
     $scope.slider = data.slider;
@@ -15,7 +14,6 @@ angular.module('gamseong.weeklyBest', [])
 
   $http.get(ClientProxy.url + '/gamseong/feeds/best').
        success(function(data) {
-         console.log(data);
          for(var i = 0; i<data.length; i++){
            if(data[i].feed.imageUrl == null){
            data[i].feed.imageUrl = "img/logo.png";
@@ -32,7 +30,6 @@ angular.module('gamseong.weeklyBest', [])
 
   $http.get(ClientProxy.url + '/gamseong/events').
        success(function(data) {
-         console.log(data);
          $scope.bestEvent = data;
    }).
        error(function(data, status, headers, config) {
@@ -41,7 +38,6 @@ angular.module('gamseong.weeklyBest', [])
 
   $http.get(ClientProxy.url + '/gamseong/locations/best').
        success(function(data) {
-         console.log(data);
          $scope.bestLocation = data;
    }).
        error(function(data, status, headers, config) {

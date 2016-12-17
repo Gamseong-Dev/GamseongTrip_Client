@@ -1,7 +1,7 @@
 angular.module('gamseong.main-controllers', [])
 
 // Feed Controller
-.controller('MainCtrl', function($scope, $cordovaOauth,  $q ,$location, $ionicModal, ClientProxy, $http, $window, $ionicLoading, facebookService, ngFB) {
+.controller('MainCtrl', function($scope, $cordovaOauth,  $q ,$location, $ionicModal, ClientProxy, $http, $window, $ionicLoading, facebookService) {
 
   var user;
   var facebookUser;
@@ -9,7 +9,7 @@ angular.module('gamseong.main-controllers', [])
   $scope.fbLogin = function () {
     var authResponse;
     var isAuth = false;
-/*
+
     $cordovaOauth.facebook('210753882669143', ['email']).then(function(result) {
       authResponse = result.access_token;
       debugger;
@@ -38,11 +38,10 @@ angular.module('gamseong.main-controllers', [])
         alert("Error: " + error);
       });
     };
-*/
-  //  console.log("dasd");
-  //  console.log(ngFB.getLoginStatus());
-    ngFB.getLoginStatus()
-              .then(function(response) {
+/*
+
+    $cordovaFacebook.getLoginStatus(function(response) {
+
               if (response.status == 'connected') {
                   authResponse = response;
                   alert("success");
@@ -51,9 +50,8 @@ angular.module('gamseong.main-controllers', [])
               else {
                 alert("fail");
                 $ionicLoading.hide();
-                ngFB.login({scope: 'public_profile,email'}).then(
+                $cordovaFacebook.login({scope: 'public_profile,email'}).then(
                     function (response) {
-                        console.log(response)
                         if (response.status === 'connected') {
 
                         } else {
@@ -62,7 +60,7 @@ angular.module('gamseong.main-controllers', [])
                     });
               }
           });
-/*
+
     facebookService.getMyInfo()
            .then(function(authResponse) {
             console.log(authResponse);

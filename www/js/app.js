@@ -8,7 +8,6 @@ angular.module('gamseong', [
   'ionic'
 , 'ngCordovaOauth'
 , 'ngCordova'
-, 'ngOpenFB'
 , 'gamseong.controllers'
 , 'gamseong.feed-controllers'
 , 'gamseong.local-controllers'
@@ -31,13 +30,7 @@ angular.module('gamseong', [
   //url: 'http://localhost:8080'
 })
 
-.run(function($ionicPlatform, $window, $http, ClientProxy ,GeoService, $cordovaFacebook, ngFB) {
-
-      ngFB.init({
-        appId: '210753882669143',
-        status: true,
-        version: 'v2.0'
-      });
+.run(function($ionicPlatform, $window, $http, ClientProxy ,GeoService, $cordovaFacebook) {
 
 /*  $window.fbAsyncInit = function() {
       FB.init({
@@ -54,17 +47,16 @@ angular.module('gamseong', [
     // for form inputs)
 
     //$http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-/*
+
       if (cordova.platformId == "browser") {
         var appID = '210753882669143';
         var version = "v2.0";
       //  $cordovaFacebook.browserInit(appID, version);
-    //    facebookConnectPlugin.browserInit('210753882669143');
-  }*/
+        facebookConnectPlugin.browserInit('210753882669143');
+      }
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
