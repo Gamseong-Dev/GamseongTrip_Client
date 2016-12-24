@@ -271,7 +271,20 @@ angular.module('gamseong.feed-controllers', [])
 	$scope.writer={
         contents: ""
    };
+	$scope.stickers = [
+		{ id : 1 , tag : "감성"}, { id : 2 , tag : "불금"},
+		{ id : 3 , tag : "혼자여행"}, { id : 4 , tag : "맥주"},
+		{ id : 5 , tag : "크리스마스"}, { id : 6 , tag : "맛집"}
+	];
 
+	$scope.selected=[];
+	$scope.selectedSticker = function(Id, Tag) {
+		console.log(Id, Tag);
+		const filter = $scope.selected.map(select => select.id)
+		if(filter.indexOf(Id) == -1){
+				$scope.selected.push({id: Id, tag: Tag})
+		}
+	};
  	$scope.image = null;
 	$scope.doWriter = function(){
 
@@ -290,7 +303,9 @@ angular.module('gamseong.feed-controllers', [])
 					,contents: $scope.writer.contents
 					,locationId: myLocalId
 					,address: address
-					,sticker :[]
+					,sticker : $scope.selected.map(select => (
+						{code: select.id, contents: select.tag}
+					))
 					,imgUrl : imgUrl
 				}
 		};
@@ -433,7 +448,7 @@ angular.module('gamseong.feed-controllers', [])
 					id: $scope.update.feedId
 					,userId: userId
 					,contents: $scope.writer.contents
-					,sticker :[]
+					,sticker : []
 				}
 		};
 
@@ -714,6 +729,8 @@ angular.module('gamseong.feed-controllers', [])
 
 	} ];
 })
+
+
 // Message Controller
 .controller('MessageCtrl', function($scope, $stateParams, $window, $http, ClientProxy) {
 
@@ -725,7 +742,6 @@ angular.module('gamseong.feed-controllers', [])
 				 $scope.messageList = data;
 	 	 })
 })
-
 .controller('MessageSingleCtrl', function($scope,$http, ClientProxy, $stateParams, $window, $ionicModal) {
 
 	var userId = $window.localStorage.getItem("id");
